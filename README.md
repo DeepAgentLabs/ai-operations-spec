@@ -14,6 +14,31 @@ The specification is designed to support interoperability across:
 - resilience and chaos testing tools
 - local analysis and CI workflows
 
+At a practical level, the specification should model the operational objects a
+developer actually builds and debugs in an AI runtime:
+
+- `Workflow`
+- `Request`
+- `Agent`
+- `LLM`
+- `Prompt`
+- `Context`
+- `RAG`
+- `Memory`
+- `Tool`
+- `MCP`
+- `Evaluation`
+- `Safety`
+- `Reliability`
+- `Incident`
+
+The intent is to define AI-native operational objects and semantic events first,
+then let tools attach the fields, metrics, and transport formats that naturally
+belong to them.
+
+Telemetry is not itself a runtime object. It is an export layer built on top of
+the runtime model.
+
 This repository is the home of the specification itself, not a Python package.
 
 ## Relationship To DeepAgentLabs Projects
@@ -27,7 +52,9 @@ This repository is the home of the specification itself, not a Python package.
 Over time, this repository should contain:
 
 - written specification documents
+- roadmap and milestone guidance
 - machine-readable schemas
+- semantic conventions
 - versioning and compatibility rules
 - valid example artifacts
 - extension guidance
@@ -56,6 +83,10 @@ AI Operations Specification
   workflow.schema.json
 ```
 
+It should support a simple mental model:
+
+`instrument the AI runtime once, export everywhere`
+
 ## Principles
 
 - Language-neutral
@@ -64,6 +95,8 @@ AI Operations Specification
 - Backward-conscious
 - Local-first friendly
 - Framework-agnostic
+- Object-first rather than field-sprawl-first
+- Friendly to traces, logs, metrics, and file artifacts
 
 Third parties may define compatible extensions while preserving core
 interoperability.
@@ -86,3 +119,4 @@ the core operational model clearly enough that DeepAgentLabs tools can share it
 consistently before the ecosystem expands further.
 
 See [SPECIFICATION.md](SPECIFICATION.md) for the first draft.
+See [ROADMAP.md](ROADMAP.md) for the build order and milestones.
