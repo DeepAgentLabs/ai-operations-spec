@@ -1,287 +1,118 @@
-# AI Operations Specification Roadmap
+﻿# AI Operations Specification Roadmap
 
 ## Direction
 
-The AI Operations Specification should be built **specification-first**.
-
-It should come before SDK ergonomics, package-specific abstractions,
-exporter-specific design, or Python implementation details.
-
-The goal is not to define "the JSON format that one package exports."
-
-The goal is to define:
-
-> **The open standard for representing the execution, evaluation, and
-> operational behavior of AI and agentic systems.**
-
-That makes the specification the foundation of the ecosystem:
+DeepAgentLabs builds the AI Operations Specification **specification-first**. The standard defines meaning before SDK ergonomics, exporter fields, dashboards, or integrations.
 
 ```text
 AI Operations Specification
-        │
-        ├── Core Concepts
-        ├── Runtime Object Model
-        ├── Relationships
-        ├── Semantic Conventions
-        ├── JSON Schemas
-        ├── Versioning
-        ├── Examples
-        └── Extension Model
-                 │
-                 ▼
-     Reference Implementations
-        ├── AgenticLens
-        ├── Agentic Chaos
-        └── DeepAgent MCP
+    |-- Core concepts
+    |-- Relationships and execution graph
+    |-- Semantic conventions
+    |-- JSON Schemas
+    |-- Versioning and compatibility
+    `-- Examples and extension model
+             |
+             `-- Reference implementations
+                 |-- AgenticLens
+                 |-- Agentic Chaos
+                 `-- DeepAgent MCP
 ```
 
-## Build Order
+The goal is an open standard for representing the execution, evaluation, safety, reliability, and operational behavior of AI systems.
 
-The specification should be developed in this order.
+## Build order
 
-### Phase 1 — Core Concepts and Runtime Object Model
+### Phase 1 / v0.1 — Core concepts
 
-Goal: define the language of AI operations before building SDKs or exporters.
+Define the meaning and boundaries of:
 
-Questions to answer:
+- Workflow and Run
+- Request and Step
+- Agent
+- LLM Interaction
+- Prompt and Context
+- Tool Invocation
+- RAG Retrieval
+- Memory Operation
+- Evaluation
+- Safety Signal
+- Reliability Event
+- Incident
 
-- what is a workflow
-- what is a request
-- what is a step
-- what is an agent
-- what is an LLM call
-- what is a prompt
-- what is a context object
-- what is a tool call
-- what is a memory operation
-- what is a RAG retrieval
-- what is an evaluation
-- what is a safety signal
-- what is a reliability event
-- what is an incident
+No normative JSON field catalog, SDK model, or event namespace belongs in this phase.
 
-Initial runtime objects:
+Success means two independent implementers can classify the same runtime occurrences consistently.
 
-- `Workflow`
-- `Request`
-- `Step`
-- `Agent`
-- `LLM`
-- `Prompt`
-- `Context`
-- `Tool`
-- `Memory`
-- `RAG`
-- `Evaluation`
-- `Safety`
-- `Reliability`
-- `Incident`
+### Phase 2 / v0.2 — Relationships and execution structure
 
-At this phase, the focus is on definitions and boundaries, not on low-level
-field catalogs.
+Define:
 
-### Phase 2 — Relationships and Execution Structure
+- Workflow-to-Run and Run-to-Request structure
+- step parent-child and causal relationships
+- sequential, parallel, branch, join, retry, and loop representation
+- parent-child Runs
+- Agent participation, handoff, and delegation
+- Step relationships to model, tool, retrieval, and memory occurrences
 
-Goal: define how the runtime objects connect.
+Success means two tools can represent the same execution graph consistently.
 
-Examples:
+### Phase 3 / v0.3 — Semantic conventions
 
-- `Workflow` contains `Request`, `Step`, `Evaluation`, and `Incident`
-- `Step` may represent or contain `LLM`, `Tool`, `RAG`, `Memory`, or other
-  runtime activity
-- workflows may have parent-child relationships
-- execution may be sequential, parallel, or graph-shaped
-- agent handoffs and delegation should have a portable representation
+Define canonical event names, lifecycle meaning, naming rules, and the minimum attributes needed to interpret events. Candidate areas include workflow/run lifecycle, requests, Agent activity, model interactions, prompts, context assembly, tools, memory, retrieval, evaluations, safety, reliability, and incidents.
 
-This phase should define the execution graph model clearly enough that multiple
-tools can represent the same run consistently.
+Candidate names are non-normative until v0.3 is reviewed.
 
-### Phase 3 — Semantic Conventions
+Success means producers and consumers agree on stable AI-native event semantics independent of transport.
 
-Goal: define canonical AI-native event names and meanings.
+### Phase 4 / v0.4 — JSON Schemas
 
-Examples:
+Deliver machine-readable schemas and validation fixtures derived from v0.1–v0.3. Object-specific schemas may be introduced where independent reuse justifies them.
 
-- `workflow.started`
-- `workflow.completed`
-- `request.started`
-- `request.completed`
-- `agent.started`
-- `agent.step`
-- `llm.call`
-- `prompt.rendered`
-- `context.injected`
-- `tool.called`
-- `memory.read`
-- `memory.write`
-- `rag.retrieved`
-- `evaluation.run`
-- `judge.scored`
-- `incident.created`
+Success means artifacts can be validated without a DeepAgentLabs package.
 
-This is where the specification starts to play a role analogous to
-OpenTelemetry semantic conventions, but for AI runtimes.
+The repository currently preserves an [early non-normative schema experiment](drafts/v0.4/README.md). It must be revised after earlier milestones are accepted.
 
-### Phase 4 — JSON Schemas
+### Phase 5 / v0.5 — Versioning and compatibility
 
-Goal: make specification artifacts validatable and portable.
+Define artifact version markers, additive and breaking change rules, deprecation, compatibility behavior, and extension expectations.
 
-Examples:
+Success means implementers can determine whether they may safely consume an artifact.
 
-- `schemas/workflow.schema.json`
-- `schemas/llm.schema.json`
-- `schemas/prompt.schema.json`
-- `schemas/tool.schema.json`
-- `schemas/evaluation.schema.json`
+### Phase 6 — Examples and extension model
 
-At this point the repository should provide both written rules and
-machine-readable validation.
+Publish minimal and advanced canonical artifacts, namespace rules, third-party extension guidance, and conformance expectations.
 
-### Phase 5 — Versioning and Compatibility
+### v1.0 — Stable specification
 
-Goal: define how the standard evolves without fragmenting implementations.
+Freeze the reviewed core model, relationships, semantic conventions, schemas, versioning, examples, and extension model.
 
-This phase should establish:
+Success means third parties can implement the standard without importing DeepAgentLabs packages.
 
-- version markers
-- additive change guidance
-- breaking change policy
-- extension compatibility expectations
-- deprecation guidance
-
-### Phase 6 — Examples and Extension Model
-
-Goal: make adoption easier for both humans and tools.
-
-This phase should provide:
-
-- canonical example artifacts
-- minimal and advanced examples
-- extension conventions
-- guidance for third-party interoperability
-
-## Repository Shape
-
-The repository should evolve toward a structure like:
+## Repository organization
 
 ```text
 ai-operations-spec/
-├── README.md
-├── SPECIFICATION.md
-├── ROADMAP.md
-├── schemas/
-├── semantic-conventions/
-├── examples/
-└── extensions/
+|-- README.md
+|-- SPECIFICATION.md
+|-- ROADMAP.md
+|-- specification/
+|   `-- v0.1/
+`-- drafts/
+    `-- v0.4/
 ```
 
-This repository is the home of the standard itself, not a Python SDK.
+Normative milestone documents live under `specification/`. Premature implementation research lives under `drafts/` and must state that it is non-normative. Root-level schema and semantic-convention directories should be added when their milestones become normative.
 
-## Milestones
+## Package roles
 
-### v0.1 — Core Concepts
+- `ai-operations-spec` defines the standard.
+- `agenticlens` instruments and exports the standard.
+- `agentic-chaos` adds resilience and fault-testing evidence using the same model.
+- `deep-agentic-core-mcp` reads, exposes, and transforms conforming artifacts.
 
-Define:
+The specification remains above every implementation.
 
-- `Workflow`
-- `Request`
-- `Step`
-- `Agent`
-- `LLM`
-- `Prompt`
-- `Tool`
-- `RAG`
-- `Memory`
-- `Evaluation`
-- `Incident`
+## Contributor test
 
-Success criteria:
-
-- written definitions exist
-- object boundaries are clear
-- the spec reads like a coherent runtime model rather than a metric list
-
-### v0.2 — Relationships
-
-Define:
-
-- workflow-to-step structure
-- parent-child runs
-- execution graph model
-- step-to-object relationships
-- agent handoff and delegation concepts
-
-Success criteria:
-
-- two different tools could represent the same run shape consistently
-
-### v0.3 — Semantic Conventions
-
-Define:
-
-- canonical event names
-- event meaning and lifecycle
-- basic naming rules
-
-Success criteria:
-
-- event producers and consumers can agree on stable AI-native event semantics
-
-### v0.4 — JSON Schemas
-
-Deliver:
-
-- initial machine-readable schemas
-- validation examples
-
-Success criteria:
-
-- artifacts can be validated outside the Python packages
-
-### v0.5 — Versioning
-
-Define:
-
-- artifact versioning rules
-- compatibility and extension policy
-
-Success criteria:
-
-- the spec can evolve without creating ambiguity for implementers
-
-### v1.0 — Stable Specification
-
-Deliver:
-
-- stable core object model
-- stable semantic conventions
-- stable schema set
-- examples and extension guidance
-
-Success criteria:
-
-- third parties can implement the specification without depending on DeepAgentLabs
-  packages directly
-
-## Relationship To The Packages
-
-The package roles should stay clear:
-
-- `ai-operations-spec` defines the standard
-- `agenticlens` is the flagship Python instrumentation and export
-  implementation
-- `agentic-chaos` extends the same standard with resilience and fault-testing
-  evidence
-- `deep-agentic-core-mcp` reads, exposes, and transforms the same artifacts
-
-The specification should remain above any one package.
-
-## Contributor Question
-
-Anyone contributing to this repository should be able to ask:
-
-`Does this make the AI runtime model, semantic conventions, schemas, versioning,
-or extension model clearer and easier to implement?`
-
-If the answer is no, it probably belongs in one of the implementation
-repositories instead.
+A contribution belongs here when it makes the shared runtime model, relationships, semantic conventions, schemas, compatibility, examples, or extensions clearer for independent implementers. Package-specific behavior belongs in the implementation repository.

@@ -1,37 +1,38 @@
-# AI Operations Specification
+﻿# AI Operations Specification
 
-The **AI Operations Specification** is DeepAgentLabs' language-neutral contract for exchanging operational data about AI workflow runs.
+The **AI Operations Specification** defines a language-neutral operational model for AI and agentic systems.
 
-It gives observability, evaluation, resilience, local tooling, and CI systems a shared representation of runs, steps, metrics, chaos events, and evaluations. It is a data contract, not a Python package or hosted service.
+DeepAgentLabs stewards the standard. AgenticLens, Agentic Chaos, and DeepAgent MCP are reference implementations and consumers; none of them owns the contract.
 
-## Current release
+## Current milestone
 
-Draft **v0.1** includes the normative [specification](SPECIFICATION.md), a [JSON Schema](schemas/workflow.schema.json), valid and invalid examples, and automated validation tests.
+**v0.1 is a core-concepts draft.** It defines the vocabulary and boundaries of the runtime model. It intentionally does not standardize JSON fields, semantic event names, SDK classes, or transports yet.
 
-AgenticLens is the observability and optimization reference implementation. Agentic Chaos produces compatible fault-injection data. DeepAgentLabs MCP is a consumer and control surface over these artifacts.
+Start here:
 
-## Validate the examples
+- [v0.1 overview](specification/v0.1/README.md)
+- [Core concepts](specification/v0.1/core-concepts.md)
+- [Terminology](specification/v0.1/terminology.md)
+- [Conceptual examples](specification/v0.1/examples.md)
+- [Acceptance criteria](specification/v0.1/acceptance-criteria.md)
+- [Roadmap](ROADMAP.md)
 
-```bash
-uv sync --extra dev
-uv run pytest
-```
+The earlier workflow JSON Schema experiment is preserved as an [unreleased v0.4 draft](drafts/v0.4/README.md). It is not a conforming v0.1 contract.
 
-## Minimal artifact
+## Specification-first rule
 
-```json
-{
-  "spec_version": "0.1",
-  "id": "run_01",
-  "name": "Customer support",
-  "start_time": "2026-07-17T15:00:00Z",
-  "status": "completed",
-  "steps": []
-}
-```
+Normative concepts and relationships are defined here before package-specific models are changed. Implementations may experiment, but they must not redefine core terms independently.
 
-See [the complete example](examples/valid/customer-support.json).
+## Scope boundaries
 
-## Contribution policy
+This repository defines meaning and interoperability. It does not contain:
 
-Changes to normative fields should include a written specification update, a matching schema change, fixtures demonstrating the behavior, and a compatibility note.
+- instrumentation SDK implementations
+- dashboards or hosted services
+- package-specific recommendation logic
+- provider pricing catalogs
+- transport-specific exporters
+
+## Contributing
+
+A proposal belongs here when it clarifies the runtime model, relationships, semantic conventions, schemas, compatibility, or extensions for all implementers. Package-only behavior belongs in its package repository.
