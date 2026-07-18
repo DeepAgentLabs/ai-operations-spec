@@ -1,0 +1,19 @@
+{
+  "spec_version": "0.1",
+  "id": "run_support_01",
+  "workflow_id": "customer_support",
+  "name": "Customer support answer",
+  "start_time": "2026-07-17T15:00:00Z",
+  "end_time": "2026-07-17T15:00:02.400Z",
+  "status": "completed",
+  "metrics": {"prompt_tokens":500,"completion_tokens":80,"total_tokens":580,"latency":2.4,"cost":0.002},
+  "steps": [{
+    "id":"step_classify_01","name":"Classify request","type":"llm_call","agent_name":"support_agent","provider":"example-provider","model":"example-model",
+    "metrics":{"prompt_tokens":500,"completion_tokens":80,"total_tokens":580,"latency":2.4,"ttft":0.3,"cost":0.002}
+  }],
+  "chaos_events": [{
+    "id":"event_01","fault_type":"token_timeout","step_id":"step_classify_01","step_name":"Classify request","timestamp":"2026-07-17T15:00:01Z","outcome":"delayed","message":"Completion delayed during resilience experiment","detail":{"delay_seconds":1.0}
+  }],
+  "evaluations": [{"id":"eval_01","name":"Answer relevance","step_id":"step_classify_01","status":"passed","score":0.92,"min_score":0,"max_score":1}],
+  "extensions": {"io.deepagentlabs.agenticlens":{"reducible_tokens":120}}
+}

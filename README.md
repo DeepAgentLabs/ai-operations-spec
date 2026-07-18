@@ -1,88 +1,37 @@
-# ai-operations-spec
+# AI Operations Specification
 
-The **AI Operations Specification** is a language-neutral operational model for
-production AI systems.
+The **AI Operations Specification** is DeepAgentLabs' language-neutral contract for exchanging operational data about AI workflow runs.
 
-DeepAgentLabs defines and stewards this specification so multiple tools can
-share one contract for traces, evaluations, incidents, resilience testing, and
-operational analysis.
+It gives observability, evaluation, resilience, local tooling, and CI systems a shared representation of runs, steps, metrics, chaos events, and evaluations. It is a data contract, not a Python package or hosted service.
 
-The specification is designed to support interoperability across:
+## Current release
 
-- AI frameworks and agent runtimes
-- observability and telemetry systems
-- resilience and chaos testing tools
-- local analysis and CI workflows
+Draft **v0.1** includes the normative [specification](SPECIFICATION.md), a [JSON Schema](schemas/workflow.schema.json), valid and invalid examples, and automated validation tests.
 
-This repository is the home of the specification itself, not a Python package.
+AgenticLens is the observability and optimization reference implementation. Agentic Chaos produces compatible fault-injection data. DeepAgentLabs MCP is a consumer and control surface over these artifacts.
 
-## Relationship To DeepAgentLabs Projects
+## Validate the examples
 
-- `agenticlens` is the flagship Python reference implementation
-- `agentic-chaos` produces compatible resilience and degradation artifacts
-- DeepAgentLabs MCP can read and expose compatible artifacts
-
-## What Lives In This Repository
-
-Over time, this repository should contain:
-
-- written specification documents
-- machine-readable schemas
-- versioning and compatibility rules
-- valid example artifacts
-- extension guidance
-
-## Core Model
-
-The specification is the shared contract.
-
-`workflow.json` is a runtime artifact produced by an application or tool.
-
-`workflow.schema.json` is a validation schema for that artifact.
-
-```text
-AI Operations Specification
-            |
-            |-- written rules
-            |-- JSON Schema
-            |-- versioning rules
-            |-- examples
-            |
-            v
-       workflow.json
-            |
-      validated against
-            v
-  workflow.schema.json
+```bash
+uv sync --extra dev
+uv run pytest
 ```
 
-## Principles
+## Minimal artifact
 
-- Language-neutral
-- Versioned
-- Extensible
-- Backward-conscious
-- Local-first friendly
-- Framework-agnostic
+```json
+{
+  "spec_version": "0.1",
+  "id": "run_01",
+  "name": "Customer support",
+  "start_time": "2026-07-17T15:00:00Z",
+  "status": "completed",
+  "steps": []
+}
+```
 
-Third parties may define compatible extensions while preserving core
-interoperability.
+See [the complete example](examples/valid/customer-support.json).
 
-## Versioning
+## Contribution policy
 
-The specification should evolve through explicit versions such as:
-
-- `v1`
-- `v1.1`
-- `v2`
-
-Major versions should be reserved for breaking structural changes. Minor
-versions should be additive wherever possible.
-
-## Current Scope
-
-This repository is intentionally modest for now. The initial goal is to define
-the core operational model clearly enough that DeepAgentLabs tools can share it
-consistently before the ecosystem expands further.
-
-See [SPECIFICATION.md](SPECIFICATION.md) for the first draft.
+Changes to normative fields should include a written specification update, a matching schema change, fixtures demonstrating the behavior, and a compatibility note.
