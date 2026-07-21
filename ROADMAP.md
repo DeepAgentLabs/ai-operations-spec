@@ -25,12 +25,14 @@ The goal is an open standard for representing the execution, evaluation, safety,
 
 ### Phase 1 / v0.1 — Core concepts
 
+**Status: foundation draft; internal terminology decisions resolved, independent review pending.**
+
 Define the meaning and boundaries of:
 
 - Workflow and Run
 - Request and Step
 - Agent
-- LLM Interaction
+- Model Interaction
 - Prompt and Context
 - Tool Invocation
 - RAG Retrieval
@@ -46,6 +48,8 @@ Success means two independent implementers can classify the same runtime occurre
 
 ### Phase 2 / v0.2 — Relationships and execution structure
 
+**Status: exploratory draft; blocked from freeze by v0.1 review.**
+
 Define:
 
 - Workflow-to-Run and Run-to-Request structure
@@ -59,6 +63,8 @@ Success means two tools can represent the same execution graph consistently.
 
 ### Phase 3 / v0.3 — Semantic conventions
 
+**Status: exploratory draft; blocked from freeze by v0.1 and v0.2 review.**
+
 Define canonical event names, lifecycle meaning, naming rules, and the minimum attributes needed to interpret events. Candidate areas include workflow/run lifecycle, requests, Agent activity, model interactions, prompts, context assembly, tools, memory, retrieval, evaluations, safety, reliability, and incidents.
 
 Candidate names are non-normative until v0.3 is reviewed.
@@ -67,11 +73,13 @@ Success means producers and consumers agree on stable AI-native event semantics 
 
 ### Phase 4 / v0.4 — JSON Schemas
 
+**Status: exploratory schemas and fixtures; blocked from freeze by v0.1–v0.3 review.**
+
 Deliver machine-readable schemas and validation fixtures derived from v0.1–v0.3. Object-specific schemas may be introduced where independent reuse justifies them.
 
 Success means artifacts can be validated without a DeepAgentLabs package.
 
-The repository currently preserves an [early non-normative schema experiment](drafts/v0.4/README.md). It must be revised after earlier milestones are accepted.
+The repository preserves an [early non-normative schema experiment](drafts/v0.4/README.md) for history. The current v0.4 design under `specification/v0.4/` supersedes that experiment but remains a draft until earlier milestones are accepted.
 
 ### Phase 5 / v0.5 — Versioning and compatibility
 
@@ -97,12 +105,15 @@ ai-operations-spec/
 |-- SPECIFICATION.md
 |-- ROADMAP.md
 |-- specification/
-|   `-- v0.1/
+|   |-- v0.1/
+|   |-- v0.2/
+|   |-- v0.3/
+|   `-- v0.4/
 `-- drafts/
     `-- v0.4/
 ```
 
-Normative milestone documents live under `specification/`. Premature implementation research lives under `drafts/` and must state that it is non-normative. Root-level schema and semantic-convention directories should be added when their milestones become normative.
+Specification milestone documents live under `specification/` and clearly state their maturity. Premature implementation research lives under `drafts/` and must state that it is non-normative. Stable release layout will be decided before v1.0.
 
 ## Package roles
 

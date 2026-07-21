@@ -2,7 +2,7 @@
 
 ## Status
 
-Draft for review.
+Foundation draft. Internal terminology decisions are recorded; independent-framework review remains open.
 
 ## Goal
 
@@ -33,7 +33,7 @@ v0.1 defines:
 - Request
 - Step
 - Agent
-- LLM Interaction
+- Model Interaction
 - Prompt
 - Context
 - Tool Invocation
@@ -44,7 +44,7 @@ v0.1 defines:
 - Reliability Event
 - Incident
 
-The roadmap originally used shortened labels such as `LLM`, `Tool`, `RAG`, `Memory`, `Safety`, and `Reliability`. v0.1 gives runtime occurrences precise names while retaining those labels as capability-area shorthand.
+The roadmap originally used shortened labels such as `LLM`, `Tool`, `RAG`, `Memory`, `Safety`, and `Reliability`. v0.1 gives runtime occurrences precise names while retaining those labels as capability-area shorthand. An LLM call is represented by the broader Model Interaction concept.
 
 ## What v0.1 does not define
 
@@ -66,3 +66,4 @@ Those belong to later milestones. Conceptual examples in this milestone demonstr
 - [Terminology](terminology.md) defines cross-cutting terms and disambiguations.
 - [Examples](examples.md) test whether the model describes realistic systems.
 - [Acceptance criteria](acceptance-criteria.md) defines when v0.1 is ready to freeze.
+- [Design decisions](decisions.md) records resolved vocabulary choices.

@@ -12,7 +12,7 @@ Known gaps include:
 - relationship semantics have not passed through v0.2
 - event naming has not passed through v0.3
 
-Do not update reference implementations to claim conformance to this draft. When v0.1 through v0.3 are accepted, this material should be revised against those decisions.
+Do not update reference implementations to claim conformance to this draft. A redesigned schema draft now lives under `specification/v0.4/`; this directory is retained only as historical implementation research.
 
 To run its experimental validation suite:
 

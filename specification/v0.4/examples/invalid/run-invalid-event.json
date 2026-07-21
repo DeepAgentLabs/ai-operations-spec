@@ -1,0 +1,1 @@
+{"spec_version":"0.4-draft","artifact_type":"run","id":"bad-run","started_at":"2026-07-21T06:00:00Z","status":"completed","requests":[],"steps":[],"relationships":[],"events":[{"event_id":"e1","event_name":"vendor.completed","occurred_at":"2026-07-21T06:00:00Z","object_id":"bad-run","object_type":"run"}]}

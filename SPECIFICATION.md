@@ -1,19 +1,35 @@
-﻿# AI Operations Specification
+# Specification Guide
 
-The normative work is organized by milestone.
+The AI Operations Specification is one cumulative standard developed in milestone layers. A milestone number identifies the layer introduced; it is not a separate competing edition of the entire standard.
 
-The current milestone is **v0.1: Core Concepts and Runtime Object Model**:
+## Reading order
 
-- [Milestone overview](specification/v0.1/README.md)
-- [Core concepts](specification/v0.1/core-concepts.md)
-- [Terminology](specification/v0.1/terminology.md)
-- [Conceptual examples](specification/v0.1/examples.md)
-- [Acceptance criteria](specification/v0.1/acceptance-criteria.md)
+1. [v0.1 core concepts](specification/v0.1/core-concepts.md) and [terminology](specification/v0.1/terminology.md)
+2. [v0.2 relationships and execution structure](specification/v0.2/relationships.md)
+3. [v0.3 semantic conventions](specification/v0.3/semantic-conventions.md)
+4. [v0.4 JSON Schemas](specification/v0.4/README.md)
 
-Later milestones will standardize relationships, semantic conventions, schemas, versioning, and extensions in that order. See the [roadmap](ROADMAP.md).
+Examples explain intended meaning; acceptance criteria track readiness and unresolved review gates. Acceptance checklists are contributor material, not part of the runtime contract.
+
+## Maturity
+
+All current documents are pre-release drafts. Normative keywords describe requirements **within the named draft**, but do not imply a stable release or compatibility promise.
+
+An implementation may say it is "aligned with the AIOS v0.4 draft dated YYYY-MM-DD." It MUST NOT claim stable AIOS conformance until the applicable review gates and versioning rules are complete.
+
+Later exploratory milestones may be developed to test earlier decisions. Their existence does not mean their dependencies have been accepted.
 
 ## Normative language
 
-When milestone documents use **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, or **MAY**, those terms are interpreted as described by RFC 2119 and RFC 8174.
+The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** are interpreted as described by RFC 2119 and RFC 8174 when, and only when, they appear in uppercase.
 
-v0.1 is a draft. Its definitions may change before v1.0, but implementations should use these terms consistently when claiming alignment with the draft.
+## Conformance boundary
+
+For the v0.4 draft, structural alignment requires both:
+
+1. JSON Schema validation against the declared artifact schema.
+2. Semantic validation of identity, references, relationships, and graph invariants that JSON Schema cannot express.
+
+Validation does not establish factual accuracy, runtime success, evaluation quality, safety, or reliability.
+
+See the [roadmap](ROADMAP.md) for planned compatibility and stable-release work.

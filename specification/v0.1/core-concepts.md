@@ -46,7 +46,7 @@ This document defines the normative conceptual vocabulary for v0.1. “Owns” m
 
 **Owns.** Its activity category, execution timing, outcome, and step-local evidence.
 
-**References.** A Step may refer to a responsible Agent and to one primary runtime occurrence such as an LLM Interaction, Tool Invocation, RAG Retrieval, or Memory Operation. Formal graph edges are deferred to v0.2.
+**References.** A Step may refer to a responsible Agent and to one primary runtime occurrence such as a Model Interaction, Tool Invocation, RAG Retrieval, or Memory Operation. Formal graph edges are deferred to v0.2.
 
 **Must not represent.** A Step MUST NOT be assumed to be an Agent, an LLM call, or a strictly sequential list item. A Step is the execution boundary; the associated occurrence explains what happened within it.
 
@@ -62,9 +62,9 @@ This document defines the normative conceptual vocabulary for v0.1. “Owns” m
 
 **Must not represent.** A deterministic function or isolated model call MUST NOT be labeled an Agent solely because it runs inside an AI system. Agency requires some bounded action selection or coordination responsibility.
 
-## LLM Interaction
+## Model Interaction
 
-**Purpose.** An LLM Interaction is one invocation of a language or multimodal model endpoint, including request and response behavior.
+**Purpose.** A Model Interaction is one invocation of a model endpoint, including language, multimodal, embedding, reranking, and other model operations.
 
 **Identity and lifecycle.** Each attempted invocation is an occurrence. Retries are distinct attempts even when they serve the same Step.
 
@@ -72,7 +72,7 @@ This document defines the normative conceptual vocabulary for v0.1. “Owns” m
 
 **References.** It may refer to a Prompt, Context, responsible Step or Agent, provider request identifier, and Reliability Events.
 
-**Must not represent.** `LLM` MUST NOT be used ambiguously for both a model definition and an invocation. v0.1 uses **LLM Interaction** for the runtime occurrence. It MUST NOT own retrieval, memory, or tool semantics merely because their output appeared in model input.
+**Must not represent.** A model definition and a Model Interaction MUST NOT share one conceptual identity. A Model Interaction MUST NOT own retrieval, memory, or tool semantics merely because their output appeared in model input.
 
 ## Prompt
 
@@ -82,7 +82,7 @@ This document defines the normative conceptual vocabulary for v0.1. “Owns” m
 
 **Owns.** Template reference, revision, rendering inputs, message roles or sections, and rendered-content evidence subject to privacy controls.
 
-**References.** A Prompt may refer to Context and to the LLM Interaction that consumed it.
+**References.** A Prompt may refer to Context and to the Model Interaction that consumed it.
 
 **Must not represent.** A Prompt MUST NOT automatically include every piece of model input as prompt-authored content; injected Context remains distinguishable. Raw prompt content MUST NOT be required when a redacted reference is safer.
 
@@ -166,7 +166,7 @@ This document defines the normative conceptual vocabulary for v0.1. “Owns” m
 
 **Owns.** Event category, observed condition, affected target, operational effect, and recovery evidence.
 
-**References.** It may refer to Runs, Steps, LLM Interactions, Tool Invocations, Agents, or Incidents.
+**References.** It may refer to Runs, Steps, Model Interactions, Tool Invocations, Agents, or Incidents.
 
 **Must not represent.** A Reliability Event MUST NOT automatically be an Incident. Routine retries may be operational evidence without requiring incident management.
 
@@ -188,5 +188,5 @@ This document defines the normative conceptual vocabulary for v0.1. “Owns” m
 - Request introduces work; Step bounds activity.
 - Agent participates and selects actions; Step records execution.
 - Prompt instructs; Context supplies surrounding information.
-- LLM Interaction, Tool Invocation, RAG Retrieval, and Memory Operation record distinct runtime occurrences.
+- Model Interaction, Tool Invocation, RAG Retrieval, and Memory Operation record distinct runtime occurrences.
 - Evaluation judges; Safety Signal detects concern; Reliability Event records stability behavior; Incident manages notable impact.

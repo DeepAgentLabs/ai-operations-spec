@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://deepagentlabs.github.io/ai-operations-spec/v0.1/workflow.schema.json",
-  "title": "AI Operations Workflow Artifact",
+  "$id": "https://deepagentlabs.github.io/ai-operations-spec/drafts/v0.4/workflow.schema.json",
+  "title": "AI Operations Workflow Artifact Draft",
   "type": "object",
   "required": ["spec_version", "id", "name", "start_time", "steps"],
   "properties": {
-    "spec_version": {"const": "0.1"},
+    "spec_version": {"const": "0.4-draft"},
     "id": {"$ref": "#/$defs/id"},
     "workflow_id": {"$ref": "#/$defs/id"},
     "name": {"type": "string", "minLength": 1},

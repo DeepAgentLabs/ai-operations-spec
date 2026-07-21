@@ -1,0 +1,19 @@
+[project]
+name = "ai-operations-spec"
+version = "0.1.0"
+description = "Language-neutral operational data specification for AI systems"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "jsonschema>=4.23,<5",
+    "pytest>=8,<9",
+]
+
+[tool.pytest.ini_options]
+addopts = "-p no:cacheprovider"
+testpaths = [
+    "tests",
+    "drafts/v0.4/tests",
+]

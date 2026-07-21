@@ -6,9 +6,9 @@ These examples are non-serializable narratives. They test the vocabulary without
 
 A reusable **Workflow** describes how support questions are classified, grounded in policy, and answered.
 
-A customer message creates a **Request** and starts a **Run**. A classification **Step** contains an **LLM Interaction** using a rendered **Prompt**. A **RAG Retrieval** searches the policy index; selected passages contribute to **Context** for an answer Step. An **Evaluation** judges groundedness.
+A customer message creates a **Request** and starts a **Run**. A classification **Step** contains a **Model Interaction** using a rendered **Prompt**. A **RAG Retrieval** searches the policy index; selected passages contribute to **Context** for an answer Step. An **Evaluation** judges groundedness.
 
-If the model endpoint times out and the system retries, each invocation attempt is a distinct LLM Interaction and the timeout and retry are **Reliability Events**. The retry does not automatically create an Incident.
+If the model endpoint times out and the system retries, each invocation attempt is a distinct Model Interaction and the timeout and retry are **Reliability Events**. The retry does not automatically create an Incident.
 
 ## Example 2: Multi-agent research
 
@@ -32,12 +32,12 @@ The Run can therefore be operationally completed, quality-failing, and degraded 
 
 ## Example 5: Scheduled memory maintenance
 
-A scheduled Request starts a Run without a human user. A Step reads stale records through Memory Operations, uses an LLM Interaction to summarize them, and writes a compact representation through another Memory Operation.
+A scheduled Request starts a Run without a human user. A Step reads stale records through Memory Operations, uses a Model Interaction to summarize them, and writes a compact representation through another Memory Operation.
 
 The local variables used during summarization are not Memory merely because they contain state. The persistence boundary makes the operations memory-related.
 
 ## Example 6: Ad hoc execution
 
-A developer directly invokes a one-off model experiment. The occurrence is still a Run even when no registered Workflow definition exists. The Run contains a Request, one Step, a Prompt, an LLM Interaction, and an Evaluation.
+A developer directly invokes a one-off model experiment. The occurrence is still a Run even when no registered Workflow definition exists. The Run contains a Request, one Step, a Prompt, a Model Interaction, and an Evaluation.
 
 This allows local experiments and framework-neutral traces without inventing a fake reusable Workflow.

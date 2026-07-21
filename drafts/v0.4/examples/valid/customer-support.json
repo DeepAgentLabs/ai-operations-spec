@@ -1,5 +1,5 @@
 {
-  "spec_version": "0.1",
+  "spec_version": "0.4-draft",
   "id": "run_support_01",
   "workflow_id": "customer_support",
   "name": "Customer support answer",
