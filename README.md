@@ -74,6 +74,17 @@ The early workflow schema under [`drafts/v0.4/`](drafts/v0.4/README.md) is retai
 
 ## Validation
 
+A `Makefile` provides shorthand for common tasks:
+
+```bash
+make install     # install dependencies
+make test        # run schema validation tests
+make check       # run all quality gates
+make help        # list all available targets
+```
+
+Or run directly:
+
 ```bash
 uv sync --extra dev
 uv run pytest
@@ -84,3 +95,15 @@ uv run pytest
 AIOS defines shared meaning, relationships, events, and exchange artifacts. SDK behavior, dashboards, provider catalogs, recommendation logic, storage, and transport exporters belong in implementation repositories.
 
 See [SPECIFICATION.md](SPECIFICATION.md) for the complete reading order and maturity rules, or [CONTRIBUTING.md](CONTRIBUTING.md) to propose a change.
+
+## What's Next
+
+Upcoming specification work (see [ROADMAP.md](ROADMAP.md)):
+
+- **Provenance and evidence concepts** — standardize source references,
+  evidence lineage, and derived findings as first-class spec objects
+- **Conformance test suite** — producers can validate artifacts against the
+  spec independently
+- **Naming conventions** — lock down field naming rules, casing, and
+  abbreviation policy
+- **Migration guides** — clear upgrade paths between spec versions

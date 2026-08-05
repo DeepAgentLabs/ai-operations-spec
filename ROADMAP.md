@@ -91,6 +91,30 @@ Success means implementers can determine whether they may safely consume an arti
 
 Publish minimal and advanced canonical artifacts, namespace rules, third-party extension guidance, and conformance expectations.
 
+### Phase 6.x — Provenance, Evidence & Operational Artifacts
+
+Formalize concepts proven in implementation repositories.
+
+**Implement now (after implementation evidence settles):**
+
+- provenance/evidence concepts — standardize source references, evidence
+  lineage, and derived findings as first-class spec objects
+- conformance test suite — so producers can validate their artifacts against
+  the spec without importing a DeepAgentLabs package
+- naming conventions document — lock down field naming rules, casing,
+  singular/plural, abbreviation policy
+
+**Implement next:**
+
+- migration guides between spec versions (v0.1→v0.2→v0.3→v0.4)
+- hosted documentation site for browsable spec (MkDocs)
+- optional report/investigation artifact schemas (if implementation usage
+  proves the need)
+- incident context and operator-facing summary semantics
+
+Success means implementations can attach provenance to findings using
+spec-standard objects, and producers can run conformance checks independently.
+
 ### v1.0 — Stable specification
 
 Freeze the reviewed core model, relationships, semantic conventions, schemas, versioning, examples, and extension model.
