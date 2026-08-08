@@ -1,0 +1,13 @@
+{
+  "spec_version": "0.4-draft",
+  "artifact_type": "run",
+  "id": "run-ext-001",
+  "started_at": "2026-07-21T06:00:00Z",
+  "status": "completed",
+  "requests": [],
+  "steps": [],
+  "relationships": [],
+  "events": [
+    {"event_id": "event-ext-1", "event_name": "io.deepagentlabs.agenticlens.custom_event", "occurred_at": "2026-07-21T06:00:00Z", "object_id": "run-ext-001", "object_type": "run"}
+  ]
+}
