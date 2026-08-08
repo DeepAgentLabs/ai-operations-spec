@@ -23,3 +23,23 @@ Do not mark an acceptance gate complete without recorded evidence. External revi
 uv sync --extra dev
 uv run pytest
 ```
+
+## Tagging draft snapshots and releases
+
+Snapshot repo state with **git tags**, not zip archives. GitHub already
+generates a downloadable source zip/tarball for every tag or release, so
+committing archives into the repo only adds undiffable bloat.
+
+- `specification/v0.4/conformance.md` asks implementers to cite claims like
+  *"aligned with v0.4-draft as observed on 2026-07-21"*. That citation is
+  only checkable if the repo state on that date is retrievable — that's
+  what a tag is for.
+- Use `vX.Y-draft-YYYY-MM-DD` for an informal, citable snapshot of an
+  in-progress milestone (draft content keeps moving, so date-stamp it).
+- Reserve the bare `vX.Y` tag for when a milestone's acceptance criteria
+  (see each milestone's `acceptance-criteria.md`) are fully checked and the
+  layer actually freezes — that tag then means something stable, not a
+  moving draft.
+- Attach a GitHub Release on top of a tag once it's worth announcing
+  externally (e.g. summarizing which acceptance gates closed); not required
+  for every draft snapshot.

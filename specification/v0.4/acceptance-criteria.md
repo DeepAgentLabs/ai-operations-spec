@@ -6,6 +6,9 @@
 - [x] Requests, Steps, Agents, runtime occurrences, evidence, Incidents, relationships, and semantic events are representable.
 - [x] Valid and invalid fixtures are automatically tested.
 - [x] Sensitive content is optional and extensibility is namespaced.
+- [x] `event_name` accepts both the canonical `aiops.*` catalog and reverse-domain
+  namespaced extension events; extension names MUST NOT collide with the
+  `aiops` namespace.
 
 ## Review gates
 

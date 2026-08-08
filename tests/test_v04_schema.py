@@ -138,7 +138,7 @@ def test_v04_schemas_are_valid() -> None:
 def test_v03_event_catalog_matches_v04_schema() -> None:
     conventions = (ROOT / "specification" / "v0.3" / "semantic-conventions.md").read_text(encoding="utf-8")
     documented = set(re.findall(r"`(aiops\.[a-z0-9.]+)`", conventions))
-    schema_events = set(SCHEMA_DOCUMENTS["common.schema.json"]["$defs"]["event"]["properties"]["event_name"]["enum"])
+    schema_events = set(SCHEMA_DOCUMENTS["common.schema.json"]["$defs"]["canonical_event_name"]["enum"])
     assert documented == schema_events
 
 
