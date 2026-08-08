@@ -5,6 +5,9 @@ The **AI Operations Specification (AIOS)** is a vendor-neutral contract for desc
 It gives instrumentation, observability, evaluation, safety, and reliability tools a shared vocabulary and portable JSON artifacts for Runs, Steps, model interactions, tool calls, retrieval, memory, evaluations, signals, and incidents.
 
 This repository defines the contract. It does **not** run agents, collect telemetry, host dashboards, or provide an SDK.
+It also does **not** own the primary end-user CLI for conformance checks;
+implementation repositories may provide that convenience on top of the
+normative rules defined here.
 
 ## Why it exists
 
@@ -36,6 +39,13 @@ The work is cumulative, not four competing formats:
 | [v0.4](specification/v0.4/README.md) | JSON Schema artifacts | Exploratory draft |
 
 Later layers depend on earlier ones. They are available for design feedback and prototype implementations; acceptance of a later layer does not bypass open review gates in an earlier layer.
+
+Conformance should be understood in two layers:
+
+- **AIOS defines the normative rules**: schemas, conformance requirements,
+  canonical fixtures, and expected validation behavior
+- **implementations may provide tooling**: for example, AgenticLens can expose
+  a practical `conformance` CLI over those rules without owning the standard
 
 ## Choose a path
 
@@ -94,6 +104,10 @@ uv run pytest
 
 AIOS defines shared meaning, relationships, events, and exchange artifacts. SDK behavior, dashboards, provider catalogs, recommendation logic, storage, and transport exporters belong in implementation repositories.
 
+That same boundary applies to conformance: the specification owns the rules
+and expected behavior, while implementation repositories may offer user-facing
+commands that execute those checks.
+
 See [SPECIFICATION.md](SPECIFICATION.md) for the complete reading order and maturity rules, or [CONTRIBUTING.md](CONTRIBUTING.md) to propose a change.
 
 ## What's Next
@@ -103,7 +117,8 @@ Upcoming specification work (see [ROADMAP.md](ROADMAP.md)):
 - **Provenance and evidence concepts** — standardize source references,
   evidence lineage, and derived findings as first-class spec objects
 - **Conformance test suite** — producers can validate artifacts against the
-  spec independently
+  spec independently, while implementation repositories can expose convenient
+  CLIs on top
 - **Naming conventions** — lock down field naming rules, casing, and
   abbreviation policy
 - **Migration guides** — clear upgrade paths between spec versions
