@@ -119,6 +119,10 @@ Formalize concepts proven in implementation repositories.
 - optional report/investigation artifact schemas (if implementation usage
   proves the need)
 - incident context and operator-facing summary semantics
+- OpenTelemetry GenAI semantic convention binding — a non-normative mapping
+  document from canonical `aiops.*` events and common attributes to OTel
+  spans, span events, and resource attributes, so producers already emitting
+  OTel do not need to invent their own bridge independently
 
 Success means implementations can attach provenance to findings using
 spec-standard objects, and producers can run conformance checks independently.
