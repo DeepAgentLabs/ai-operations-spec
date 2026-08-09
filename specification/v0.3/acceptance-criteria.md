@@ -11,8 +11,10 @@
 
 - [ ] Validate conventions against OpenTelemetry design principles.
 - [ ] Validate event coverage against at least two reference implementations.
-- [ ] Decide whether transport mappings belong in separate implementation profiles.
-- [ ] Record decisions and update affected documents.
+- [x] Decide whether transport mappings belong in separate implementation profiles
+  (decision `D-003`).
+- [x] Record decisions and update affected documents (`semantic-conventions.md`
+  now states the transport-boundary rule).
 
 ## Exit condition
 
