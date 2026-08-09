@@ -14,7 +14,10 @@
 
 - [ ] Resolve all open v0.1 through v0.3 review gates.
 - [ ] Validate artifacts produced by at least two independent implementations.
-- [ ] Review identifier, reference, extension, and unknown-value behavior.
+- [x] Review identifier, reference, extension, and unknown-value behavior
+  (decision `D-004`; see `specification/v0.4/conformance.md` and the
+  `run-unknown-relationship-type.json`, `run-unknown-object-type.json`, and
+  `run-namespaced-extensions.json` fixtures).
 - [ ] Replace the draft version marker when the milestone freezes.
 
 ## Exit condition
