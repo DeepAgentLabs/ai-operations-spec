@@ -39,7 +39,31 @@
       "id": "model-agentic-chaos-planner-001",
       "type": "model_interaction",
       "name": "planner call",
-      "status": "completed"
+      "status": "failed",
+      "attributes": {
+        "logical_activity_id": "planner-call",
+        "attempt": 1
+      }
+    },
+    {
+      "id": "model-agentic-chaos-planner-002",
+      "type": "model_interaction",
+      "name": "planner call",
+      "status": "failed",
+      "attributes": {
+        "logical_activity_id": "planner-call",
+        "attempt": 2
+      }
+    },
+    {
+      "id": "model-agentic-chaos-planner-003",
+      "type": "model_interaction",
+      "name": "planner call",
+      "status": "completed",
+      "attributes": {
+        "logical_activity_id": "planner-call",
+        "attempt": 3
+      }
     },
     {
       "id": "retrieval-agentic-chaos-001",
@@ -166,14 +190,14 @@
       }
     },
     {
-      "id": "rel-agentic-chaos-retriever-follows-planner",
+      "id": "rel-agentic-chaos-planner-follows-retriever",
       "type": "follows",
       "source": {
-        "id": "step-agentic-chaos-retriever",
+        "id": "step-agentic-chaos-planner",
         "type": "step"
       },
       "target": {
-        "id": "step-agentic-chaos-planner",
+        "id": "step-agentic-chaos-retriever",
         "type": "step"
       }
     },
@@ -190,7 +214,7 @@
       }
     },
     {
-      "id": "rel-agentic-chaos-planner-observed",
+      "id": "rel-agentic-chaos-planner-attempt-1-observed",
       "type": "observed-in",
       "source": {
         "id": "model-agentic-chaos-planner-001",
@@ -199,6 +223,54 @@
       "target": {
         "id": "step-agentic-chaos-planner",
         "type": "step"
+      }
+    },
+    {
+      "id": "rel-agentic-chaos-planner-attempt-2-observed",
+      "type": "observed-in",
+      "source": {
+        "id": "model-agentic-chaos-planner-002",
+        "type": "model_interaction"
+      },
+      "target": {
+        "id": "step-agentic-chaos-planner",
+        "type": "step"
+      }
+    },
+    {
+      "id": "rel-agentic-chaos-planner-attempt-3-observed",
+      "type": "observed-in",
+      "source": {
+        "id": "model-agentic-chaos-planner-003",
+        "type": "model_interaction"
+      },
+      "target": {
+        "id": "step-agentic-chaos-planner",
+        "type": "step"
+      }
+    },
+    {
+      "id": "rel-agentic-chaos-planner-attempt-1-follows-attempt-2",
+      "type": "follows",
+      "source": {
+        "id": "model-agentic-chaos-planner-001",
+        "type": "model_interaction"
+      },
+      "target": {
+        "id": "model-agentic-chaos-planner-002",
+        "type": "model_interaction"
+      }
+    },
+    {
+      "id": "rel-agentic-chaos-planner-attempt-2-follows-attempt-3",
+      "type": "follows",
+      "source": {
+        "id": "model-agentic-chaos-planner-002",
+        "type": "model_interaction"
+      },
+      "target": {
+        "id": "model-agentic-chaos-planner-003",
+        "type": "model_interaction"
       }
     },
     {
@@ -245,7 +317,7 @@
         "type": "reliability_event"
       },
       "target": {
-        "id": "model-agentic-chaos-planner-001",
+        "id": "model-agentic-chaos-planner-002",
         "type": "model_interaction"
       }
     },
@@ -257,7 +329,7 @@
         "type": "reliability_event"
       },
       "target": {
-        "id": "model-agentic-chaos-planner-001",
+        "id": "model-agentic-chaos-planner-003",
         "type": "model_interaction"
       }
     },

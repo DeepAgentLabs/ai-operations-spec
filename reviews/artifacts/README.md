@@ -22,3 +22,4 @@ They demonstrate that:
 - meaningful AIOS-aligned `run` artifacts can be derived from real producer output
 - the current AIOS draft can express runtime structure, retries, degradation, tools, and reliability evidence from both sibling implementations
 - both derived artifacts passed schema and semantic conformance checks on 2026-08-09
+- this evidence does not close the independent-producer review gate because both artifacts come from DeepAgentLabs-owned sibling projects

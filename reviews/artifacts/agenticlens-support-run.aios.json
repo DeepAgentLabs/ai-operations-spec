@@ -88,14 +88,14 @@
       }
     },
     {
-      "id": "rel-agenticlens-lookup-follows-planner",
+      "id": "rel-agenticlens-planner-follows-lookup",
       "type": "follows",
       "source": {
-        "id": "step-agenticlens-lookup",
+        "id": "step-agenticlens-planner",
         "type": "step"
       },
       "target": {
-        "id": "step-agenticlens-planner",
+        "id": "step-agenticlens-lookup",
         "type": "step"
       }
     },

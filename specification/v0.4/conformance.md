@@ -17,6 +17,9 @@ A producer claiming draft alignment MUST:
 9. Support `workflow_id` with a matching `run-of` relationship.
 10. Ensure event targets resolve with the declared object type.
 11. Reject self-relationships and cycles in structural, causal, and ordering graphs.
+12. When representing retries, preserve distinct occurrence identities for each
+    attempt and link each retry attempt to the prior attempt with an explicit
+    recoverability edge such as `follows` or `caused`.
 
 An external reference MUST set `external: true`. External resolution is the consumer's responsibility and MUST NOT be reported as verified unless it was resolved.
 
