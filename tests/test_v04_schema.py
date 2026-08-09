@@ -47,6 +47,8 @@ def semantic_errors(artifact: dict) -> list[str]:
     if len(ids) != len(set(ids)):
         errors.append("object identities must be unique within a Run artifact")
     object_types = dict(objects)
+    occurrence_by_id = {item["id"]: item for item in artifact.get("occurrences", [])}
+    evidence_by_id = {item["id"]: item for item in artifact.get("evidence", [])}
 
     relationships = artifact.get("relationships", [])
     relationship_ids = [item["id"] for item in relationships]
@@ -104,6 +106,59 @@ def semantic_errors(artifact: dict) -> list[str]:
     for event in artifact.get("events", []):
         if object_types.get(event["object_id"]) != event["object_type"]:
             errors.append(f"Event {event['event_id']} must target an object of its declared type")
+
+    attempt_signal_targets: dict[str, list[tuple[int, str]]] = {}
+    for relationship in relationships:
+        if relationship["type"] != "signals-on":
+            continue
+        source = evidence_by_id.get(relationship["source"]["id"])
+        if not source or source.get("type") != "reliability_event":
+            continue
+        attempt = source.get("attributes", {}).get("attempt")
+        if not isinstance(attempt, int):
+            continue
+        target_id = relationship["target"]["id"]
+        attempt_signal_targets.setdefault(target_id, []).append((attempt, source["id"]))
+        occurrence = occurrence_by_id.get(target_id)
+        if occurrence:
+            occurrence_attempt = occurrence.get("attributes", {}).get("attempt")
+            if isinstance(occurrence_attempt, int) and occurrence_attempt != attempt:
+                errors.append(
+                    f"Retry evidence {source['id']} must target attempt {attempt}, not occurrence attempt {occurrence_attempt}"
+                )
+    for target_id, attempts in attempt_signal_targets.items():
+        if len(attempts) > 1:
+            ordered_attempts = ", ".join(str(attempt) for attempt, _ in sorted(attempts))
+            errors.append(
+                f"Retry attempts {ordered_attempts} must not all signal the same occurrence {target_id}"
+            )
+
+    retry_groups: dict[str, dict[int, str]] = {}
+    for occurrence in artifact.get("occurrences", []):
+        attributes = occurrence.get("attributes", {})
+        logical_activity_id = attributes.get("logical_activity_id")
+        attempt = attributes.get("attempt")
+        if not isinstance(logical_activity_id, str) or not isinstance(attempt, int):
+            continue
+        retry_groups.setdefault(logical_activity_id, {})
+        if attempt in retry_groups[logical_activity_id]:
+            errors.append(f"Retry activity {logical_activity_id} duplicates attempt {attempt}")
+            continue
+        retry_groups[logical_activity_id][attempt] = occurrence["id"]
+    for logical_activity_id, attempts in retry_groups.items():
+        ordered_attempts = sorted(attempts.items())
+        if len(ordered_attempts) < 2:
+            continue
+        for index in range(len(ordered_attempts) - 1):
+            _, source_id = ordered_attempts[index]
+            next_attempt, target_id = ordered_attempts[index + 1]
+            if not (
+                count_edges("follows", source_id, target_id)
+                or count_edges("caused", source_id, target_id)
+            ):
+                errors.append(
+                    f"Retry activity {logical_activity_id} must link attempt {index + 1} to attempt {next_attempt}"
+                )
 
     for edge_types in ({"parent-of"}, {"caused", "follows", "depends-on"}):
         graph: dict[str, set[str]] = {}

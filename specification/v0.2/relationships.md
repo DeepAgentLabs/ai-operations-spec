@@ -74,7 +74,7 @@ Connects operational evidence to an Incident. Incident association MUST NOT chan
 - **Parallel:** sibling Steps have no ordering edge and their lifecycles may overlap.
 - **Branch:** one occurrence causes or enables multiple alternatives; recorded branch evidence identifies the selected path.
 - **Join:** a Step depends on multiple predecessor Steps.
-- **Retry:** a new attempt refers to the prior attempt and the shared logical activity; attempts retain distinct identities.
+- **Retry:** a new attempt refers to the prior attempt and the shared logical activity; attempts retain distinct identities. The failed occurrence and the retry attempt MUST be linked by an explicit recoverability edge (for example `caused` or `follows`) so consumers can reconstruct the retry path without inferring it from timing or naming alone (decision `D-002`).
 - **Loop:** repeated occurrences have distinct identities and a shared loop identity plus iteration position.
 - **Delegation:** Agent responsibility is represented separately from Step structure.
 

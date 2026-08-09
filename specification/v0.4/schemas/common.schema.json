@@ -41,7 +41,7 @@
       "properties": {
         "event_id": {"$ref": "#/$defs/id"},
         "event_name": {
-          "description": "Either a canonical aiops.* name from the reviewed catalog, or a reverse-domain namespaced extension event (e.g. io.deepagentlabs.agenticlens.custom_event). Extension names MUST NOT start with the aiops namespace.",
+          "description": "Either a canonical aiops.* name from the draft catalog, or a reverse-domain namespaced extension event (e.g. io.deepagentlabs.agenticlens.custom_event). Extension names MUST NOT start with the aiops namespace.",
           "anyOf": [{"$ref": "#/$defs/canonical_event_name"}, {"$ref": "#/$defs/extension_name"}]
         },
         "occurred_at": {"$ref": "#/$defs/time"}, "object_id": {"$ref": "#/$defs/id"}, "object_type": {"enum": ["run", "request", "step", "agent", "model_interaction", "prompt", "context", "tool_invocation", "rag_retrieval", "memory_operation", "evaluation", "safety_signal", "reliability_event", "incident"]},

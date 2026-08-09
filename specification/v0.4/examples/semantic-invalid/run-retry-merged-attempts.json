@@ -1,0 +1,113 @@
+{
+  "spec_version": "0.4-draft",
+  "artifact_type": "run",
+  "id": "run-retry-merged-attempts",
+  "workflow_id": "workflow-retry-merged-attempts",
+  "started_at": "2026-08-09T00:00:00Z",
+  "ended_at": "2026-08-09T00:00:03Z",
+  "status": "completed",
+  "requests": [],
+  "steps": [
+    {
+      "id": "step-retry-merged-attempts",
+      "name": "planner",
+      "category": "planning",
+      "status": "completed"
+    }
+  ],
+  "agents": [],
+  "occurrences": [
+    {
+      "id": "model-retry-merged-attempts-001",
+      "type": "model_interaction",
+      "name": "planner call",
+      "status": "completed"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "reliability-retry-attempt-1",
+      "type": "reliability_event",
+      "name": "planner retry attempt 1",
+      "status": "detected",
+      "attributes": {
+        "attempt": 1
+      }
+    },
+    {
+      "id": "reliability-retry-attempt-2",
+      "type": "reliability_event",
+      "name": "planner retry attempt 2",
+      "status": "recovered",
+      "attributes": {
+        "attempt": 2
+      }
+    }
+  ],
+  "incidents": [],
+  "relationships": [
+    {
+      "id": "rel-run-of",
+      "type": "run-of",
+      "source": {
+        "id": "run-retry-merged-attempts",
+        "type": "run"
+      },
+      "target": {
+        "id": "workflow-retry-merged-attempts",
+        "type": "workflow",
+        "external": true
+      }
+    },
+    {
+      "id": "rel-contains-step",
+      "type": "contains",
+      "source": {
+        "id": "run-retry-merged-attempts",
+        "type": "run"
+      },
+      "target": {
+        "id": "step-retry-merged-attempts",
+        "type": "step"
+      }
+    },
+    {
+      "id": "rel-observed-in",
+      "type": "observed-in",
+      "source": {
+        "id": "model-retry-merged-attempts-001",
+        "type": "model_interaction"
+      },
+      "target": {
+        "id": "step-retry-merged-attempts",
+        "type": "step"
+      }
+    },
+    {
+      "id": "rel-signals-attempt-1",
+      "type": "signals-on",
+      "source": {
+        "id": "reliability-retry-attempt-1",
+        "type": "reliability_event"
+      },
+      "target": {
+        "id": "model-retry-merged-attempts-001",
+        "type": "model_interaction"
+      }
+    },
+    {
+      "id": "rel-signals-attempt-2",
+      "type": "signals-on",
+      "source": {
+        "id": "reliability-retry-attempt-2",
+        "type": "reliability_event"
+      },
+      "target": {
+        "id": "model-retry-merged-attempts-001",
+        "type": "model_interaction"
+      }
+    }
+  ],
+  "events": [],
+  "measurements": []
+}

@@ -29,6 +29,27 @@ DeepAgentLabs stewards the specification today and is its sole editor. AgenticLe
 
 **Pre-release draft. Do not claim stable conformance.**
 
+## Release Status
+
+- **v0.1** 🏗️ In review — Core runtime concepts and boundaries
+- **v0.2** 🚧 Exploratory draft — Relationships and execution graphs
+- **v0.3** 🚧 Exploratory draft — Transport-neutral semantic events
+- **v0.4** 🚧 Exploratory draft — JSON Schema artifacts
+- **v0.5** 🚧 Planned — Versioning and compatibility rules
+- **v0.6** 🚧 Planned — Canonical examples and extension model
+- **v0.6.x** 🚧 Planned — Provenance, evidence, and operational artifacts
+- **v1.0** 🚧 Planned — Stable specification
+
+## Next Steps
+
+- Close the remaining v0.1 external review gate so later layers can move
+  toward freeze.
+- Validate the v0.4 draft artifacts against at least two independent
+  implementations.
+- Formalize versioning/compatibility rules and the extension model.
+- Standardize provenance/evidence concepts and publish producer-independent
+  conformance fixtures and rules.
+
 The work is cumulative, not four competing formats:
 
 | Layer | Defines | Status |

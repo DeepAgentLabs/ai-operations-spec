@@ -1,0 +1,19 @@
+{
+  "spec_version": "0.4-draft",
+  "artifact_type": "run",
+  "id": "run-unknown-object-type",
+  "started_at": "2026-07-21T06:00:00Z",
+  "status": "completed",
+  "requests": [],
+  "steps": [],
+  "relationships": [],
+  "events": [
+    {
+      "event_id": "event-1",
+      "event_name": "aiops.run.completed",
+      "occurred_at": "2026-07-21T06:00:00Z",
+      "object_id": "run-unknown-object-type",
+      "object_type": "widget"
+    }
+  ]
+}

@@ -8,8 +8,9 @@
 ## Review gates
 
 - [ ] Validate the vocabulary against at least two independent agent frameworks.
-- [ ] Confirm ordering and retry semantics.
-- [ ] Record decisions and update affected documents.
+- [x] Confirm ordering and retry semantics (decision `D-002`).
+- [x] Record decisions and update affected documents (`relationships.md` retry
+  section now states the required recoverability edge).
 
 ## Exit condition
 

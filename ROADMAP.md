@@ -1,5 +1,67 @@
 ﻿# AI Operations Specification Roadmap
 
+## Release Status
+
+- **v0.1** 🏗️ In review — Core runtime concepts and boundaries
+- **v0.2** 🚧 Exploratory draft — Relationships and execution graphs
+- **v0.3** 🚧 Exploratory draft — Transport-neutral semantic events
+- **v0.4** 🚧 Exploratory draft — JSON Schema artifacts
+- **v0.5** 🚧 Planned — Versioning and compatibility rules
+- **v0.6** 🚧 Planned — Canonical examples and extension model
+- **v0.6.x** 🚧 Planned — Provenance, evidence, and operational artifacts
+- **v1.0** 🚧 Planned — Stable specification
+
+## Next Steps
+
+- Resolve the remaining v0.1 review gate and keep later milestones clearly
+  labeled as draft until those dependencies close.
+- Prove the v0.4 draft against at least two independent producers and
+  consumers.
+- Define compatibility/versioning policy before claiming stable consumption
+  guarantees.
+- Promote provenance, evidence, and conformance fixtures from implementation
+  practice into spec-standard artifacts once the underlying model settles.
+
+## Cross-Project Dependencies
+
+AIOS is the normative specification, not an implementation package, but its
+roadmap still depends on evidence from sibling projects and independent
+implementers.
+
+- `agenticlens`
+  Provides real producer/consumer evidence for traces, findings, conformance
+  tooling, and schema usage.
+- `agentic-chaos`
+  Provides resilience and fault evidence that tests whether the model can
+  represent degraded, failed, and recovered behavior.
+- `deep-agentic-core-mcp`
+  Provides a consumer/control-plane view that exercises artifact validation and
+  interoperability across tools.
+
+For roadmap planning, distinguish:
+
+- `Depends on`: an earlier AIOS layer that must freeze first.
+- `Evidence from`: sibling repos or independent implementers that should
+  validate the design in practice.
+- `Coordinate with`: implementation repos that may need doc, fixture, or
+  terminology updates when the spec changes.
+
+## Definition of Done
+
+A roadmap item is done only when all applicable work is complete:
+
+- normative text is written with scope, boundaries, and maturity clearly
+  stated
+- examples, fixtures, and schema changes are added or updated together
+- tests validate the intended structure or document invariants
+- `README.md` and this roadmap are updated when milestone status or user
+  guidance changes
+- dependent milestone documents are updated when an earlier layer changes
+- implementation evidence or independent review is recorded for any acceptance
+  gate that requires it
+- draft, reviewed, and stable claims remain consistent across all milestone
+  documents
+
 ## Direction
 
 DeepAgentLabs builds the AI Operations Specification **specification-first**. The standard defines meaning before SDK ergonomics, exporter fields, dashboards, or integrations.
@@ -123,6 +185,15 @@ Formalize concepts proven in implementation repositories.
   document from canonical `aiops.*` events and common attributes to OTel
   spans, span events, and resource attributes, so producers already emitting
   OTel do not need to invent their own bridge independently
+- verification-signal schema — a standard shape for second-opinion/judge
+  results (verdict, confidence, evidence-grounding, safety concerns) as a
+  first-class signal object, once judge-output shapes stabilize across
+  implementation repos; candidate prior art: `devops-open-agent`'s
+  LLM-as-a-Judge verifier output
+- audit-event schema — a standard shape for who-did-what operational events
+  (actor, action, target artifact reference, timestamp, no secret values),
+  feeding the incident-context/operator-facing summary semantics above;
+  candidate prior art: `devops-open-agent`'s structured audit log
 
 Success means implementations can attach provenance to findings using
 spec-standard objects, and producers can run conformance checks independently.
