@@ -1,0 +1,21 @@
+{
+  "spec_version": "0.4-draft",
+  "artifact_type": "run",
+  "id": "run-ext-root-001",
+  "started_at": "2026-07-21T06:00:00Z",
+  "status": "completed",
+  "requests": [],
+  "steps": [
+    {
+      "id": "step-a",
+      "category": "model",
+      "status": "completed",
+      "attributes": {"unrecognized_future_field": "producers may add attributes freely"},
+      "extensions": {"io.deepagentlabs.agenticlens.step_confidence": 0.87}
+    }
+  ],
+  "relationships": [
+    {"id": "rel-contains-a", "type": "contains", "source": {"id": "run-ext-root-001", "type": "run"}, "target": {"id": "step-a", "type": "step"}}
+  ],
+  "extensions": {"io.deepagentlabs.agenticlens.trace_id": "trace-9f2c"}
+}

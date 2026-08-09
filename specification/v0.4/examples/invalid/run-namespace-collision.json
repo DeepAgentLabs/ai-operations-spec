@@ -1,0 +1,13 @@
+{
+  "spec_version": "0.4-draft",
+  "artifact_type": "run",
+  "id": "run-collision",
+  "started_at": "2026-07-21T06:00:00Z",
+  "status": "completed",
+  "requests": [],
+  "steps": [],
+  "relationships": [],
+  "events": [
+    {"event_id": "event-1", "event_name": "aiops.custom.event", "occurred_at": "2026-07-21T06:00:00Z", "object_id": "run-collision", "object_type": "run"}
+  ]
+}
