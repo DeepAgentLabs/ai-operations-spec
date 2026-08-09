@@ -24,6 +24,17 @@ An external reference MUST set `external: true`. External resolution is the cons
 
 A consumer claiming draft alignment MUST perform schema and semantic validation before treating an artifact as aligned. It MUST preserve unknown namespaced extensions and MUST NOT interpret structural validity as factual accuracy.
 
+## Unknown-value behavior (decision `D-004`)
+
+Closed vocabularies — `object_type`, reference `type`, relationship `type`, `occurrence`/`evidence` `type`, and the canonical `event_name` catalog — are fixed by this draft's schemas. A value outside a closed vocabulary is a schema violation, not an unknown value to tolerate: producers MUST NOT invent new members of a closed enum, and consumers MUST reject an artifact that contains one rather than guessing its meaning.
+
+Forward-compatible growth belongs in the two open extension points instead:
+
+1. Freeform `attributes` objects, which MAY carry any producer-defined keys.
+2. Namespaced `extensions` objects, which MUST use a reverse-domain name outside the `aiops` namespace.
+
+Consumers MUST preserve unrecognized `attributes` keys and namespaced `extensions` entries rather than discarding them, and MUST NOT treat their presence as a validation failure.
+
 ## Claim format
 
 A claim SHOULD include the draft marker and observation date, for example:
