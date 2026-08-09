@@ -15,6 +15,14 @@ AI Operations Specification contributions should improve interoperability for in
 
 A proposal SHOULD state the interoperability problem, affected concepts, compatibility impact, privacy implications, and at least one realistic example. Changes that affect an earlier layer MUST update dependent documents, schemas, fixtures, and tests in the same proposal.
 
+Feature completion expectations:
+
+- Every spec or schema behavior change must include tests or fixtures.
+- Normative or user-guiding changes should include or update realistic
+  examples in the same proposal.
+- If a roadmap or milestone item is completed or its status changes, update
+  `README.md` and `ROADMAP.md` in the same pull request.
+
 Do not mark an acceptance gate complete without recorded evidence. External review gates require evidence from an independent implementation or standard, not only internal agreement.
 
 ## Validation
