@@ -8,7 +8,7 @@ dependencies = []
 [project.optional-dependencies]
 dev = [
     "jsonschema>=4.23,<5",
-    "pytest>=8,<9",
+    "pytest>=8,<10",
 ]
 
 [tool.pytest.ini_options]
