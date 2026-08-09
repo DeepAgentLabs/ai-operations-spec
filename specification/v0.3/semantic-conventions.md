@@ -54,3 +54,7 @@ A failure, failed Evaluation, or Safety Signal MUST NOT automatically become an 
 Durations use non-negative milliseconds. Token counts use non-negative integers. Cost MUST include a currency code. Scores MUST declare their scale or categorical domain. A measurement MUST state whether it is observed, estimated, or derived.
 
 Consumers MUST ignore unrecognized extension attributes unless configured to reject them. Producers MUST NOT reuse a canonical name with incompatible meaning.
+
+## Transport boundary
+
+AIOS event semantics are transport-neutral. Bindings to a specific wire format or telemetry pipeline (for example, an OpenTelemetry span/attribute mapping) MUST NOT be defined as part of this normative document. Such bindings belong in separate, non-normative companion profiles that map canonical `aiops.*` events and attributes onto a transport, and MAY evolve independently of this specification (decision `D-003`).

@@ -1,0 +1,17 @@
+{
+  "spec_version": "0.4-draft",
+  "artifact_type": "run",
+  "id": "run-unknown-rel-type",
+  "started_at": "2026-07-21T06:00:00Z",
+  "status": "completed",
+  "requests": [],
+  "steps": [{"id": "step-a", "category": "model", "status": "completed"}],
+  "relationships": [
+    {
+      "id": "rel-unknown",
+      "type": "supersedes",
+      "source": {"id": "run-unknown-rel-type", "type": "run"},
+      "target": {"id": "step-a", "type": "step"}
+    }
+  ]
+}

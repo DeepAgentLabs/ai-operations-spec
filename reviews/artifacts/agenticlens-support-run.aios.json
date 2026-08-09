@@ -1,0 +1,158 @@
+{
+  "spec_version": "0.4-draft",
+  "artifact_type": "run",
+  "id": "run-agenticlens-support-20260809",
+  "workflow_id": "workflow-agenticlens-support",
+  "started_at": "2026-08-09T02:29:53.285034Z",
+  "ended_at": "2026-08-09T02:29:53.285121Z",
+  "status": "completed",
+  "requests": [
+    {
+      "id": "request-agenticlens-support-001",
+      "name": "support request",
+      "status": "completed",
+      "attributes": {
+        "source_application": "support-agent"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-agenticlens-planner",
+      "name": "planner",
+      "category": "planning",
+      "status": "completed",
+      "started_at": "2026-08-09T02:29:53.285069Z",
+      "ended_at": "2026-08-09T02:29:53.285089Z"
+    },
+    {
+      "id": "step-agenticlens-lookup",
+      "name": "lookup",
+      "category": "tool",
+      "status": "completed",
+      "started_at": "2026-08-09T02:29:53.285107Z",
+      "ended_at": "2026-08-09T02:29:53.285118Z"
+    }
+  ],
+  "agents": [],
+  "occurrences": [
+    {
+      "id": "tool-agenticlens-lookup-001",
+      "type": "tool_invocation",
+      "name": "knowledge-base-search",
+      "status": "completed",
+      "attributes": {
+        "tool_name": "knowledge-base-search",
+        "source_span_id": "a48d27d9-7951-46db-a2ec-faf8b5e2aeeb"
+      }
+    }
+  ],
+  "evidence": [],
+  "incidents": [],
+  "relationships": [
+    {
+      "id": "rel-agenticlens-run-of",
+      "type": "run-of",
+      "source": {
+        "id": "run-agenticlens-support-20260809",
+        "type": "run"
+      },
+      "target": {
+        "id": "workflow-agenticlens-support",
+        "type": "workflow",
+        "external": true
+      }
+    },
+    {
+      "id": "rel-agenticlens-contains-planner",
+      "type": "contains",
+      "source": {
+        "id": "run-agenticlens-support-20260809",
+        "type": "run"
+      },
+      "target": {
+        "id": "step-agenticlens-planner",
+        "type": "step"
+      }
+    },
+    {
+      "id": "rel-agenticlens-contains-lookup",
+      "type": "contains",
+      "source": {
+        "id": "run-agenticlens-support-20260809",
+        "type": "run"
+      },
+      "target": {
+        "id": "step-agenticlens-lookup",
+        "type": "step"
+      }
+    },
+    {
+      "id": "rel-agenticlens-planner-follows-lookup",
+      "type": "follows",
+      "source": {
+        "id": "step-agenticlens-planner",
+        "type": "step"
+      },
+      "target": {
+        "id": "step-agenticlens-lookup",
+        "type": "step"
+      }
+    },
+    {
+      "id": "rel-agenticlens-tool-observed",
+      "type": "observed-in",
+      "source": {
+        "id": "tool-agenticlens-lookup-001",
+        "type": "tool_invocation"
+      },
+      "target": {
+        "id": "step-agenticlens-lookup",
+        "type": "step"
+      }
+    }
+  ],
+  "events": [
+    {
+      "event_id": "event-agenticlens-run-started",
+      "event_name": "aiops.run.started",
+      "occurred_at": "2026-08-09T02:29:53.285034Z",
+      "object_id": "run-agenticlens-support-20260809",
+      "object_type": "run"
+    },
+    {
+      "event_id": "event-agenticlens-tool-completed",
+      "event_name": "aiops.tool.completed",
+      "occurred_at": "2026-08-09T02:29:53.285118Z",
+      "object_id": "tool-agenticlens-lookup-001",
+      "object_type": "tool_invocation"
+    },
+    {
+      "event_id": "event-agenticlens-run-completed",
+      "event_name": "aiops.run.completed",
+      "occurred_at": "2026-08-09T02:29:53.285121Z",
+      "object_id": "run-agenticlens-support-20260809",
+      "object_type": "run"
+    }
+  ],
+  "measurements": [
+    {
+      "name": "duration",
+      "value": 0.087,
+      "unit": "ms",
+      "kind": "observed"
+    },
+    {
+      "name": "input_tokens",
+      "value": 132,
+      "unit": "tokens",
+      "kind": "derived"
+    },
+    {
+      "name": "output_tokens",
+      "value": 36,
+      "unit": "tokens",
+      "kind": "derived"
+    }
+  ]
+}

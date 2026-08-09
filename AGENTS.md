@@ -74,6 +74,15 @@ v0.1 (core concepts)
 5. Add validation test in `tests/`
 6. State maturity clearly in the document
 
+## Feature Completion Expectations
+
+- Every spec or schema behavior change must include tests or fixtures.
+- Normative or user-guiding changes must include or update realistic examples.
+- When a milestone item is completed or its status changes, update `README.md`
+  and `ROADMAP.md` in the same change.
+- When a change affects an earlier layer, also update dependent milestone
+  documents, schemas, fixtures, and tests before considering the work done.
+
 ## Pre-push Checklist
 
 Run `make check` before every push. It runs the schema validation tests.
