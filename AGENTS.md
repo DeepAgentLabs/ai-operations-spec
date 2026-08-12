@@ -1,5 +1,59 @@
 ## AI Operations Specification Development Reference
 
+## Ecosystem Context
+
+### Role in DeepAgentLabs
+
+`ai-operations-spec` is the center of gravity for DeepAgentLabs. It defines the
+shared operational contract that the implementation packages compose around:
+runtime objects, semantic conventions, schemas, examples, and maturity rules.
+
+### Owns
+
+- Normative definitions of shared concepts, relationships, and event meaning
+- Versioned specification documents, schema layers, examples, and evolution
+  rules
+- Ecosystem-wide clarity about what an artifact means independent of any one
+  package implementation
+
+### Does Not Own
+
+- Instrumentation, profiling, dashboards, or evaluation workflows — those
+  belong in `agenticlens`
+- Fault injection and resilience experiment execution — those belong in
+  `agentic-chaos`
+- Agent supervision, escalation, or pre-action governance runtime behavior —
+  those belong in `agentic-sidecar`
+- MCP transport, handler registration, or tool-serving logic — that belongs in
+  `deep-agentic-core-mcp`
+
+### Integrates With
+
+- `agenticlens` as a flagship implementation and exporter of spec-compatible
+  operational artifacts
+- `agentic-chaos` for resilience and degradation evidence extensions that still
+  fit the shared model
+- `agentic-sidecar` for future decision and intent-alignment artifacts that
+  need common vocabulary
+- `deep-agentic-core-mcp` as a delivery surface that exposes spec-aligned
+  artifacts and workflows through MCP
+
+### Current Roadmap Focus
+
+The current focus is provenance/evidence concepts, a conformance test suite,
+and naming conventions. Work here should make independent implementations more
+interoperable and more precise, not encode package-specific behavior as if it
+were normative.
+
+### Before You Build Here
+
+- Only add concepts that help multiple independent implementers share the same
+  model; package-local behavior should stay in the implementation repo
+- Resist the urge to standardize speculative abstractions before sibling repos
+  have proven the pattern in practice
+- When in doubt, clarify boundaries and vocabulary here, but keep execution
+  logic, UX, and adapter details out of the spec repo
+
 ## Build and Run
 
 - Install: `make install` (runs `uv sync --extra dev`)
