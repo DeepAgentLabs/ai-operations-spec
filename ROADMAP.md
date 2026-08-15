@@ -37,6 +37,13 @@ implementers.
 - `deep-agentic-core-mcp`
   Provides a consumer/control-plane view that exercises artifact validation and
   interoperability across tools.
+- `agentic-sidecar`
+  Provides future decision, intent, and governance artifacts that test whether
+  the shared model can represent pre-action supervision cleanly.
+- `agenticops-control-tower`
+  Provides future inventory, status, configuration, and control-plane artifact
+  needs that test whether the shared model can support operator-facing
+  operations semantics without collapsing into one package's implementation.
 
 For roadmap planning, distinguish:
 
@@ -78,7 +85,9 @@ AI Operations Specification
              `-- Reference implementations
                  |-- AgenticLens
                  |-- Agentic Chaos
-                 `-- DeepAgent MCP
+                 |-- Agentic Sidecar
+                 |-- DeepAgent MCP
+                 `-- AgenticOps Control Tower
 ```
 
 The goal is an open standard for representing the execution, evaluation, safety, reliability, and operational behavior of AI systems.
