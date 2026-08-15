@@ -138,8 +138,8 @@ v0.1 (core concepts)
 - When a milestone item is completed or its status changes, update `README.md`
   and `ROADMAP.md` in the same change.
 - If that milestone or release changes the public ecosystem story, also update
-  `/home/pramodbn27/PyPi Projects/.github/profile/README.md` and, when
-  relevant, `/home/pramodbn27/PyPi Projects/.github/profile/ROADMAP.md`.
+  the shared org-profile docs in the `.github` repository:
+  `profile/README.md` and, when relevant, `profile/ROADMAP.md`.
 - When a change affects an earlier layer, also update dependent milestone
   documents, schemas, fixtures, and tests before considering the work done.
 
