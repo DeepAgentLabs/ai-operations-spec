@@ -23,7 +23,14 @@ AI frameworks and instrumentation
 observability, evaluation, safety, and operations tools
 ```
 
-DeepAgentLabs stewards the specification today and is its sole editor. AgenticLens, Agentic Chaos, and DeepAgent MCP may implement or consume it, but none of them owns the contract. Vendor-neutrality is the design goal, not yet an established fact: several acceptance gates — independent implementer review, validation against artifacts from at least two unrelated producers — remain open (see each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat "vendor-neutral" as the intended end state until those gates close.
+DeepAgentLabs stewards the specification today and is its sole editor.
+AgenticLens, Agentic Chaos, Agentic Sidecar, DeepAgent MCP, and
+AgenticOps Control Tower may implement or consume it, but none of them owns
+the contract. Vendor-neutrality is the design goal, not yet an established
+fact: several acceptance gates — independent implementer review, validation
+against artifacts from at least two unrelated producers — remain open (see
+each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
+"vendor-neutral" as the intended end state until those gates close.
 
 ## Current maturity
 

@@ -24,6 +24,9 @@ runtime objects, semantic conventions, schemas, examples, and maturity rules.
   `agentic-chaos`
 - Agent supervision, escalation, or pre-action governance runtime behavior —
   those belong in `agentic-sidecar`
+- At the ecosystem-role level, `agentic-sidecar` is the **SUPERVISE** layer,
+  while its concrete runtime functionality spans both supervision and
+  governance.
 - MCP transport, handler registration, or tool-serving logic — that belongs in
   `deep-agentic-core-mcp`
 
@@ -134,8 +137,19 @@ v0.1 (core concepts)
 - Normative or user-guiding changes must include or update realistic examples.
 - When a milestone item is completed or its status changes, update `README.md`
   and `ROADMAP.md` in the same change.
+- If that milestone or release changes the public ecosystem story, also update
+  `/home/pramodbn27/PyPi Projects/.github/profile/README.md` and, when
+  relevant, `/home/pramodbn27/PyPi Projects/.github/profile/ROADMAP.md`.
 - When a change affects an earlier layer, also update dependent milestone
   documents, schemas, fixtures, and tests before considering the work done.
+
+## Release
+
+1. Bump versioned package or document metadata if the release process requires it
+2. Update `CHANGELOG.md` with the release section
+3. Tag: create an annotated `vX.Y.Z` tag and use the latest `CHANGELOG.md`
+   release section as the tag description
+4. Push: `git push origin main --tags`
 
 ## Pre-push Checklist
 
