@@ -145,11 +145,26 @@ v0.1 (core concepts)
 
 ## Release
 
-1. Bump versioned package or document metadata if the release process requires it
-2. Update `CHANGELOG.md` with the release section
-3. Tag: create an annotated `vX.Y.Z` tag and use the latest `CHANGELOG.md`
-   release section as the tag description
-4. Push: `git push origin main --tags`
+Two phases, split by the merge to `main` — bumping happens before, tagging
+happens after:
+
+**1. Pre-release (on the feature branch, before merge):** Bump versioned
+package or document metadata if the release process requires it, and
+update `CHANGELOG.md` with the release section. Commit as part of the
+branch's normal history; goes in with the rest of the PR.
+
+**2. Release (on `main`, once that branch has merged):**
+
+1. Pull the merge commit on `main`.
+2. Tag: create an annotated `vX.Y.Z` tag pointing at the merge commit,
+   using the CHANGELOG's release section as the tag message:
+   `git tag -a vX.Y.Z -F <file-with-that-section> --cleanup=verbatim`.
+   `--cleanup=verbatim` is required — git's default cleanup silently strips
+   lines starting with `#`, which would eat the CHANGELOG's `###` headers.
+3. Push the tag: `git push origin vX.Y.Z`.
+
+No `release-pypi.yml` exists for this repo — it isn't a published Python
+package, so the tag itself is the release; nothing to trigger.
 
 ## Pre-push Checklist
 
