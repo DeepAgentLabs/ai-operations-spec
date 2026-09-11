@@ -1,5 +1,12 @@
 ﻿# AI Operations Specification Roadmap
 
+> An evidence-based audit of this roadmap against the actual contents of
+> `specification/`, `drafts/`, and `reviews/` is recorded in
+> [ROADMAP_AUDIT.md](ROADMAP_AUDIT.md). It found the Release Status badges
+> below still accurate, but the "Next Steps" and "Cross-Project Dependencies"
+> sections stale relative to review evidence already committed under
+> `reviews/`.
+
 ## Release Status
 
 - **v0.1** 🏗️ In review — Core runtime concepts and boundaries
@@ -13,14 +20,32 @@
 
 ## Next Steps
 
-- Resolve the remaining v0.1 review gate and keep later milestones clearly
-  labeled as draft until those dependencies close.
-- Prove the v0.4 draft against at least two independent producers and
-  consumers.
+- Close external review decision `D-001` in
+  [reviews/decision-log.md](reviews/decision-log.md): every milestone from
+  v0.1 through v0.4 still needs review from at least one party with no
+  DeepAgentLabs authorship, funding, or editorial role. A ready-to-send
+  outreach packet already exists at
+  [reviews/EXTERNAL_REVIEW_INVITE.md](reviews/EXTERNAL_REVIEW_INVITE.md); this
+  is the actual blocker, not further internal drafting.
+- Two DeepAgentLabs-owned framework mappings
+  ([agenticlens](reviews/framework-mappings/agenticlens.md),
+  [agentic-chaos](reviews/framework-mappings/agentic-chaos.md)) and two
+  sibling-repo-derived run artifacts that pass v0.4 schema and semantic
+  conformance (`reviews/artifacts/`) are already committed. They are real
+  evidence but do not close the "independent implementations" gates in
+  [reviews/evidence-matrix.md](reviews/evidence-matrix.md), because neither
+  producer is outside DeepAgentLabs — a non-DeepAgentLabs producer/consumer
+  is still needed to prove the v0.4 draft.
 - Define compatibility/versioning policy before claiming stable consumption
   guarantees.
 - Promote provenance, evidence, and conformance fixtures from implementation
   practice into spec-standard artifacts once the underlying model settles.
+  v0.4's `evidence` object family is an early precursor but not yet the
+  dedicated v0.6.x concept.
+- Keep the Release Status badges as-is until `D-001` closes; do not treat a
+  closed internal decision (e.g. `D-002`, `D-003`, `D-004` in
+  [reviews/decision-log.md](reviews/decision-log.md)) as equivalent to
+  independent review.
 
 ## Cross-Project Dependencies
 
@@ -30,10 +55,19 @@ implementers.
 
 - `agenticlens`
   Provides real producer/consumer evidence for traces, findings, conformance
-  tooling, and schema usage.
+  tooling, and schema usage. Delivered so far:
+  [framework mapping](reviews/framework-mappings/agenticlens.md) and a
+  passing v0.4 conformance artifact
+  (`reviews/artifacts/agenticlens-support-run.aios.json`). Still a
+  DeepAgentLabs-owned repo, so this evidence does not by itself satisfy an
+  "independent implementation" acceptance gate.
 - `agentic-chaos`
   Provides resilience and fault evidence that tests whether the model can
-  represent degraded, failed, and recovered behavior.
+  represent degraded, failed, and recovered behavior. Delivered so far:
+  [framework mapping](reviews/framework-mappings/agentic-chaos.md) and a
+  passing v0.4 conformance artifact
+  (`reviews/artifacts/agentic-chaos-customer-support.aios.json`). Same
+  independence caveat as above.
 - `deep-agentic-core-mcp`
   Provides a consumer/control-plane view that exercises artifact validation and
   interoperability across tools.
@@ -225,11 +259,19 @@ ai-operations-spec/
 |   |-- v0.2/
 |   |-- v0.3/
 |   `-- v0.4/
-`-- drafts/
-    `-- v0.4/
+|-- drafts/
+|   `-- v0.4/
+`-- reviews/
+    |-- decision-log.md
+    |-- evidence-matrix.md
+    |-- framework-mappings/
+    |-- scenarios/
+    `-- artifacts/
 ```
 
-Specification milestone documents live under `specification/` and clearly state their maturity. Premature implementation research lives under `drafts/` and must state that it is non-normative. Stable release layout will be decided before v1.0.
+Specification milestone documents live under `specification/` and clearly state their maturity. Premature implementation research lives under `drafts/` and must state that it is non-normative. `reviews/` holds the acceptance-gate evidence scaffolding (decision log, evidence matrix, framework mappings, shared scenarios, and validated review artifacts) described in
+[MILESTONE_CLOSEOUT_PLAN.md](MILESTONE_CLOSEOUT_PLAN.md) and audited in
+[ROADMAP_AUDIT.md](ROADMAP_AUDIT.md). Stable release layout will be decided before v1.0.
 
 ## Package roles
 

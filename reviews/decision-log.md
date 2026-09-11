@@ -2,6 +2,12 @@
 
 Use this file to record milestone-level review outcomes.
 
+> **Note:** `D-00x` IDs in this file are a separate numbering series from
+> [`specification/v0.1/decisions.md`](../specification/v0.1/decisions.md)'s
+> core design decisions — the two files both start at `D-001` but track
+> different kinds of decisions. Cite the file alongside the ID to avoid
+> ambiguity.
+
 ## Open decisions
 
 ### D-001: External framework set for acceptance review

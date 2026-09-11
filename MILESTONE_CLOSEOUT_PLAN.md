@@ -14,6 +14,11 @@ It does not change milestone status by itself. A milestone is complete only when
 - Local validation baseline as of `2026-08-09`:
   - `UV_CACHE_DIR=/tmp/uv-cache uv run pytest`
   - `20 passed`
+  - **Stale as a specific count**: `tests/test_review_artifacts.py` (validating
+    `reviews/artifacts/*.conformance.json`) was added after this baseline was
+    recorded, so the current suite has more than 20 tests. See
+    [ROADMAP_AUDIT.md](ROADMAP_AUDIT.md) for the audited state; re-run
+    `uv run pytest` for a current count rather than trusting this line.
 - Immediate blocker pattern:
   - most remaining work is review evidence, cross-document consistency, and independent implementation validation
   - later milestones cannot freeze before earlier review gates close
