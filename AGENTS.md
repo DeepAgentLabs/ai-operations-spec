@@ -18,6 +18,9 @@ runtime objects, semantic conventions, schemas, examples, and maturity rules.
 
 ### Does Not Own
 
+- Standalone output scoring and release-gate computation — those belong in
+  `agentic-evals`; Lens owns the observability and evaluation workflows
+
 - Instrumentation, profiling, dashboards, or evaluation workflows — those
   belong in `agenticlens`
 - Fault injection and resilience experiment execution — those belong in
@@ -31,6 +34,11 @@ runtime objects, semantic conventions, schemas, examples, and maturity rules.
   `deep-agentic-core-mcp`
 
 ### Integrates With
+
+- `agenticops-control-tower` for eventual explicit mappings between deployment
+  identity and runtime evidence; its private link contract is not normative AIOS
+- `agentic-evals` for future evaluation evidence mappings; native reports alone
+  do not establish AIOS conformance
 
 - `agenticlens` as a flagship implementation and exporter of spec-compatible
   operational artifacts
