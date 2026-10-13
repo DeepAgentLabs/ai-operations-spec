@@ -11,11 +11,13 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 ### Added
 
 - `specification/v0.4/conformance-rules.json`: machine-readable catalog that
-  assigns stable identifiers to every v0.4 conformance requirement — producer
-  rules `AIOS-0.4-P01`–`P12`, external-reference rules `X01`–`X02`, consumer
-  rules `C01`–`C03`, and the D-004 unknown-value rule `U01` — each tagged with
-  whether it is decidable by schema validation, semantic checks, or only as a
-  process obligation.
+  assigns a stable identifier to every MUST/MUST NOT/SHOULD obligation in the
+  v0.4 conformance document: producer rules `AIOS-0.4-P01`–`P12`,
+  external-reference rules `X01`–`X02`, consumer rules `C01`–`C04`, D-004
+  closed-vocabulary rules `U01`–`U02`, extension naming `E01`, draft
+  self-description `D01`, and claim format `K01`. Each rule quotes its
+  normative sentence and says whether schema validation, semantic checks, or
+  only a process obligation can decide it.
 - `specification/v0.5/compatibility.json`: the `spec_version` marker grammar,
   the schema set published behind each marker (`0.4-draft` today), and
   identifiers `AIOS-0.5-V01`–`V06` for each row of the consumer compatibility
