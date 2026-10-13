@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).parents[1]
 V05 = ROOT / "specification" / "v0.5"
 
-VERSION_PATTERN = re.compile(r"^(0\.[1-9][0-9]*|[1-9][0-9]*\.[0-9]+)(-draft)?$")
+VERSION_PATTERN = re.compile(r"^(0\.[1-9][0-9]*|[1-9][0-9]*\.(0|[1-9][0-9]*))(-draft)?$")
 
 
 def read(path: Path) -> str:

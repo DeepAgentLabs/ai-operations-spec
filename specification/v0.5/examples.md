@@ -26,6 +26,8 @@ v0.4-draft
 0.4_draft
 draft
 0.0-draft
+1.00
+1.04-draft
 ```
 
 - `v0.4-draft` — a leading `v` belongs in a git tag, not in `spec_version` itself.
@@ -34,6 +36,7 @@ draft
 - `0.4_draft` — the suffix separator must be a hyphen, not an underscore.
 - `draft` — the suffix cannot stand alone without a `MAJOR.MINOR` pair.
 - `0.0-draft` — the grammar requires a nonzero minor number when `MAJOR` is `0`, matching the fact that milestone numbering starts at `v0.1`.
+- `1.00` / `1.04-draft` — a leading zero on the minor number is not permitted even when `MAJOR` is one or greater; otherwise `1.0` and `1.00` would be two spellings of the same version.
 
 ## Change classification walkthrough
 
@@ -42,6 +45,8 @@ A hypothetical change to the v0.4 `run.schema.json`, classified under the v0.5 r
 | Change | Classification | Reason |
 | --- | --- | --- |
 | Add an optional `cost_usd` number under an occurrence's `attributes` | Additive (MINOR) | Uses the existing open extension point; an old consumer ignores an unrecognized `attributes` key. |
+| Add a new optional top-level field directly to the Run object (not inside `attributes`) | Breaking (MAJOR) | The closed schema's `additionalProperties: false` makes an old consumer reject any unrecognized top-level key, whether or not the new field is optional. |
+| Widen the `status` field's accepted values outside the closed enum without going through `attributes`/`extensions` | Breaking (MAJOR) | An old consumer's schema still only accepts the narrower set and rejects the new value, the same failure mode as closed-vocabulary growth. |
 | Add `"superseded-by"` as a new member of the relationship `type` enum | Breaking (MAJOR) | Grows a closed vocabulary fixed by decision `D-004`; an old consumer's schema rejects the new enum member (decision `D-005`). |
 | Fix a typo in the `status` enum's description string | Editorial | Changes no accepted or rejected value. |
 | Make `ended_at` acceptable before `started_at` is set (currently required together) | Breaking (MAJOR) | Narrows nothing, but changes the meaning of an existing invariant that consumers rely on for semantic validation. |

@@ -36,13 +36,13 @@ A wording clarification, a non-normative example fix, a typo correction, or a `d
 
 ### Additive (MINOR)
 
-A backward-compatible change that an unmodified consumer built against the prior MINOR can safely ignore without misinterpreting the artifact. Additive changes include:
+A backward-compatible change that an unmodified consumer built against the prior MINOR can safely ignore without misinterpreting the artifact. Given AIOS's current closed-schema design (`additionalProperties: false` throughout `specification/v0.4/schemas/`, closed enums per decision `D-004`), a change is genuinely additive only when it stays inside an existing open extension point:
 
-- a new optional field whose absence has always been valid
-- relaxing a constraint (making a required field optional, widening a numeric range or string pattern)
-- a new object, relationship, or event exposed only through an existing open extension point (the freeform `attributes` object or a reverse-domain-namespaced `extensions` object, per `specification/v0.4/conformance.md`'s unknown-value behavior)
+- a new object, relationship, or event exposed only through the freeform `attributes` object or a reverse-domain-namespaced `extensions` object, per `specification/v0.4/conformance.md`'s unknown-value behavior
 
-Additive changes bump the MINOR component of `spec_version`.
+A new top-level field, a relaxed constraint (making a required field optional, widening a numeric range or string pattern), or any other change visible outside `attributes`/`extensions` is NOT safe for an old consumer under this design: a closed schema with `additionalProperties: false` rejects an unrecognized field regardless of whether the field is "new" or "optional," and a tightened-then-widened range or pattern means the old schema still rejects values the new schema now allows. Such changes belong in the Breaking category below, not here, until or unless a future decision defines a tolerant-reader validation mode that can safely ignore them.
+
+Additive changes bump the MINOR component of `spec_version` as a signal of convention growth, even though — by construction — they require no schema change at all; see "Extension-point stability" below.
 
 ### Breaking (MAJOR)
 
@@ -51,6 +51,7 @@ A change an old consumer could silently mishandle, or that invalidates artifacts
 - removing or renaming a required field
 - changing the meaning of an existing field or event without renaming it
 - narrowing a constraint (making an optional field required, shrinking an enum, tightening a pattern)
+- **adding any new field, or relaxing any existing constraint, outside the open extension points** — for example, a new optional top-level field, or widening a numeric range or string pattern, both of which an old closed schema would reject
 - **adding a member to any closed vocabulary** — `object_type`, reference/relationship/occurrence/evidence `type`, or the canonical `event_name` catalog
 
 Breaking changes bump the MAJOR component of `spec_version`.
