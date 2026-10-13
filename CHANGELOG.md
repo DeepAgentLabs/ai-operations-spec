@@ -6,7 +6,7 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 ## [Unreleased]
 
-## [0.6.0] - 2026-10-13
+## [0.5.1] - 2026-10-13
 
 ### Added
 
@@ -27,5 +27,5 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 - The Markdown documents remain normative; the catalogs only label what they
   already require. No schema, vocabulary, or milestone status changed.
-- The `v0.6.0` tag is a repository release number. The v0.6 *milestone*
-  (canonical examples and extension model) is still planned.
+- Released as a patch on the v0.5 line (`v0.5.1`) because it labels existing
+  rules rather than adding normative content.
