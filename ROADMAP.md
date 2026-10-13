@@ -13,7 +13,7 @@
 - **v0.2** 🚧 Exploratory draft — Relationships and execution graphs
 - **v0.3** 🚧 Exploratory draft — Transport-neutral semantic events
 - **v0.4** 🚧 Exploratory draft — JSON Schema artifacts
-- **v0.5** 🚧 Planned — Versioning and compatibility rules
+- **v0.5** 🚧 Exploratory draft — Versioning and compatibility rules
 - **v0.6** 🚧 Planned — Canonical examples and extension model
 - **v0.6.x** 🚧 Planned — Provenance, evidence, and operational artifacts
 - **v1.0** 🚧 Planned — Stable specification
@@ -188,7 +188,9 @@ The repository preserves an [early non-normative schema experiment](drafts/v0.4/
 
 ### Phase 5 / v0.5 — Versioning and compatibility
 
-Define artifact version markers, additive and breaking change rules, deprecation, compatibility behavior, and extension expectations.
+**Status: exploratory draft; blocked from freeze by v0.1–v0.4 review.**
+
+Define artifact version markers, additive and breaking change rules, deprecation, compatibility behavior, and extension expectations. See [specification/v0.5/versioning.md](specification/v0.5/versioning.md) for the current draft text and decision `D-005` in [reviews/decision-log.md](reviews/decision-log.md) for the closed-vocabulary-growth classification it depends on.
 
 Success means implementers can determine whether they may safely consume an artifact.
 
@@ -258,7 +260,8 @@ ai-operations-spec/
 |   |-- v0.1/
 |   |-- v0.2/
 |   |-- v0.3/
-|   `-- v0.4/
+|   |-- v0.4/
+|   `-- v0.5/
 |-- drafts/
 |   `-- v0.4/
 `-- reviews/

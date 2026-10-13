@@ -1,6 +1,6 @@
 # AIOS Milestone Close-Out Plan
 
-This document turns the current `v0.1` through `v0.4` draft milestones into a concrete path to reviewed completion.
+This document turns the current `v0.1` through `v0.5` draft milestones into a concrete path to reviewed completion.
 
 It does not change milestone status by itself. A milestone is complete only when its acceptance criteria, dependency gates, repo updates, and validation evidence are all closed.
 
@@ -11,6 +11,7 @@ It does not change milestone status by itself. A milestone is complete only when
   - `v0.2` relationships
   - `v0.3` semantic conventions
   - `v0.4` JSON Schemas
+  - `v0.5` versioning and compatibility rules
 - Local validation baseline as of `2026-08-09`:
   - `UV_CACHE_DIR=/tmp/uv-cache uv run pytest`
   - `20 passed`
@@ -84,6 +85,21 @@ Evidence package:
 - validation outputs against current schemas
 - issue log for identifier/reference/extension edge cases
 - final schema/version marker update and fixture refresh
+
+### v0.5
+
+Must close:
+
+- resolve all open `v0.1` through `v0.4` review gates
+- validate the additive/breaking change classification (including closed-vocabulary growth, decision `D-005`) against a real version transition
+- decide the schema mechanism (`enum` vs. pattern) for `spec_version` once two frozen minors must coexist
+- record decisions and update affected documents
+
+Evidence package:
+
+- at least one real MINOR or MAJOR version transition, proposed or exercised by an independent implementation, checked against the compatibility matrix in `specification/v0.5/versioning.md`
+- updated schema and fixture changes once a transition actually occurs
+- consistency pass across `specification/v0.5/README.md`, `versioning.md`, `examples.md`, and `acceptance-criteria.md`
 
 ## Workstreams
 
@@ -175,6 +191,13 @@ Doing `v0.2` through `v0.4` first would create churn because each later layer in
 - add missing edge-case fixtures for identifiers, references, extensions, and unknown values
 - replace draft version markers only after `v0.1` through `v0.3` are closed
 
+### Phase E: lock `v0.5` versioning and compatibility rules
+
+- exercise the compatibility matrix in `specification/v0.5/versioning.md` against a real MINOR or MAJOR version transition once one exists
+- confirm the closed-vocabulary-growth classification (`D-005`) against an independent implementation's experience, not only internal review
+- decide the concrete `spec_version` schema mechanism for coexisting frozen minors
+- freeze `v0.5` only after `v0.1` through `v0.4` are closed
+
 ## Recommended repo additions
 
 The repo would benefit from a small review infrastructure layer:
@@ -188,7 +211,7 @@ These would let the project prove why a milestone is reviewed instead of only cl
 
 ## Exit standard
 
-Do not mark `v0.1` through `v0.4` as done when only the prose looks complete.
+Do not mark `v0.1` through `v0.5` as done when only the prose looks complete.
 
 Mark them done only when:
 

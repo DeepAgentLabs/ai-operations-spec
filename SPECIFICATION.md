@@ -8,6 +8,7 @@ The AI Operations Specification is one cumulative standard developed in mileston
 2. [v0.2 relationships and execution structure](specification/v0.2/relationships.md)
 3. [v0.3 semantic conventions](specification/v0.3/semantic-conventions.md)
 4. [v0.4 JSON Schemas](specification/v0.4/README.md)
+5. [v0.5 versioning and compatibility rules](specification/v0.5/versioning.md)
 
 Examples explain intended meaning; acceptance criteria track readiness and unresolved review gates. Acceptance checklists are contributor material, not part of the runtime contract.
 
@@ -32,4 +33,4 @@ For the v0.4 draft, structural alignment requires both:
 
 Validation does not establish factual accuracy, runtime success, evaluation quality, safety, or reliability.
 
-See the [roadmap](ROADMAP.md) for planned compatibility and stable-release work.
+See [v0.5 versioning and compatibility rules](specification/v0.5/versioning.md) for how a consumer decides whether it may safely treat a differently-versioned artifact as conformant, and the [roadmap](ROADMAP.md) for remaining stable-release work.

@@ -96,6 +96,33 @@ Use this file to record milestone-level review outcomes.
   behavior" row on its own merits but does not substitute for the still-open
   independent-implementation validation gate.
 
+### D-005: v0.5 closed-vocabulary growth is a breaking change
+
+- Status: accepted (proposed by editor pass on 2026-10-12; maintainer should
+  confirm rather than treat as externally reviewed)
+- Applies to: `v0.5`
+- Question:
+  When a future release adds a new member to a closed vocabulary fixed by
+  `D-004` (`object_type`, reference/relationship/occurrence/evidence `type`,
+  canonical `event_name`), is that change additive (MINOR) or breaking
+  (MAJOR)?
+- Decision:
+  Breaking (MAJOR). `D-004` requires a consumer to reject any value outside a
+  closed enum rather than tolerate it as unknown. An old consumer's pinned
+  schema therefore rejects an otherwise-valid artifact that uses a newly
+  added enum member, which is exactly the failure mode a MINOR (additive)
+  release must not cause. Forward-compatible growth stays scoped to the two
+  existing open extension points (`attributes`, `extensions`) at any version.
+- Evidence:
+  `specification/v0.5/versioning.md` ("Closed-vocabulary growth is breaking,
+  not additive"); `specification/v0.5/examples.md` ("Change classification
+  walkthrough")
+- Follow-up:
+  This is a repo-internal design decision, not independent-implementer
+  evidence. It closes the "decide additive vs. breaking classification" row
+  for `v0.5` on its own merits but does not substitute for the still-open
+  independent-implementation validation gate shared with `v0.1`–`v0.4`.
+
 ## Accepted decisions
 
 ### D-100: `Run` remains broader than `Workflow`

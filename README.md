@@ -42,7 +42,7 @@ each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
 - **v0.2** 🚧 Exploratory draft — Relationships and execution graphs
 - **v0.3** 🚧 Exploratory draft — Transport-neutral semantic events
 - **v0.4** 🚧 Exploratory draft — JSON Schema artifacts
-- **v0.5** 🚧 Planned — Versioning and compatibility rules
+- **v0.5** 🚧 Exploratory draft — Versioning and compatibility rules
 - **v0.6** 🚧 Planned — Canonical examples and extension model
 - **v0.6.x** 🚧 Planned — Provenance, evidence, and operational artifacts
 - **v1.0** 🚧 Planned — Stable specification
@@ -53,11 +53,13 @@ each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
   toward freeze.
 - Validate the v0.4 draft artifacts against at least two independent
   implementations.
-- Formalize versioning/compatibility rules and the extension model.
+- Validate the v0.5 compatibility rules against a real version transition
+  once one exists; the version-marker grammar and change classification are
+  drafted, but no frozen version has yet been superseded.
 - Standardize provenance/evidence concepts and publish producer-independent
   conformance fixtures and rules.
 
-The work is cumulative, not four competing formats:
+The work is cumulative, not five competing formats:
 
 | Layer | Defines | Status |
 |---|---|---|
@@ -65,6 +67,7 @@ The work is cumulative, not four competing formats:
 | [v0.2](specification/v0.2/README.md) | Relationships and execution graphs | Exploratory draft |
 | [v0.3](specification/v0.3/README.md) | Transport-neutral semantic events | Exploratory draft |
 | [v0.4](specification/v0.4/README.md) | JSON Schema artifacts | Exploratory draft |
+| [v0.5](specification/v0.5/README.md) | Versioning and compatibility rules | Exploratory draft |
 
 Later layers depend on earlier ones. They are available for design feedback and prototype implementations; acceptance of a later layer does not bypass open review gates in an earlier layer.
 
@@ -81,6 +84,7 @@ Conformance should be understood in two layers:
 - **Represent execution graphs:** read [v0.2 relationships](specification/v0.2/relationships.md).
 - **Instrument runtime events:** read [v0.3 semantic conventions](specification/v0.3/semantic-conventions.md).
 - **Prototype a producer or consumer:** read the [v0.4 schema guide](specification/v0.4/README.md) and [validated Run example](specification/v0.4/examples/valid/run.json).
+- **Decide whether you may safely consume an artifact:** read the [v0.5 versioning and compatibility rules](specification/v0.5/versioning.md).
 - **Contribute to the design:** review the open acceptance gates in each milestone and the [roadmap](ROADMAP.md).
 
 ## Minimal artifact
