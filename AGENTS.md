@@ -94,7 +94,7 @@ implementers. Package-specific behavior belongs in implementation repositories.
 | `tests/test_v04_schema.py` | Schema validation tests |
 | `drafts/v0.4/tests/` | Legacy schema fixture tests |
 | `reviews/` | Independent-review evidence: decision log, evidence matrix, framework mappings, and conformance artifacts |
-| `reviews/decision-log.md` | Milestone-level review decisions (`D-001`-`D-004`) — a separate numbering series from `specification/v0.1/decisions.md`'s design decisions |
+| `reviews/decision-log.md` | Milestone-level review decisions (`D-001`-`D-005`) — a separate numbering series from `specification/v0.1/decisions.md`'s design decisions |
 | `tests/test_review_artifacts.py` | Validates `reviews/artifacts/*.conformance.json` against v0.4 schema + semantic rules |
 | `tests/test_v05_versioning.py` | Validates the v0.5 version-marker grammar against its own docs and the v0.4 schemas |
 | `MILESTONE_CLOSEOUT_PLAN.md` | Plan for closing remaining review gates before each milestone freezes |
