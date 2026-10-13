@@ -12,37 +12,43 @@
   "consumer_rules": [
     {
       "id": "AIOS-0.5-V01",
-      "producer": "same exact frozen marker",
+      "producer": "Same exact frozen marker (e.g. both 1.0)",
+      "consumer": "supports that marker",
       "decision": "accept",
       "requirement": "MUST process normally and MAY claim conformance."
     },
     {
       "id": "AIOS-0.5-V02",
-      "producer": "same exact -draft marker",
+      "producer": "Same exact -draft marker",
+      "consumer": "supports that marker",
       "decision": "accept_informal",
       "requirement": "MAY process informally, MUST NOT claim stable conformance, SHOULD cite the observation date or snapshot tag of both sides."
     },
     {
       "id": "AIOS-0.5-V03",
-      "producer": "different -draft markers",
+      "producer": "Different -draft markers (same or different MAJOR.MINOR)",
+      "consumer": "either side",
       "decision": "validate_against_declared_schema",
       "requirement": "MUST NOT assume compatibility; MUST validate against the schema the artifact's own spec_version names; MUST reject if no matching schema is available rather than falling back to a different draft's schema."
     },
     {
       "id": "AIOS-0.5-V04",
-      "producer": "newer frozen MINOR, same MAJOR",
+      "producer": "Newer frozen MINOR, same MAJOR",
+      "consumer": "consumer supports an older MINOR in that MAJOR",
       "decision": "accept_extension_only",
       "requirement": "MAY accept the artifact only if it ignores content solely through the open extension points (attributes, extensions); MUST reject if schema validation against the artifact's own declared spec_version fails, and MUST NOT retry validation against its own older schema and call the result conformant."
     },
     {
       "id": "AIOS-0.5-V05",
-      "producer": "newer MAJOR",
+      "producer": "Newer MAJOR",
+      "consumer": "any consumer",
       "decision": "reject",
       "requirement": "MUST reject unless it implements that MAJOR's schema explicitly; MUST NOT guess at partial compatibility."
     },
     {
       "id": "AIOS-0.5-V06",
-      "producer": "older frozen MINOR, same MAJOR",
+      "producer": "Older frozen MINOR, same MAJOR",
+      "consumer": "consumer supports a newer MINOR and retains the older schema",
       "decision": "accept_as_older",
       "requirement": "MAY accept the older artifact, but MUST NOT describe it as conforming to the newer MINOR it also supports."
     }
