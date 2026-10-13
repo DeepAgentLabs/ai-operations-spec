@@ -83,7 +83,7 @@ The common principle: a consumer always validates against the schema named by th
 
 ## Deprecation policy
 
-The following rules begin at v1.0. Before v1.0, every milestone (`v0.1` through `v0.6.x`) is exploratory and MAY change or remove a concept outright, because no compatibility is promised pre-freeze — see the draft volatility rule above.
+The following rules begin the moment any milestone's `-draft` suffix is dropped for the first time — not specifically at v1.0, since `specification/v0.4/conformance.md` already allows v0.4 to freeze on its own schedule, independently of v1.0. Before that moment, a `-draft` snapshot MAY change or remove a concept outright without triggering any grace period: the draft volatility rule above applies only to content that still carries the `-draft` suffix, and does not exempt a frozen (non-`-draft`) marker, which the draft volatility rule already makes immutable.
 
 Once a version is frozen:
 
@@ -101,5 +101,10 @@ A namespaced extension MAY define its own internal versioning independent of `sp
 
 `specification/v0.4/schemas/run.schema.json` and `workflow.schema.json` currently pin `spec_version` to a single `"const": "0.4-draft"` value. That is correct today because v0.4 has not frozen and no second version coexists with it.
 
-Once two or more frozen `MAJOR.MINOR` versions are meant to coexist (for example, after a MINOR release following the v1.0 freeze), a schema that must validate both MUST replace the `const` with an `enum` or pattern listing every `spec_version` value it still accepts, so that validation can route to the correct rules by the declared value rather than assuming a single current version. This document records that obligation; applying it is v0.4 (and later) schema work gated on those milestones' own freeze, not a v0.5 deliverable to apply retroactively.
+Once two or more frozen `MAJOR.MINOR` versions are meant to coexist, a schema that must validate both MUST do one of the following; a bare `enum` or pattern over `spec_version` only constrains which marker strings are acceptable and MUST NOT be treated as sufficient on its own, because it cannot route the rest of the instance to the matching version's structural rules:
+
+1. ship one schema document per supported `spec_version`, with the consumer selecting the document that matches the artifact's declared marker before validating anything else, or
+2. combine them in a single document using a conditional branch (JSON Schema `if`/`then` or `oneOf`) keyed on `spec_version`, where each branch fully encodes that version's structural rules rather than sharing a merged, looser schema across versions.
+
+This document records that obligation; applying it is v0.4 (and later) schema work gated on those milestones' own freeze, not a v0.5 deliverable to apply retroactively.
 
