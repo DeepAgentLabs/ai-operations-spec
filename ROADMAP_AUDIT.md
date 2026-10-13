@@ -199,3 +199,32 @@ All listed deliverables are **M**: no stable-release layout has been decided (RE
 No product, specification, schema, or fixture content was changed by this
 audit. All relative links in this document were checked against files that
 exist in the repository at the audited commit.
+
+## Addendum (2026-10-12): v0.5 draft added
+
+This section is appended after the original audit above; it does not alter
+that audit's findings about the commit it examined. As of 2026-10-12, the
+"v0.5 — Versioning and compatibility" gap this audit documented (**Missing**:
+no `specification/v0.5/` directory, no version-marker or compatibility rule
+text) has been addressed:
+
+- `specification/v0.5/{README.md,versioning.md,examples.md,acceptance-criteria.md}`
+  define the `spec_version` grammar, editorial/additive/breaking change
+  classification, the consumer compatibility matrix, the deprecation policy,
+  and extension-point stability.
+- `reviews/decision-log.md` records decision `D-005` (closed-vocabulary
+  growth is a breaking change), following the same editor-proposed,
+  pending-maintainer-confirmation pattern as `D-004`.
+- `reviews/evidence-matrix.md` adds a `v0.5` gate section.
+- `tests/test_v05_versioning.py` cross-checks the version-marker grammar
+  against the v0.5 docs and the existing v0.4 schema `spec_version` constants.
+
+This is repo-internal drafting, consistent with every other milestone's
+status in this audit: it does **not** close the shared independent-review
+gate (`D-001`), and the Release Status badge change (Missing → Exploratory
+draft) mirrors the same "Planned → Exploratory draft" transition v0.2–v0.4
+already went through once a milestone directory and normative text exist.
+No `v0.5` acceptance-criteria review-gate checkbox is marked complete by this
+addendum; see `specification/v0.5/acceptance-criteria.md` for what remains
+open.
+
