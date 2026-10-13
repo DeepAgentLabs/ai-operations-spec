@@ -64,3 +64,41 @@ That decision has a direct consequence for versioning: adding a new member to on
 v0.5 therefore classifies closed-vocabulary growth as a **MAJOR** change. This is recorded as decision `D-005` (`reviews/decision-log.md`) so the classification itself goes through the same review process as every other milestone decision, rather than being asserted only in prose here.
 
 Producers that need forward-compatible growth without a MAJOR release MUST use the two existing open extension points — freeform `attributes` and namespaced `extensions` — exactly as `specification/v0.4/conformance.md` already requires. Those two points remain additive-safe at any version, per "Extension-point stability" below.
+
+## Consumer compatibility behavior
+
+A consumer MUST decide how to treat an artifact using its declared `spec_version`, not by assuming its own supported version. The required behavior:
+
+| Producer `spec_version` | Consumer situation | Required behavior |
+| --- | --- | --- |
+| Same exact frozen marker (e.g. both `1.0`) | supports that marker | MUST process normally and MAY claim conformance. |
+| Same exact `-draft` marker | supports that marker | MAY process informally, MUST NOT claim stable conformance, SHOULD cite the observation date or snapshot tag of both sides. |
+| Different `-draft` markers (same or different `MAJOR.MINOR`) | either side | MUST NOT assume compatibility; MUST validate against the schema the artifact's own `spec_version` names; MUST reject if no matching schema is available rather than falling back to a different draft's schema. |
+| Newer frozen MINOR, same MAJOR | consumer supports an older MINOR in that MAJOR | MAY accept the artifact only if it ignores content solely through the open extension points (`attributes`, `extensions`); MUST reject if schema validation against the artifact's own declared `spec_version` fails, and MUST NOT retry validation against its own older schema and call the result conformant. |
+| Newer MAJOR | any consumer | MUST reject unless it implements that MAJOR's schema explicitly; MUST NOT guess at partial compatibility. |
+| Older frozen MINOR, same MAJOR | consumer supports a newer MINOR and retains the older schema | MAY accept the older artifact, but MUST NOT describe it as conforming to the newer MINOR it also supports. |
+
+The common principle: a consumer always validates against the schema named by the artifact in hand. It never assumes that "close enough" version numbers imply structural compatibility, and the open extension points are the only place where a version mismatch is safe to paper over.
+
+## Deprecation policy
+
+The following rules begin at v1.0. Before v1.0, every milestone (`v0.1` through `v0.6.x`) is exploratory and MAY change or remove a concept outright, because no compatibility is promised pre-freeze — see the draft volatility rule above.
+
+Once a version is frozen:
+
+1. A field, object type, relationship type, or event name MAY be marked deprecated starting in a MINOR release. Deprecating something is itself an additive change: everything that was valid before remains valid.
+2. A deprecated element MUST remain valid (schema-accepting) for at least one additional MINOR release after the release that deprecated it. This gives consumers a full release cycle to migrate before the element can be removed.
+3. Removing a deprecated element is a Breaking (MAJOR) change. The release that removes it MUST cite the MINOR release that deprecated it and MUST ship a migration note describing the replacement, consistent with the migration-guide deliverable already planned for `v0.6.x` in `ROADMAP.md`.
+
+## Extension-point stability
+
+The freeform `attributes` object and the reverse-domain-namespaced `extensions` object (defined in `specification/v0.4/schemas/common.schema.json`) are always safe growth points, at any `spec_version`, before or after v1.0. Adding or changing content inside them never requires a `spec_version` bump by itself, because consumers are already required (per `specification/v0.4/conformance.md`) to preserve unrecognized keys there rather than reject the artifact.
+
+A namespaced extension MAY define its own internal versioning independent of `spec_version` (for example, `com.example.widget` and `com.example.widget.v2` as distinct extension names). AIOS takes no position on how an individual extension manages its own compatibility; that discipline belongs to the extension's owner.
+
+## Version markers in schemas
+
+`specification/v0.4/schemas/run.schema.json` and `workflow.schema.json` currently pin `spec_version` to a single `"const": "0.4-draft"` value. That is correct today because v0.4 has not frozen and no second version coexists with it.
+
+Once two or more frozen `MAJOR.MINOR` versions are meant to coexist (for example, after a MINOR release following the v1.0 freeze), a schema that must validate both MUST replace the `const` with an `enum` or pattern listing every `spec_version` value it still accepts, so that validation can route to the correct rules by the declared value rather than assuming a single current version. This document records that obligation; applying it is v0.4 (and later) schema work gated on those milestones' own freeze, not a v0.5 deliverable to apply retroactively.
+
