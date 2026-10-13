@@ -224,7 +224,13 @@ status in this audit: it does **not** close the shared independent-review
 gate (`D-001`), and the Release Status badge change (Missing → Exploratory
 draft) mirrors the same "Planned → Exploratory draft" transition v0.2–v0.4
 already went through once a milestone directory and normative text exist.
-No `v0.5` acceptance-criteria review-gate checkbox is marked complete by this
-addendum; see `specification/v0.5/acceptance-criteria.md` for what remains
-open.
+Exactly one `v0.5` acceptance-criteria review-gate checkbox is marked
+complete by this addendum — "record the closed-vocabulary-growth
+classification as a reviewable decision (`D-005`)," which is a documentation
+task this addendum itself finishes. The remaining `v0.5` review-gate
+checkboxes (resolving the shared `v0.1`–`v0.4` dependency, validating the
+rules against a real independent version transition, and deciding the
+`spec_version` schema-routing mechanism) stay open; see
+`specification/v0.5/acceptance-criteria.md` for the full list.
+
 
