@@ -21,8 +21,12 @@ COMPATIBILITY = json.loads((V05 / "compatibility.json").read_text(encoding="utf-
 
 
 def normalize(text: str) -> str:
-    """Drop Markdown code ticks and collapse whitespace for prose comparison."""
-    return " ".join(text.replace("`", "").split())
+    """Drop Markdown emphasis/code markers and collapse whitespace for prose comparison."""
+    return " ".join(text.replace("`", "").replace("**", "").split())
+
+
+# The obligation the numbered producer rules (P01-P12) share.
+PRODUCER_LEAD_IN = "A producer claiming draft alignment MUST:"
 
 
 def producer_requirements() -> list[str]:
@@ -48,10 +52,11 @@ def test_rule_ids_are_unique_and_well_formed() -> None:
     ids = [rule["id"] for rule in RULES["rules"]]
     assert len(ids) == len(set(ids))
     for rule_id in ids:
-        assert re.fullmatch(r"AIOS-0\.4-[PXCU]\d{2}", rule_id), rule_id
+        assert re.fullmatch(r"AIOS-0\.4-[PXCUEDK]\d{2}", rule_id), rule_id
     for rule in RULES["rules"]:
         assert rule["check"] in RULES["check_kinds"]
-        assert rule["role"] in {"producer", "consumer"}
+        assert rule["role"] in {"producer", "consumer", "implementation"}
+        assert rule["level"] in {"MUST", "MUST NOT", "SHOULD"}
         assert set(rule["applies_to"]) <= {"workflow", "run"}
 
 
@@ -64,16 +69,26 @@ def test_producer_rules_mirror_the_numbered_producer_requirements() -> None:
         assert normalize(rule["requirement"]) == text, rule["id"]
 
 
-def test_consumer_and_external_rules_quote_the_conformance_document() -> None:
-    conformance = normalize((V04 / "conformance.md").read_text(encoding="utf-8")).lower()
+def test_every_rule_quotes_its_normative_sentence() -> None:
+    conformance = normalize((V04 / "conformance.md").read_text(encoding="utf-8"))
     for rule in RULES["rules"]:
-        if rule["id"][len("AIOS-0.4-")] not in {"X", "C"}:
-            continue
-        assert normalize(rule["requirement"]).rstrip(".").lower() in conformance, rule["id"]
-    unknown_value = next(rule for rule in RULES["rules"] if rule["id"] == "AIOS-0.4-U01")
-    assert "D-004" in unknown_value["requirement"]
-    assert "rather than guessing its meaning" in conformance
+        assert normalize(rule["source_text"]) in conformance, rule["id"]
+        if rule["id"].startswith("AIOS-0.4-P"):
+            continue  # numbered items inherit MUST from PRODUCER_LEAD_IN
+        # The quoted sentence must carry the rule's own obligation keyword.
+        assert rule["level"].split()[0] in rule["source_text"], rule["id"]
 
+
+def test_every_normative_keyword_in_the_document_is_cataloged() -> None:
+    """Each MUST/MUST NOT/SHOULD occurrence must fall inside some rule's quoted text."""
+    conformance = normalize((V04 / "conformance.md").read_text(encoding="utf-8"))
+    quoted = [normalize(rule["source_text"]) for rule in RULES["rules"]] + [PRODUCER_LEAD_IN]
+    covered = [(conformance.find(text), conformance.find(text) + len(text)) for text in quoted]
+    for match in re.finditer(r"\b(MUST|SHOULD)\b", conformance):
+        position = match.start()
+        assert any(start <= position < end for start, end in covered), conformance[
+            max(0, position - 60) : position + 60
+        ]
 
 def test_claim_template_matches_the_documented_claim_format() -> None:
     conformance = (V04 / "conformance.md").read_text(encoding="utf-8")
@@ -86,13 +101,26 @@ def test_compatibility_pattern_is_the_versioning_grammar() -> None:
     assert COMPATIBILITY["spec_version_pattern"] in versioning
 
 
+EXPECTED_DECISIONS = [
+    "accept",
+    "accept_informal",
+    "validate_against_declared_schema",
+    "accept_extension_only",
+    "reject",
+    "accept_as_older",
+]
+
+
 def test_consumer_rules_mirror_the_compatibility_table() -> None:
     rows = compatibility_rows()
     rules = COMPATIBILITY["consumer_rules"]
     assert len(rows) == len(rules) == 6
     assert [rule["id"] for rule in rules] == [f"AIOS-0.5-V{n:02d}" for n in range(1, 7)]
-    for rule, row in zip(rules, rows):
-        assert normalize(rule["requirement"]) == row[-1], rule["id"]
+    assert [rule["decision"] for rule in rules] == EXPECTED_DECISIONS
+    for rule, (producer, consumer, requirement) in zip(rules, rows):
+        assert rule["producer"] == producer, rule["id"]
+        assert rule["consumer"] == consumer, rule["id"]
+        assert normalize(rule["requirement"]) == requirement, rule["id"]
 
 
 def test_published_schema_sets_resolve_and_declare_their_marker() -> None:
@@ -100,12 +128,14 @@ def test_published_schema_sets_resolve_and_declare_their_marker() -> None:
     for marker, entry in COMPATIBILITY["published_schema_sets"].items():
         assert pattern.match(marker), marker
         schema_dir = ROOT / entry["schema_directory"]
-        schemas = sorted(schema_dir.glob("*.schema.json"))
-        assert schemas, f"no schemas under {schema_dir}"
-        for path in schemas:
-            text = path.read_text(encoding="utf-8")
-            for value in re.findall(r'"spec_version":\s*\{"const":\s*"([^"]+)"\}', text):
-                assert value == marker, f"{path.name} declares {value}, catalog says {marker}"
+        artifact_schemas = 0
+        for path in sorted(schema_dir.glob("*.schema.json")):
+            schema = json.loads(path.read_text(encoding="utf-8"))
+            if "artifact_type" not in schema.get("properties", {}):
+                continue  # shared definitions such as common.schema.json
+            artifact_schemas += 1
+            assert schema["properties"]["spec_version"] == {"const": marker}, path.name
+        assert artifact_schemas >= 2, f"expected workflow and run schemas under {schema_dir}"
         rules_path = ROOT / entry["conformance_rules"]
         assert json.loads(rules_path.read_text(encoding="utf-8"))["spec_version"] == marker
         assert entry["frozen"] == (not marker.endswith("-draft")), marker
