@@ -7,10 +7,10 @@ Because v0.5 is pre-release, this document's own rules apply to itself only info
 A `spec_version` string MUST match:
 
 ```text
-^(0\.[1-9][0-9]*|[1-9][0-9]*\.[0-9]+)(-draft)?$
+^(0\.[1-9][0-9]*|[1-9][0-9]*\.(0|[1-9][0-9]*))(-draft)?$
 ```
 
-In words: a `0.` prefix followed by a nonzero minor number (matching the milestone numbering used throughout this repository, e.g. `0.4`), or any `MAJOR.MINOR` pair where `MAJOR` is one or greater (e.g. `1.0`, `1.1`, `2.3`). Either form MAY carry a literal `-draft` suffix.
+In words: a `0.` prefix followed by a nonzero minor number (matching the milestone numbering used throughout this repository, e.g. `0.4`), or any `MAJOR.MINOR` pair where `MAJOR` is one or greater and `MINOR` is either `0` or a number with no leading zero (e.g. `1.0`, `1.1`, `2.3`). Either form MAY carry a literal `-draft` suffix. The minor number never carries a leading zero in either branch, so `1.00` and `1.04` are not valid markers — without this, the same numeric version would have more than one valid spelling, which breaks the compatibility matrix's reliance on exact marker equality.
 
 - `0.4-draft` — the current v0.4 marker, matches the `0.4` branch of the grammar.
 - `1.0` — the eventual frozen stable release, matches the `MAJOR.MINOR` branch with `MAJOR = 1`.
