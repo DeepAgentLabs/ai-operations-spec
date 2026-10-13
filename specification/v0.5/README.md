@@ -37,6 +37,7 @@ An artifact can be schema-valid under the schema it names and still be unsafe fo
 ## Documents
 
 - [Versioning and compatibility rules](versioning.md) is the normative text.
+- [Compatibility catalog](compatibility.json) mirrors it for tooling: the `spec_version` grammar, the schema set published for each marker, and stable identifiers (`AIOS-0.5-V01` … `V06`) for each row of the consumer compatibility table.
 - [Examples](examples.md) walks through valid/invalid version markers and change-classification scenarios.
 - [Acceptance criteria](acceptance-criteria.md) defines when v0.5 is ready to freeze.
 
