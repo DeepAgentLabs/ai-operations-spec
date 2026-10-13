@@ -18,4 +18,4 @@
 
 ## Exit condition
 
-Implementers can determine, from an artifact's `spec_version` marker alone, whether they may safely consume it — without first reading every normative document.
+Implementers can determine whether they may safely consume an artifact. For a frozen `spec_version`, the marker alone is sufficient. For a `-draft` marker, the marker must be combined with the observation date or snapshot tag identifying the exact draft content, per the draft volatility rule in `versioning.md` — the marker alone does not disambiguate two incompatible snapshots that happen to share the same `-draft` string.

@@ -6,7 +6,7 @@ Exploratory draft. These rules test the v0.1 concepts, v0.2 relationships, v0.3 
 
 ## Goal
 
-v0.5 defines how `spec_version` markers are formed, how a change to the specification is classified, what a consumer must do when it encounters an artifact from a different version, and how deprecation works once a version freezes. It gives implementers a way to answer "may I safely consume this artifact?" from the version marker alone, without reading every normative document.
+v0.5 defines how `spec_version` markers are formed, how a change to the specification is classified, what a consumer must do when it encounters an artifact from a different version, and how deprecation works once a version freezes. For a frozen `spec_version`, that marker alone is enough to decide safe consumption. For a `-draft` marker, the marker is necessary but not sufficient: per the draft volatility rule in [versioning.md](versioning.md), two artifacts can share the same `-draft` `spec_version` and still be incompatible, so a consumer also needs the observation date or snapshot tag that identifies the exact draft content.
 
 ## Central distinction
 
