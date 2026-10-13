@@ -42,3 +42,12 @@ Status values:
 | Validate artifacts produced by at least two independent implementations | open | `reviews/artifacts/agenticlens-support-run.aios.json`, `reviews/artifacts/agentic-chaos-customer-support.aios.json`, `reviews/artifacts/agenticlens-support-run.conformance.json`, `reviews/artifacts/agentic-chaos-customer-support.conformance.json` | Two implementation-derived AIOS draft artifacts now pass schema and semantic conformance, but both come from DeepAgentLabs-owned sibling repos. This evidence shows that two implementations produced valid artifacts; the gate stays open until a non-DeepAgentLabs producer artifact is recorded. |
 | Review identifier, reference, extension, and unknown-value behavior | closed | `specification/v0.4/conformance.md`, `reviews/decision-log.md` (`D-004`), `specification/v0.4/examples/invalid/run-unknown-relationship-type.json`, `specification/v0.4/examples/invalid/run-unknown-object-type.json`, `specification/v0.4/examples/valid/run-namespaced-extensions.json` | Closed vocab vs. open-extension behavior is now normatively stated and fixture-tested. "Closed" here means the documentation/fixture work is done — `D-004` itself is still recorded as editor-proposed pending maintainer confirmation, not independent review; see `reviews/decision-log.md`'s own status note for that decision. |
 | Replace the draft version marker when the milestone freezes | open | schema and fixture update | Only after earlier rows close |
+
+## v0.5
+
+| Gate | Status | Evidence | Notes |
+|---|---|---|---|
+| Resolve all open `v0.1` through `v0.4` gates | open | this matrix | Cannot close early |
+| Decide additive vs. breaking change classification, including closed-vocabulary growth | closed | `specification/v0.5/versioning.md`, `specification/v0.5/examples.md`, `reviews/decision-log.md` (`D-005`) | "Closed" here means the documentation/example work is done; `D-005` is editor-proposed pending maintainer confirmation, not independent review |
+| Validate the compatibility matrix against a real version transition from an independent implementation | open | none yet | No frozen version has ever been superseded, so no real transition exists to validate against |
+| Decide the schema mechanism for `spec_version` once two frozen minors coexist | open | `specification/v0.5/versioning.md` ("Version markers in schemas") | Deferred until after the v0.4 freeze; this row records the obligation, not the implementation |
