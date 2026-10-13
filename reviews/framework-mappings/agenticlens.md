@@ -156,6 +156,16 @@ Implication:
   - a validator/consumer of AIOS artifacts
   - a partial producer candidate if an explicit AIOS export layer is added
 
+Update (AgenticLens 0.7.0, 2026-10-13): the consumer side now reads this
+repository's machine-readable catalogs. Conformance issues carry the
+`AIOS-0.4-*` rule they violate, reports list a pass / fail / not-checked
+result per applicable rule (process obligations are always `not_checked`),
+and an artifact whose `spec_version` names another draft is rejected rather
+than checked against v0.4 (`AIOS-0.5-V03`). AgenticLens's new diagnosis
+reports (failure taxonomy, faulty-step attribution, incident timelines) are
+native AgenticLens artifacts, not AIOS objects; mapping them onto a future
+AIOS incident/evidence concept remains open.
+
 ## Reviewer summary
 
 - Equivalent meaning achieved:
