@@ -40,6 +40,7 @@ Or run directly:
 
 - Document structure in `specification/` (`tests/test_spec_docs.py`)
 - JSON Schema validity in `specification/v0.4/` (`tests/test_v04_schema.py`)
+- Version marker grammar in `specification/v0.5/` (`tests/test_v05_versioning.py`)
 - Legacy schema fixtures in `drafts/v0.4/tests/`
 
 ## When tests must pass
