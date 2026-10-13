@@ -8,6 +8,8 @@ AI Operations Specification contributions should improve interoperability for in
 - Execution graph semantics belong in v0.2.
 - Transport-neutral event and attribute meaning belongs in v0.3.
 - Machine-readable artifact structure belongs in v0.4.
+- Version markers, additive/breaking change rules, deprecation, and
+  compatibility behavior belong in v0.5.
 - Premature experiments belong in `drafts/` and MUST identify themselves as non-conforming.
 - SDK behavior, dashboards, storage, pricing, and package-specific recommendations belong in implementation repositories.
 
