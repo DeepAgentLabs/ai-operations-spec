@@ -10,6 +10,7 @@ Exploratory draft. These schemas test the v0.1 concepts, v0.2 relationships, and
 - [Run Schema](schemas/run.schema.json) describes runtime evidence and execution graphs.
 - [Common Schema](schemas/common.schema.json) contains shared identifiers, references, relationships, events, and measurements.
 - [Conformance](conformance.md) defines structural and semantic validation requirements.
+- [Conformance rule catalog](conformance-rules.json) gives each conformance requirement a stable identifier (`AIOS-0.4-P01` … `P12`, plus `X`, `C`, `U`, `E`, `D` and `K` rules) so validators can report which rule an issue violates. The Markdown document stays normative.
 - [Examples](examples.md) explains the validation fixtures.
 - [Acceptance criteria](acceptance-criteria.md) records review gates.
 

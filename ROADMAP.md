@@ -20,6 +20,12 @@
 
 ## Next Steps
 
+- Machine-readable conformance and compatibility catalogs shipped in the
+  `v0.5.1` repository release (2026-10-13):
+  `specification/v0.4/conformance-rules.json` and
+  `specification/v0.5/compatibility.json`. `deep-agentic-core-mcp` consumes
+  them for rule-cited conformance reports and `spec_version`-routed
+  validation. No milestone's review status changes.
 - Close external review decision `D-001` in
   [reviews/decision-log.md](reviews/decision-log.md): every milestone from
   v0.1 through v0.4 still needs review from at least one party with no

@@ -78,6 +78,18 @@ Conformance should be understood in two layers:
 - **implementations may provide tooling**: for example, AgenticLens can expose
   a practical `conformance` CLI over those rules without owning the standard
 
+Two machine-readable catalogs mirror the normative text for tooling, so
+validators can cite the rule an issue violates instead of inventing their own
+labels:
+
+- [`specification/v0.4/conformance-rules.json`](specification/v0.4/conformance-rules.json)
+  — stable IDs for each v0.4 producer/consumer requirement (`AIOS-0.4-P01` …)
+- [`specification/v0.5/compatibility.json`](specification/v0.5/compatibility.json)
+  — the `spec_version` grammar, the schema set behind each published marker,
+  and IDs for each consumer compatibility rule (`AIOS-0.5-V01` …)
+
+The Markdown documents stay normative; tests fail if a catalog drifts from them.
+
 ## Choose a path
 
 - **Understand the model:** read the [v0.1 overview](specification/v0.1/README.md), [core concepts](specification/v0.1/core-concepts.md), and [conceptual examples](specification/v0.1/examples.md).
