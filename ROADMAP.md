@@ -64,9 +64,13 @@ implementers.
   tooling, and schema usage. Delivered so far:
   [framework mapping](reviews/framework-mappings/agenticlens.md) and a
   passing v0.4 conformance artifact
-  (`reviews/artifacts/agenticlens-support-run.aios.json`). Still a
-  DeepAgentLabs-owned repo, so this evidence does not by itself satisfy an
-  "independent implementation" acceptance gate.
+  (`reviews/artifacts/agenticlens-support-run.aios.json`). AgenticLens 0.7.0
+  consumes `specification/v0.4/conformance-rules.json`: every conformance
+  issue cites its `AIOS-0.4-*` rule, each applicable rule is reported as
+  pass / fail / not checked, and artifacts declaring another `spec_version`
+  are rejected per `AIOS-0.5-V03`. Still a DeepAgentLabs-owned repo, so this
+  evidence does not by itself satisfy an "independent implementation"
+  acceptance gate.
 - `agentic-chaos`
   Provides resilience and fault evidence that tests whether the model can
   represent degraded, failed, and recovered behavior. Delivered so far:
