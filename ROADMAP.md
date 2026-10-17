@@ -76,8 +76,10 @@ implementers.
   represent degraded, failed, and recovered behavior. Delivered so far:
   [framework mapping](reviews/framework-mappings/agentic-chaos.md) and a
   passing v0.4 conformance artifact
-  (`reviews/artifacts/agentic-chaos-customer-support.aios.json`). Same
-  independence caveat as above.
+  (`reviews/artifacts/agentic-chaos-customer-support.aios.json`). The
+  0.6.0 addendum records the additive call log and contract verdicts, which
+  stay producer-native and are not AIOS evaluation objects. Same independence
+  caveat as above.
 - `deep-agentic-core-mcp`
   Provides a consumer/control-plane view that exercises artifact validation and
   interoperability across tools.

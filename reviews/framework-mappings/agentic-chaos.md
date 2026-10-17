@@ -159,6 +159,36 @@ Implication:
 - `agentic-chaos` is a strong evidence producer for AIOS design review
 - it is not yet a direct AIOS artifact producer in its standalone report format
 
+## Agentic Chaos 0.6.0 addendum
+
+Reviewed against `agentic-chaos` 0.6.0 (pytest plugin and chaos contracts).
+Nothing below changes a core AIOS object, schema or catalog.
+
+- The native `ChaosReport` gains three additive fields: `calls` (a bounded
+  per-session log of instrumented calls with `step_name`, `status`,
+  `started_at`, `duration_s` and the `fault_type`/`event_id` that hit them),
+  `calls_dropped`, and `unhandled_error` (the exception that escaped the code
+  under test). Older reports still load; the event shape and IDs are
+  unchanged.
+- `to_aios_run()` carries only `calls: {recorded, dropped}` and
+  `unhandled_error` inside the existing `io.deepagentlabs.agentic-chaos`
+  extension. Per-call records are not mapped to AIOS steps or occurrences, so
+  the export still claims no retry chain or recovery the events cannot show.
+  Exports validate against this repository's pre-release v0.4-draft run schema
+  and semantic checker in agentic-chaos's sibling-integration CI job; this is
+  draft alignment, not a stable conformance claim.
+- Chaos contracts (`MaxRetries`, `NoRetryStorm`, `RecoveredAfterFailure` and
+  others) are producer-native verdicts (`passed`, `failed` or `inconclusive`) over
+  one chaos run. `MaxCostImpact` and `FullTopologyTraversal` also compare that run
+  with an optional baseline report. Verdicts are serialized as the package's own
+  JSON. They are **not** AIOS `evaluation` objects and make no
+  conformance claim. They fail closed: a check that cannot be evaluated is
+  `inconclusive` and does not pass.
+- The call log is new direct evidence for retry and recovery semantics
+  (a retry is a call to a step whose previous call raised). If AIOS later
+  standardizes retry chains or evaluation verdicts, this is the producer data
+  to review first.
+
 ## Reviewer summary
 
 - Equivalent meaning achieved:
