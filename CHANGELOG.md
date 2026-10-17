@@ -6,6 +6,14 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 ## [Unreleased]
 
+### Changed
+
+- `reviews/framework-mappings/agentic-chaos.md`: Agentic Chaos 0.6.0 addendum.
+  Covers the additive native call log and `unhandled_error`, the two new members
+  of the `io.deepagentlabs.agentic-chaos` extension, and why chaos contract
+  verdicts are producer-native rather than AIOS `evaluation` objects. No schema,
+  catalog or core object change.
+
 ## [0.5.1] - 2026-10-13
 
 ### Added
