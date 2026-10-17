@@ -1,0 +1,205 @@
+{
+  "$defs": {
+    "CorrelatedDecision": {
+      "description": "Serialized evidence requires the producer's original decision identity.",
+      "properties": {
+        "decision_id": {
+          "minLength": 1,
+          "title": "Decision Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ALLOW",
+            "WARN",
+            "BLOCK",
+            "CHALLENGE",
+            "REPLAN",
+            "PAUSE",
+            "ESCALATE"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "risk": {
+          "anyOf": [
+            {
+              "enum": [
+                "LOW",
+                "MEDIUM",
+                "HIGH"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Risk"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "decision_point": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decision Point"
+        },
+        "trigger_details": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Trigger Details"
+        },
+        "escalation_required": {
+          "default": false,
+          "title": "Escalation Required",
+          "type": "boolean"
+        },
+        "causal_link": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Causal Link"
+        }
+      },
+      "required": [
+        "decision_id",
+        "status",
+        "risk",
+        "reason"
+      ],
+      "title": "CorrelatedDecision",
+      "type": "object"
+    },
+    "Correlation": {
+      "additionalProperties": false,
+      "description": "Host-supplied IDs of the exact trace span being supervised.",
+      "properties": {
+        "run_id": {
+          "minLength": 1,
+          "title": "Run Id",
+          "type": "string"
+        },
+        "trace_id": {
+          "minLength": 1,
+          "title": "Trace Id",
+          "type": "string"
+        },
+        "span_id": {
+          "minLength": 1,
+          "title": "Span Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "trace_id",
+        "span_id"
+      ],
+      "title": "Correlation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Authorized projection; reasons/trigger details may contain sensitive arguments.",
+  "properties": {
+    "contract_version": {
+      "const": "sidecar.correlation/1",
+      "default": "sidecar.correlation/1",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "correlation": {
+      "$ref": "#/$defs/Correlation"
+    },
+    "task_id": {
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "system_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "System Id"
+    },
+    "agent_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Agent Id"
+    },
+    "source_event_id": {
+      "minLength": 1,
+      "title": "Source Event Id",
+      "type": "string"
+    },
+    "timestamp": {
+      "format": "date-time",
+      "title": "Timestamp",
+      "type": "string"
+    },
+    "policy_version": {
+      "minLength": 1,
+      "title": "Policy Version",
+      "type": "string"
+    },
+    "tool_name": {
+      "title": "Tool Name",
+      "type": "string"
+    },
+    "boundary": {
+      "title": "Boundary",
+      "type": "string"
+    },
+    "decision": {
+      "$ref": "#/$defs/CorrelatedDecision"
+    }
+  },
+  "required": [
+    "correlation",
+    "task_id",
+    "source_event_id",
+    "timestamp",
+    "policy_version",
+    "tool_name",
+    "boundary",
+    "decision"
+  ],
+  "title": "DecisionEvidence",
+  "type": "object"
+}
