@@ -174,11 +174,14 @@ Nothing below changes a core AIOS object, schema or catalog.
   `unhandled_error` inside the existing `io.deepagentlabs.agentic-chaos`
   extension. Per-call records are not mapped to AIOS steps or occurrences, so
   the export still claims no retry chain or recovery the events cannot show.
-  Exports validate against the v0.4 run schema and this repository's semantic
-  checker in agentic-chaos's sibling-integration CI job.
+  Exports validate against this repository's pre-release v0.4-draft run schema
+  and semantic checker in agentic-chaos's sibling-integration CI job; this is
+  draft alignment, not a stable conformance claim.
 - Chaos contracts (`MaxRetries`, `NoRetryStorm`, `RecoveredAfterFailure` and
-  others) are producer-native pass/fail verdicts over one run, serialized as the
-  package's own JSON. They are **not** AIOS `evaluation` objects and make no
+  others) are producer-native verdicts (`passed`, `failed` or `inconclusive`) over
+  one chaos run. `MaxCostImpact` and `FullTopologyTraversal` also compare that run
+  with an optional baseline report. Verdicts are serialized as the package's own
+  JSON. They are **not** AIOS `evaluation` objects and make no
   conformance claim. They fail closed: a check that cannot be evaluated is
   `inconclusive` and does not pass.
 - The call log is new direct evidence for retry and recovery semantics
