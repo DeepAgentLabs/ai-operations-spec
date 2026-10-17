@@ -22,6 +22,7 @@ A decision projection is not an execution receipt. Actual dispatch/completion,
 approval actors and stop acknowledgements remain in the complete Sidecar journal.
 Sidecar and Lens verify native sequence/task/hash links before correlation;
 without an external anchor, a hash chain cannot prevent a producer rewriting its
-whole history. Reasons may contain sensitive data; readers need authorization.
+whole history. Reasons and decision trigger details may contain sensitive data, including tool
+arguments; readers need authorization and redaction before wider export.
 Tower retains separate deployment health; Evals owns scoring; Chaos owns faults;
 MCP owns tool transport. No implementation dependency is added to this spec.

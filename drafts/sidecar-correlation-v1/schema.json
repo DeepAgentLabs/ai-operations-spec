@@ -1,37 +1,10 @@
 {
   "$defs": {
-    "Correlation": {
-      "additionalProperties": false,
-      "description": "Host-supplied IDs of the exact trace span being supervised.",
-      "properties": {
-        "run_id": {
-          "minLength": 1,
-          "title": "Run Id",
-          "type": "string"
-        },
-        "trace_id": {
-          "minLength": 1,
-          "title": "Trace Id",
-          "type": "string"
-        },
-        "span_id": {
-          "minLength": 1,
-          "title": "Span Id",
-          "type": "string"
-        }
-      },
-      "required": [
-        "run_id",
-        "trace_id",
-        "span_id"
-      ],
-      "title": "Correlation",
-      "type": "object"
-    },
-    "Decision": {
-      "description": "The outcome of a single Decision Gate evaluation for one proposed\naction (tool call).\n\n`risk` is `None` only on the `on_sidecar_failure` path (core/sidecar.py)\n-- when the Sidecar itself errored before Policy/Risk ever ran, there is\nno risk classification to report, and reporting one would misrepresent\nwhat actually happened.\n\nv0.4 adds provenance fields for audit trail: `decision_point` (which\nboundary fired), `trigger_details` (tool/action + arguments), and\n`causal_link` (correlation to prior decisions). Escalation outcomes\n(PAUSE, ESCALATE) may populate `escalation_required`.\n\nFrozen: a `Decision` is a record of what was decided, not a value meant\nto be mutated after the fact.",
+    "CorrelatedDecision": {
+      "description": "Serialized evidence requires the producer's original decision identity.",
       "properties": {
         "decision_id": {
+          "minLength": 1,
           "title": "Decision Id",
           "type": "string"
         },
@@ -112,16 +85,45 @@
         }
       },
       "required": [
+        "decision_id",
         "status",
         "risk",
         "reason"
       ],
-      "title": "Decision",
+      "title": "CorrelatedDecision",
+      "type": "object"
+    },
+    "Correlation": {
+      "additionalProperties": false,
+      "description": "Host-supplied IDs of the exact trace span being supervised.",
+      "properties": {
+        "run_id": {
+          "minLength": 1,
+          "title": "Run Id",
+          "type": "string"
+        },
+        "trace_id": {
+          "minLength": 1,
+          "title": "Trace Id",
+          "type": "string"
+        },
+        "span_id": {
+          "minLength": 1,
+          "title": "Span Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "trace_id",
+        "span_id"
+      ],
+      "title": "Correlation",
       "type": "object"
     }
   },
   "additionalProperties": false,
-  "description": "Decision-time projection for authorized consumers; no tool arguments.",
+  "description": "Authorized projection; reasons/trigger details may contain sensitive arguments.",
   "properties": {
     "contract_version": {
       "const": "sidecar.correlation/1",
@@ -185,7 +187,7 @@
       "type": "string"
     },
     "decision": {
-      "$ref": "#/$defs/Decision"
+      "$ref": "#/$defs/CorrelatedDecision"
     }
   },
   "required": [
