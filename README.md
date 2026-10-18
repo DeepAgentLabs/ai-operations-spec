@@ -259,3 +259,16 @@ schema, automatic adapter, hosted execution capability or containment guarantee
 is introduced.
 
 These are producer-local extensions, not normative concepts or schema changes. Existing AIOS Run mappings preserve native evidence; specification maturity and conformance claims remain unchanged. No spec release is needed.
+
+## Control Tower 0.7.0 fleet operations
+
+Tower 0.7.0 adds frozen environment/capability targeting, bulk desired settings,
+separate approval, durable per-target results and bounded stop/MCP-revocation
+acknowledgement through Python, HTTP and CLI. No fleet atomicity or automatic
+rollback/resume is claimed. Timed-out/requested commands need host reconciliation.
+
+Bulk selectors, approvals, command IDs and receipts remain Tower-local implementation contracts. This integration creates no normative AIOS schema or conformance claim; shared command semantics remain draft.
+
+Existing optional dependency ranges remain sufficient. No sibling runtime or
+native evidence schema changes are required; this documentation alignment needs
+no patch release. See the [operator guide](https://github.com/DeepAgentLabs/agenticops-control-tower/blob/v0.7.0/docs/fleet-operations.md).
