@@ -236,3 +236,9 @@ no conformance claim. No normative change or spec release is needed; a shared
 evaluation-dataset object would be proposed here first.
 
 See the [suite management guide](https://github.com/DeepAgentLabs/agenticlens/blob/v0.8.0/docs/suite-management.md).
+
+## Evals 0.8.0 CLI interoperability
+
+Evals 0.8.0 adds a declarative evaluation and release-gate CLI with native JSON, JUnit and Markdown output. These outputs are package-local artifacts, not AIOS evaluation evidence or conformance claims. Normative evaluation evidence export remains Evals v0.10 work; no specification or schema change is required.
+
+See [CLI usage and compatibility](docs/evals-0.8-cli.md).
