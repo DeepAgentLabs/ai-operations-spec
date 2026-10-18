@@ -197,3 +197,20 @@ Nothing below changes a core AIOS object, schema or catalog.
   request, safety-signal, evaluation, and incident concepts are not yet first-class in the native standalone report
 - Changes requested:
   add or document an explicit AIOS export path from `ChaosReport` to AIOS `run` artifacts, and add a safety/policy-oriented example if `agentic-chaos` will be used as formal evidence for those concepts
+
+## Chaos 0.7.0 interoperability
+
+Chaos 0.7.0 adds sequential fault cascades, deterministic monotonic breaking-point
+search, synthetic response poisoning (including prompt/tool-response instruction
+and policy-bypass payloads), and explicit-price retry cost estimates. Native
+child event IDs and fault types remain intact; cascade IDs/stages and poisoning
+strategy/payload/seed are additive event detail. Existing report readers and
+AIOS exports remain compatible.
+
+See the [v0.7 guide and offline synthetic example](https://github.com/DeepAgentLabs/agentic-chaos/blob/v0.7.0/docs/v0.7.md).
+The example includes observed synthetic dispatches and a bypassed negative
+control. Injection or recovery alone does not prove containment. No new shared
+schema, automatic adapter, hosted execution capability or containment guarantee
+is introduced.
+
+These are producer-local extensions, not normative concepts or schema changes. Existing AIOS Run mappings preserve native evidence; specification maturity and conformance claims remain unchanged. No spec release is needed.
