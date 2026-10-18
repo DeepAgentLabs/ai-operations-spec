@@ -354,6 +354,23 @@ evaluation-dataset object would be proposed here first.
 
 See the [suite management guide](https://github.com/DeepAgentLabs/agenticlens/blob/v0.8.0/docs/suite-management.md).
 
+## AgenticLens 0.9.0 ModelFit
+
+AgenticLens 0.9.0 delivers its v0.7 milestone: `agenticlens.modelfit` and
+`agenticlens modelfit` recommend a model per task category from recorded
+experiment reports, under hard quality, cost, latency, safety, provider and
+deployment constraints that fail closed. Each recommendation carries a
+confidence level with reasons, an explanation, alternatives, a fallback
+(on a different provider when one is feasible), savings against a reference variant tied to the
+experiment evidence, and quality risks, plus a task-level model matrix.
+
+The ModelFit config and report schemas are Lens-local (`schemas/modelfit/` in
+AgenticLens), not AIOS objects, and make no conformance claim. No normative
+change or spec release is needed; a shared model-selection or routing-decision
+object would be proposed here first, alongside Lens v0.8 advisory routing.
+
+See the [ModelFit guide](https://github.com/DeepAgentLabs/agenticlens/blob/v0.9.0/docs/modelfit.md).
+
 ## Evals 0.8.0 CLI interoperability
 
 Evals 0.8.0 adds a declarative evaluation and release-gate CLI with native JSON, JUnit and Markdown output. These outputs are package-local artifacts, not AIOS evaluation evidence or conformance claims. Normative evaluation evidence export remains Evals v0.10 work; no specification or schema change is required.
