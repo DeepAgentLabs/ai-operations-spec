@@ -343,3 +343,13 @@ They are not AIOS evaluation evidence. They inform the planned Evals v0.10
 export, which must not export an unavailable judgment as a pass. No
 specification or schema change is required. See
 [the compatibility note](docs/evals-0.9-judge-reliability.md).
+
+## MCP 0.4.0 unified release checks
+
+[MCP 0.4.0](https://github.com/DeepAgentLabs/mcp-server/releases/tag/v0.4.0) ships the first Phase 4 unified workflows: `core.compare_runs`, a fail-closed `core.release_check`, `core.incident_summary` and `core.export_report`. MCP judges nothing itself; it composes Lens comparisons, the Evals release gate and Chaos run reports. Malformed or failed-call evidence always blocks readiness, and so does missing evidence of a required kind; all three kinds are required by default and `required_evidence` narrows that.
+
+`core.export_report` returns an MCP-local `mcp.unified-report.v1` envelope. It is
+not an AIOS artifact, and `spec.validate_artifact` does not accept it. Its embedded
+sections keep their producers' shapes. A shared release-evidence artifact would be
+specified here first. No specification change or release is needed.
+See [the compatibility guide](docs/mcp-0.4-unified-workflows.md).
