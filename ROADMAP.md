@@ -463,8 +463,12 @@ specification or schema change is required. See
 
 ## MCP 0.4.0 unified release checks
 
-MCP 0.4.0 adds an MCP-local `mcp.unified-report.v1` export, deliberately outside
-AIOS. A spec-owned release-evidence artifact is a candidate future addition; no
-specification change or release now.
+MCP 0.4.0 completes MCP Phase 4 and adds an MCP-local `mcp.unified-report.v1`
+export, deliberately outside AIOS. A spec-owned release-evidence artifact is a
+candidate future addition; no specification change or release now.
+
+MCP's hosted access control moved from its Phase 4 to Phase 5. It needs
+authority, revocation and access-denial semantics defined here first, so that
+MCP, Tower and Evals share one meaning for denial and dispatch evidence.
 See [the compatibility guide](docs/mcp-0.4-unified-workflows.md)
 and the [MCP guide](https://github.com/DeepAgentLabs/mcp-server/blob/v0.4.0/docs/unified-workflows.md).
