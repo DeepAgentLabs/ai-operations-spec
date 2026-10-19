@@ -346,7 +346,7 @@ specification or schema change is required. See
 
 ## MCP 0.4.0 unified release checks
 
-[MCP 0.4.0](https://github.com/DeepAgentLabs/mcp-server/releases/tag/v0.4.0) ships the first Phase 4 unified workflows: `core.compare_runs`, a fail-closed `core.release_check`, `core.incident_summary` and `core.export_report`. MCP judges nothing itself; it composes Lens comparisons, the Evals release gate and Chaos run reports, and missing, malformed or failed-call evidence blocks readiness.
+[MCP 0.4.0](https://github.com/DeepAgentLabs/mcp-server/releases/tag/v0.4.0) ships the first Phase 4 unified workflows: `core.compare_runs`, a fail-closed `core.release_check`, `core.incident_summary` and `core.export_report`. MCP judges nothing itself; it composes Lens comparisons, the Evals release gate and Chaos run reports. Malformed or failed-call evidence always blocks readiness, and so does missing evidence of a required kind; all three kinds are required by default and `required_evidence` narrows that.
 
 `core.export_report` returns an MCP-local `mcp.unified-report.v1` envelope. It is
 not an AIOS artifact, and `spec.validate_artifact` does not accept it. Its embedded
