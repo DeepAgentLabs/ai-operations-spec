@@ -451,3 +451,12 @@ They are not scores, release gates or proof of containment. No new shared
 schema, automatic adapter or hosted execution capability is introduced.
 
 Merged workflow exports validate against the v0.4 Run schema and semantic checker. The workflow summary is a producer-local extension member, not a normative Workflow object or a schema change. Specification maturity and conformance claims are unchanged. No spec release is needed.
+
+## Evals 0.9.0 judge reliability and live resilience
+
+Evals 0.9.0 adds optional judge (cost, unavailable judgments, agreement) and
+live-target (`timed_out`, `error`) fields to its package-local report contract.
+They are not AIOS evaluation evidence. They inform the planned Evals v0.10
+export, which must not export an unavailable judgment as a pass. No
+specification or schema change is required. See
+[the compatibility note](docs/evals-0.9-judge-reliability.md).
