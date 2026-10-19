@@ -460,3 +460,11 @@ They are not AIOS evaluation evidence. They inform the planned Evals v0.10
 export, which must not export an unavailable judgment as a pass. No
 specification or schema change is required. See
 [the compatibility note](docs/evals-0.9-judge-reliability.md).
+
+## MCP 0.4.0 unified release checks
+
+MCP 0.4.0 adds an MCP-local `mcp.unified-report.v1` export, deliberately outside
+AIOS. A spec-owned release-evidence artifact is a candidate future addition; no
+specification change or release now.
+See [the compatibility guide](docs/mcp-0.4-unified-workflows.md)
+and the [MCP guide](https://github.com/DeepAgentLabs/mcp-server/blob/v0.4.0/docs/unified-workflows.md).
