@@ -486,3 +486,11 @@ and the [MCP guide](https://github.com/DeepAgentLabs/mcp-server/blob/v0.4.0/docs
 Task-authority/delegation and reader-safe summaries are available in Sidecar.
 See [compatibility and ownership boundaries](docs/sidecar-0.9.md). Existing
 native decisions/correlation stay compatible; no new normative schema is claimed.
+
+## Control Tower 0.8.0 integration alignment
+
+Tower Phase 8 implements periodic detection, alerts, attributed lifecycle audit
+and incident console views. Alerts, correlation keys and joined incident views are Tower-local contracts, not normative AIOS schemas or conformance claims. Shared draft semantics and schema versions do not change.
+
+See [compatibility and operator example](docs/tower-0.8-live-operations.md).
+No sibling runtime change or patch release is required.
