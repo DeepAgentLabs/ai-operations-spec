@@ -43,7 +43,7 @@ each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
 - **v0.3** 🚧 Exploratory draft — Transport-neutral semantic events
 - **v0.4** 🚧 Exploratory draft — JSON Schema artifacts
 - **v0.5** 🚧 Exploratory draft — Versioning and compatibility rules
-- **v0.6** 🚧 Planned — Canonical examples and extension model
+- **v0.6** 🚧 Exploratory draft — Canonical examples and extension model
 - **v0.6.x** 🚧 Planned — Provenance, evidence, and operational artifacts
 - **v1.0** 🚧 Planned — Stable specification
 
@@ -68,6 +68,7 @@ The work is cumulative, not five competing formats:
 | [v0.3](specification/v0.3/README.md) | Transport-neutral semantic events | Exploratory draft |
 | [v0.4](specification/v0.4/README.md) | JSON Schema artifacts | Exploratory draft |
 | [v0.5](specification/v0.5/README.md) | Versioning and compatibility rules | Exploratory draft |
+| [v0.6](specification/v0.6/README.md) | Canonical examples and extension model | Exploratory draft |
 
 Later layers depend on earlier ones. They are available for design feedback and prototype implementations; acceptance of a later layer does not bypass open review gates in an earlier layer.
 

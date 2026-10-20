@@ -51,3 +51,14 @@ Status values:
 | Decide additive vs. breaking change classification, including closed-vocabulary growth | closed | `specification/v0.5/versioning.md`, `specification/v0.5/examples.md`, `reviews/decision-log.md` (`D-005`) | "Closed" here means the documentation/example work is done; `D-005` is editor-proposed pending maintainer confirmation, not independent review |
 | Validate the compatibility matrix against a real version transition from an independent implementation | open | none yet | No frozen version has ever been superseded, so no real transition exists to validate against |
 | Decide the schema mechanism for `spec_version` once two frozen minors coexist | open | `specification/v0.5/versioning.md` ("Version markers in schemas") | Deferred until after the v0.4 freeze; this row records the obligation, not the implementation |
+
+## v0.6
+
+| Gate | Status | Evidence | Remaining work |
+|---|---|---|---|
+| Canonical examples and negative controls | drafted | `specification/v0.6/examples/manifest.json`, `tests/test_v06_examples.py` | Independent implementer review |
+| Third-party extension guidance | drafted | `specification/v0.6/extension-model.md`, `examples.md` | Independent producer/consumer preservation evidence |
+| Prerequisite layers and independent review | open | `specification/v0.6/acceptance-criteria.md`, decision D-001 | Close v0.1–v0.5 gates before freeze |
+
+Repository validation is internal evidence and does not close these independent
+review gates or establish stable conformance.
