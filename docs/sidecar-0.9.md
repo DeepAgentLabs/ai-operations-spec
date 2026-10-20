@@ -6,6 +6,10 @@ redacted evidence summaries. Private scope goals/values use explicit host delive
 
 AIOS remains the shared contract authority. Sidecar task grants, reader projections and delegation are implementation-local contracts, not normative AIOS objects. The existing sidecar.correlation/1 convention is unchanged. Stable interoperable intent/authority schemas remain a Sidecar v1.0 target and require independent spec review.
 
+Reader-safe summaries are neither native Decision artifacts nor hash-verifiable
+evidence. Consumers needing integrity must retrieve the authorized original
+artifact and apply the verification contract appropriate to that artifact.
+
 The core package remains standalone. No new mandatory sibling dependency or
 shared schema is introduced. Constraint-only guardians retain expiry WARN;
 authority-bearing tasks BLOCK on expiry/revocation. Stop revokes descendants;
