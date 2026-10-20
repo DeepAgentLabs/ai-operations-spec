@@ -59,7 +59,7 @@ each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
 - Standardize provenance/evidence concepts and publish producer-independent
   conformance fixtures and rules.
 
-The work is cumulative, not five competing formats:
+The six milestone layers form one cumulative specification:
 
 | Layer | Defines | Status |
 |---|---|---|
