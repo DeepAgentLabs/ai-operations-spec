@@ -368,3 +368,10 @@ minimal and advanced artifacts, retry evidence, negative controls, namespace and
 third-party extension guidance. Run `make check` for offline validation.
 Artifacts still use `0.4-draft`; earlier independent-review gates remain open.
 See the [sibling compatibility matrix](docs/v0.6-ecosystem.md).
+
+## Control Tower 0.8.0 live operations
+
+See [operator compatibility and ownership](docs/tower-0.8-live-operations.md) for
+periodic detection, durable alerts, acknowledgements and joined incident console
+views. Existing native contracts and optional dependency ranges remain compatible;
+no runtime or patch release is required here.
