@@ -6,13 +6,30 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-19
+
+### Added
+
+- Exploratory v0.6 canonical examples and extension model: minimal Workflow and
+  Run, advanced support graph, retries and schema/semantic negative controls.
+- Machine-readable fixture manifest and offline validation tests.
+- Third-party extension placement, naming, preservation, versioning, publication
+  and interpretation guidance, with sibling compatibility documentation.
+
 ### Changed
 
-- `reviews/framework-mappings/agentic-chaos.md`: Agentic Chaos 0.6.0 addendum.
+- Included from the prior `[Unreleased]` section: `reviews/framework-mappings/agentic-chaos.md`: Agentic Chaos 0.6.0 addendum.
   Covers the additive native call log and `unhandled_error`, the two new members
   of the `io.deepagentlabs.agentic-chaos` extension, and why chaos contract
   verdicts are producer-native rather than AIOS `evaluation` objects. No schema,
   catalog or core object change.
+
+### Notes
+
+- Artifacts remain `0.4-draft`. No schemas, catalogs, closed vocabularies or
+  prerequisite review status change. Portable conformance and provenance objects
+  remain v0.6.x work. Sibling runtime dependencies and releases are not required.
+
 
 ## [0.5.1] - 2026-10-13
 

@@ -9,6 +9,7 @@ The AI Operations Specification is one cumulative standard developed in mileston
 3. [v0.3 semantic conventions](specification/v0.3/semantic-conventions.md)
 4. [v0.4 JSON Schemas](specification/v0.4/README.md)
 5. [v0.5 versioning and compatibility rules](specification/v0.5/versioning.md)
+6. [v0.6 canonical examples and extension model](specification/v0.6/README.md)
 
 Examples explain intended meaning; acceptance criteria track readiness and unresolved review gates. Acceptance checklists are contributor material, not part of the runtime contract.
 

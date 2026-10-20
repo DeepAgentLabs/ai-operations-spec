@@ -234,3 +234,16 @@ rules against a real independent version transition, and deciding the
 `specification/v0.5/acceptance-criteria.md` for the full list.
 
 
+
+## Addendum (2026-10-19): v0.6 exploratory draft added
+
+The earlier missing dedicated v0.6 layer is now present under
+`specification/v0.6/`: canonical minimal/advanced artifacts, retry examples,
+schema/semantic negative controls, extension guidance and acceptance criteria.
+`tests/test_v06_examples.py` validates the manifest offline against existing
+v0.4 schemas and semantic checks. The README and roadmap now mark v0.6 as an
+exploratory draft. Earlier audit findings above describe their original snapshot.
+
+No independent-review gate closes, no artifact marker or schema changes, and
+v0.6.x provenance objects, naming conventions and portable conformance tooling
+remain future work. See `reviews/evidence-matrix.md` for v0.6 review gates.

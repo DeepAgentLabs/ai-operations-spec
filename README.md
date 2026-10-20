@@ -43,7 +43,7 @@ each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
 - **v0.3** 🚧 Exploratory draft — Transport-neutral semantic events
 - **v0.4** 🚧 Exploratory draft — JSON Schema artifacts
 - **v0.5** 🚧 Exploratory draft — Versioning and compatibility rules
-- **v0.6** 🚧 Planned — Canonical examples and extension model
+- **v0.6** 🚧 Exploratory draft — Canonical examples and extension model
 - **v0.6.x** 🚧 Planned — Provenance, evidence, and operational artifacts
 - **v1.0** 🚧 Planned — Stable specification
 
@@ -59,7 +59,7 @@ each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
 - Standardize provenance/evidence concepts and publish producer-independent
   conformance fixtures and rules.
 
-The work is cumulative, not five competing formats:
+The six milestone layers form one cumulative specification:
 
 | Layer | Defines | Status |
 |---|---|---|
@@ -68,6 +68,7 @@ The work is cumulative, not five competing formats:
 | [v0.3](specification/v0.3/README.md) | Transport-neutral semantic events | Exploratory draft |
 | [v0.4](specification/v0.4/README.md) | JSON Schema artifacts | Exploratory draft |
 | [v0.5](specification/v0.5/README.md) | Versioning and compatibility rules | Exploratory draft |
+| [v0.6](specification/v0.6/README.md) | Canonical examples and extension model | Exploratory draft |
 
 Later layers depend on earlier ones. They are available for design feedback and prototype implementations; acceptance of a later layer does not bypass open review gates in an earlier layer.
 
@@ -359,3 +360,11 @@ See [the compatibility guide](docs/mcp-0.4-unified-workflows.md).
 Task-authority/delegation and reader-safe summaries are available in Sidecar.
 See [compatibility and ownership boundaries](docs/sidecar-0.9.md). Existing
 native decisions/correlation stay compatible; no new normative schema is claimed.
+
+## v0.6 canonical examples and extensions
+
+Repository v0.6.0 adds the [exploratory v0.6 layer](specification/v0.6/README.md):
+minimal and advanced artifacts, retry evidence, negative controls, namespace and
+third-party extension guidance. Run `make check` for offline validation.
+Artifacts still use `0.4-draft`; earlier independent-review gates remain open.
+See the [sibling compatibility matrix](docs/v0.6-ecosystem.md).

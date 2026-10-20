@@ -1,0 +1,34 @@
+{
+  "snapshot": "v0.6.0",
+  "spec_version": "0.4-draft",
+  "cases": [
+    {
+      "path": "minimal-workflow.json",
+      "expected": "valid"
+    },
+    {
+      "path": "minimal-run.json",
+      "expected": "valid"
+    },
+    {
+      "path": "advanced-support-run.json",
+      "expected": "valid"
+    },
+    {
+      "path": "retry-run.json",
+      "expected": "valid"
+    },
+    {
+      "path": "invalid-reserved-namespace.json",
+      "expected": "schema-invalid"
+    },
+    {
+      "path": "invalid-core-type.json",
+      "expected": "schema-invalid"
+    },
+    {
+      "path": "invalid-missing-step.json",
+      "expected": "semantic-invalid"
+    }
+  ]
+}

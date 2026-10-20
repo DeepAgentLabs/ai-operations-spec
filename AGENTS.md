@@ -88,6 +88,7 @@ implementers. Package-specific behavior belongs in implementation repositories.
 | `specification/v0.3/` | Semantic conventions — event names and meanings |
 | `specification/v0.4/` | JSON Schemas — machine-readable validation |
 | `specification/v0.5/` | Versioning and compatibility — version markers, change classification, deprecation |
+| `specification/v0.6/` | Canonical examples and extension model (exploratory draft) |
 | `drafts/` | Superseded or premature experiments (non-normative) |
 | `drafts/v0.4/` | Early schema experiment (retained for history) |
 | `tests/test_spec_docs.py` | Document structure validation |

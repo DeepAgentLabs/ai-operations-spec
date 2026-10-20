@@ -220,3 +220,12 @@ Mark them done only when:
 - tests and fixtures pass
 - review evidence is committed in the repo
 - at least the required independent implementation validation is recorded
+
+## v0.6 follow-on closeout
+
+The exploratory examples and extension layer is drafted; see
+[acceptance criteria](specification/v0.6/acceptance-criteria.md). Before freeze,
+close prerequisite v0.1–v0.5 gates, obtain independent review of canonical
+interpretation and demonstrate unknown-extension preservation through a
+non-DeepAgentLabs producer/consumer. The fixture manifest and internal tests
+provide reproducible inputs, not independent implementation evidence.
