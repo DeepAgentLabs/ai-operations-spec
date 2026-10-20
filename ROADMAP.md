@@ -1,4 +1,4 @@
-﻿# AI Operations Specification Roadmap
+# AI Operations Specification Roadmap
 
 > An evidence-based audit of this roadmap against the actual contents of
 > `specification/`, `drafts/`, and `reviews/` is recorded in
@@ -14,7 +14,7 @@
 - **v0.3** 🚧 Exploratory draft — Transport-neutral semantic events
 - **v0.4** 🚧 Exploratory draft — JSON Schema artifacts
 - **v0.5** 🚧 Exploratory draft — Versioning and compatibility rules
-- **v0.6** 🚧 Planned — Canonical examples and extension model
+- **v0.6** 🚧 Exploratory draft — Canonical examples and extension model
 - **v0.6.x** 🚧 Planned — Provenance, evidence, and operational artifacts
 - **v1.0** 🚧 Planned — Stable specification
 
@@ -206,7 +206,15 @@ Define artifact version markers, additive and breaking change rules, deprecation
 
 Success means implementers can determine whether they may safely consume an artifact.
 
-### Phase 6 — Examples and extension model
+### Phase 6 / v0.6 — Examples and extension model
+
+**Status: exploratory draft delivered in repository v0.6.0; blocked from freeze
+by v0.1–v0.5 and independent review.**
+
+[Canonical examples and extension model](specification/v0.6/README.md) include
+offline validated minimal/advanced artifacts, retries, negative controls and
+a machine-readable outcome manifest. See [ecosystem compatibility](docs/v0.6-ecosystem.md).
+No new artifact version or dependency floor is introduced.
 
 Publish minimal and advanced canonical artifacts, namespace rules, third-party extension guidance, and conformance expectations.
 

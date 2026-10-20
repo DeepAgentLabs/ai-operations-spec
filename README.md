@@ -359,3 +359,11 @@ See [the compatibility guide](docs/mcp-0.4-unified-workflows.md).
 Task-authority/delegation and reader-safe summaries are available in Sidecar.
 See [compatibility and ownership boundaries](docs/sidecar-0.9.md). Existing
 native decisions/correlation stay compatible; no new normative schema is claimed.
+
+## v0.6 canonical examples and extensions
+
+Repository v0.6.0 adds the [exploratory v0.6 layer](specification/v0.6/README.md):
+minimal and advanced artifacts, retry evidence, negative controls, namespace and
+third-party extension guidance. Run `make check` for offline validation.
+Artifacts still use `0.4-draft`; earlier independent-review gates remain open.
+See the [sibling compatibility matrix](docs/v0.6-ecosystem.md).
