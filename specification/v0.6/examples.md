@@ -46,3 +46,14 @@ lossless JSON preservation. Removing its extension entries and custom event
 leaves the core graph valid. Changing the extension version to `99.0` also
 leaves core validation unchanged: support-specific validation is separate.
 See [extension requirements](extension-model.md) before publishing a contract.
+
+## Provenance example (repository v0.6.1)
+
+[support-finding.provenance.json](examples/provenance/support-finding.provenance.json)
+is a `0.6-draft` provenance record about the advanced support Run. It is not
+listed in the v0.6.0 manifest above because it is validated by the 0.6-draft
+schema set, not the v0.4 schemas; `tests/test_v06_provenance.py` checks it,
+resolves its references against the Run and verifies the subject's `sha-256`
+digest. Its findings are synthetic and their `confirmed` or `open` status
+proves nothing about the Run. More valid and invalid records, each citing the
+rule it breaks, are in the [conformance suite](conformance-suite/README.md).
