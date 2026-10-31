@@ -52,9 +52,10 @@ is unavailable) and produces a report shaped like `expected`:
 - `subjects.<id>.available`: whether the consumer holds the subject bytes.
 - `subjects.<id>.valid`: whether those bytes parse to an artifact that is
   `valid` under the outcome procedure above, or `null` when unavailable.
-- `subjects.<id>.identity`: `match` when the artifact's `id`, `artifact_type`
-  and `spec_version` equal the subject entry, `mismatch` otherwise, `null`
-  when unavailable.
+- `subjects.<id>.identity`: `match` when the held artifact's `id`,
+  `artifact_type` and `spec_version` equal the subject entry's `artifact_id`,
+  `artifact_type` and `spec_version` (never its record-local `id`),
+  `mismatch` otherwise, `null` when unavailable.
 - `subjects.<id>.digest`: `verified` or `mismatch` after recomputing the
   digest over the held bytes, `unchecked` when the subject has a digest but no
   bytes are held, `absent` when the subject declares no digest.

@@ -53,8 +53,10 @@ One piece of material a finding was derived from. Its `kind` is one of:
 | `tool_output` | Output captured from a tool or command | `uri` or `description` |
 | `human_input` | A statement, label or review supplied by a person | `uri` or `description` |
 
-`object` uses the v0.4 reference shape: an object `id`, its closed-vocabulary
-`type`, and `external`. `captured_at` records when the material was observed.
+`object` uses the v0.4 reference shape: an object `id` and its
+closed-vocabulary `type`. Because the object is inside the subject, `external`
+is absent or `false`; the schema rejects `external: true`. Finding `targets`
+use the same shape. `captured_at` records when the material was observed.
 
 ### Derived finding
 
@@ -99,8 +101,9 @@ against the schema its own `spec_version` names before resolving references
 into it. It MUST NOT report an `aios_object` source or finding target as
 resolved unless the subject contains an object with that `id` and declared
 `type`; an unavailable subject leaves its references unresolved, not invalid.
-A subject whose own `id`, `artifact_type` or `spec_version` differs from the
-record's subject entry MUST NOT be used to resolve that entry.
+A held artifact whose own `id`, `artifact_type` or `spec_version` differs from
+the subject entry's `artifact_id`, `artifact_type` or `spec_version` MUST NOT
+be used to resolve that entry; the subject entry's `id` is local to the record.
 
 A consumer MUST NOT report a digest as verified unless it recomputed the digest
 over the subject bytes it actually holds. A re-emitted artifact that preserves

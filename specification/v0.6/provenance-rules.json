@@ -128,8 +128,8 @@
       "applies_to": [
         "provenance"
       ],
-      "requirement": "Do not use a subject artifact whose own id, artifact_type or spec_version differs from the record's subject entry to resolve that entry.",
-      "source_text": "A subject whose own id, artifact_type or spec_version differs from the record's subject entry MUST NOT be used to resolve that entry."
+      "requirement": "Do not use a held artifact whose own id, artifact_type or spec_version differs from the subject entry's artifact_id, artifact_type or spec_version to resolve that entry.",
+      "source_text": "A held artifact whose own id, artifact_type or spec_version differs from the subject entry's artifact_id, artifact_type or spec_version MUST NOT be used to resolve that entry"
     },
     {
       "id": "AIOS-0.6-C05",
