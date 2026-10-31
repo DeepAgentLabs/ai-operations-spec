@@ -340,10 +340,19 @@ Merged workflow exports validate against the v0.4 Run schema and semantic checke
 
 Evals 0.9.0 adds optional judge (cost, unavailable judgments, agreement) and
 live-target (`timed_out`, `error`) fields to its package-local report contract.
-They are not AIOS evaluation evidence. They inform the planned Evals v0.10
-export, which must not export an unavailable judgment as a pass. No
+They are not AIOS evaluation evidence. They inform the Evals v0.10
+export (shipped in 0.10.0), which never exports an unavailable judgment as a pass. No
 specification or schema change is required. See
 [the compatibility note](docs/evals-0.9-judge-reliability.md).
+
+## Evals 0.10.0 evaluation evidence export
+
+Evals 0.10.0 exports native reports as v0.4-draft `evaluation` evidence, with
+an `evaluates` relationship to every mapped target (`AIOS-0.4-P08`), and merges
+it into an existing Run. Unavailable judgments are never passes, and cases with
+no observed output are reported, not exported. A merged review artifact
+passes schema and semantic checks. No specification or schema change is
+required. See [the compatibility note](docs/evals-0.10-aios-evidence.md).
 
 ## MCP 0.4.0 unified release checks
 
