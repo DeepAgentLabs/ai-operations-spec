@@ -37,8 +37,9 @@ runtime objects, semantic conventions, schemas, examples, and maturity rules.
 
 - `agenticops-control-tower` for eventual explicit mappings between deployment
   identity and runtime evidence; its private link contract is not normative AIOS
-- `agentic-evals` for future evaluation evidence mappings; native reports alone
-  do not establish AIOS conformance
+- `agentic-evals` for evaluation evidence: Evals 0.10.0 exports v0.4-draft
+  `evaluation` evidence from its native reports; native reports alone do not
+  establish AIOS conformance
 
 - `agenticlens` as a flagship implementation and exporter of spec-compatible
   operational artifacts

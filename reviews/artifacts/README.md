@@ -10,6 +10,11 @@ They are intended as producer-evidence fixtures for review and conformance work.
   Derived from `agenticlens/examples/artifacts/support-run.json`
 - `agentic-chaos-customer-support.aios.json`
   Derived from `/tmp/agentic-chaos-review-report.json`
+- `agentic-evals-support-run.aios.json`
+  Derived from `agentic-evals/examples/aios/run-with-evaluations.json` (Evals
+  0.10.0): a recorded support Run with Evals `evaluation` evidence attached by
+  `attach_aios_evidence`. It passed schema and semantic checks, and MCP's
+  `spec.validate_artifact`, on 2026-10-31
 - `*.conformance.json`
   Saved AIOS conformance results for the derived review artifacts
 

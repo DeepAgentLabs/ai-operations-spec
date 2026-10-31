@@ -338,7 +338,7 @@ This is documentation alignment; no package release or dependency bump is needed
 Agentic Evals 0.7.2 publishes native report (`schema_version: "1.0"`) and
 gate-decision JSON Schemas, with offline `report_schema()` and
 `gate_decision_schema()` accessors. Contract 1.x evolves additively; readers
-should tolerate unknown fields. These package-local schemas are not normative AIOS contracts and do not establish AIOS conformance. The future evaluation-evidence mapping remains Evals v0.10 work.
+should tolerate unknown fields. These package-local schemas are not normative AIOS contracts and do not establish AIOS conformance. The evaluation-evidence mapping shipped in Evals 0.10.0 (see below).
 
 See the [contract, examples and compatibility policy](https://github.com/DeepAgentLabs/agentic-evals/blob/main/docs/report-contract.md). Existing dependency
 ranges remain sufficient; using the new accessors directly requires
@@ -381,7 +381,7 @@ See the [ModelFit guide](https://github.com/DeepAgentLabs/agenticlens/blob/v0.9.
 
 ## Evals 0.8.0 CLI interoperability
 
-Evals 0.8.0 adds a declarative evaluation and release-gate CLI with native JSON, JUnit and Markdown output. These outputs are package-local artifacts, not AIOS evaluation evidence or conformance claims. Normative evaluation evidence export remains Evals v0.10 work; no specification or schema change is required.
+Evals 0.8.0 adds a declarative evaluation and release-gate CLI with native JSON, JUnit and Markdown output. These outputs are package-local artifacts, not AIOS evaluation evidence or conformance claims. Evaluation evidence export shipped later in Evals 0.10.0; no specification or schema change is required.
 
 See [CLI usage and compatibility](docs/evals-0.8-cli.md).
 
@@ -464,10 +464,19 @@ Merged workflow exports validate against the v0.4 Run schema and semantic checke
 
 Evals 0.9.0 adds optional judge (cost, unavailable judgments, agreement) and
 live-target (`timed_out`, `error`) fields to its package-local report contract.
-They are not AIOS evaluation evidence. They inform the planned Evals v0.10
-export, which must not export an unavailable judgment as a pass. No
+They are not AIOS evaluation evidence. They inform the Evals v0.10
+export (shipped in 0.10.0), which never exports an unavailable judgment as a pass. No
 specification or schema change is required. See
 [the compatibility note](docs/evals-0.9-judge-reliability.md).
+
+## Evals 0.10.0 evaluation evidence export
+
+Evals 0.10.0 exports native reports as v0.4-draft `evaluation` evidence, with
+an `evaluates` relationship to every mapped target (`AIOS-0.4-P08`), and merges
+it into an existing Run. Unavailable judgments are never passes, and cases with
+no observed output are reported, not exported. A merged review artifact
+passes schema and semantic checks. No specification or schema change is
+required. See [the compatibility note](docs/evals-0.10-aios-evidence.md).
 
 ## MCP 0.4.0 unified release checks
 
