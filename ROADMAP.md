@@ -15,7 +15,7 @@
 - **v0.4** 🚧 Exploratory draft — JSON Schema artifacts
 - **v0.5** 🚧 Exploratory draft — Versioning and compatibility rules
 - **v0.6** 🚧 Exploratory draft — Canonical examples and extension model
-- **v0.6.x** 🚧 Planned — Provenance, evidence, and operational artifacts
+- **v0.6.x** 🚧 Exploratory draft (first increment in repository v0.6.1) — Provenance, evidence, and operational artifacts
 - **v1.0** 🚧 Planned — Stable specification
 
 ## Next Steps
@@ -44,10 +44,10 @@
   is still needed to prove the v0.4 draft.
 - Define compatibility/versioning policy before claiming stable consumption
   guarantees.
-- Promote provenance, evidence, and conformance fixtures from implementation
-  practice into spec-standard artifacts once the underlying model settles.
-  v0.4's `evidence` object family is an early precursor but not yet the
-  dedicated v0.6.x concept.
+- Provenance records, a portable conformance suite and naming conventions
+  shipped as the first v0.6.x increment in repository v0.6.1 (2026-10-31).
+  Next: a non-DeepAgentLabs validator running the suite, provenance records
+  from two independent producers, and maintainer confirmation of `D-006`.
 - Keep the Release Status badges as-is until `D-001` closes; do not treat a
   closed internal decision (e.g. `D-002`, `D-003`, `D-004` in
   [reviews/decision-log.md](reviews/decision-log.md)) as equivalent to
@@ -227,17 +227,25 @@ convenient CLIs as long as they follow the normative rules defined here.
 
 Formalize concepts proven in implementation repositories.
 
-**Implement now (after implementation evidence settles):**
+**Delivered as exploratory drafts in repository v0.6.1:**
 
-- provenance/evidence concepts — standardize source references, evidence
-  lineage, and derived findings as first-class spec objects
-- conformance test suite — so producers can validate their artifacts against
-  the spec without importing a DeepAgentLabs package
+- provenance/evidence concepts — [provenance records](specification/v0.6/provenance.md)
+  standardize subjects, source references, evidence lineage and derived
+  findings in a `0.6-draft` companion artifact (decision `D-006`), with an
+  `AIOS-0.6-*` rule catalog
+- conformance test suite — the [portable suite](specification/v0.6/conformance-suite/README.md)
+  lets producers and consumers check themselves without importing a
+  DeepAgentLabs package
 - conformance requirements, canonical fixtures, and expected validation
-  behavior — so implementations such as AgenticLens can offer user-facing
-  `conformance` commands without owning the standard
-- naming conventions document — lock down field naming rules, casing,
-  singular/plural, abbreviation policy
+  behavior — every suite case states its outcome and exact rule citations,
+  so implementations such as AgenticLens and DeepAgent MCP can offer
+  user-facing `conformance` commands without owning the standard
+- naming conventions document — [naming conventions](specification/v0.6/naming-conventions.md)
+  lock down casing, suffixes, singular/plural, booleans, vocabulary forms and
+  the abbreviation allowlist, enforced by tests
+
+Closing these items still needs an independent validator run of the suite and
+independent provenance producers; see the [v0.6 acceptance criteria](specification/v0.6/acceptance-criteria.md).
 
 **Implement next:**
 
@@ -281,7 +289,8 @@ ai-operations-spec/
 |   |-- v0.2/
 |   |-- v0.3/
 |   |-- v0.4/
-|   `-- v0.5/
+|   |-- v0.5/
+|   `-- v0.6/
 |-- drafts/
 |   `-- v0.4/
 `-- reviews/
@@ -561,3 +570,20 @@ containment. No new shared schema, automatic adapter or hosted execution
 capability is introduced.
 
 Scored exports validate against the v0.4 Run schema and semantic checker. `resilience_score` is an ordinary derived Run measurement (0-100, unit `score`). The probe results and score breakdown are producer-local extension members, not normative objects or a schema change. Specification maturity and conformance claims are unchanged. No spec release is needed.
+
+## AIOS repository v0.6.1 — first v0.6.x increment
+
+Repository v0.6.1 ships `0.6-draft` provenance records, the portable
+conformance suite and naming conventions. Run and Workflow artifacts stay
+`0.4-draft`; the compatibility catalog adds a `0.6-draft` schema set for
+provenance records only, and consumers that do not check it keep rejecting
+them under `AIOS-0.5-V03`. Running the suite against
+`deep-agentic-core-mcp` exposed two `0.4-draft` divergences, which MCP 0.4.5
+fixes; no other sibling needs a release or dependency change. See the
+[sibling compatibility guide](docs/v0.6.1-ecosystem.md).
+
+- `Depends on`: v0.1–v0.5 review gates (unchanged, still open).
+- `Evidence from`: a non-DeepAgentLabs suite run and independent provenance
+  producers (both still needed).
+- `Coordinate with`: AgenticLens and DeepAgent MCP for suite adoption and a
+  future provenance exporter/checker.
