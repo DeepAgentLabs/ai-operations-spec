@@ -1,0 +1,2 @@
+# Digests in provenance fixtures cover exact bytes; keep JSON line endings stable.
+*.json text eol=lf
