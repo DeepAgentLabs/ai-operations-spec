@@ -240,3 +240,50 @@ They are not scores, release gates or proof of containment. No new shared
 schema, automatic adapter or hosted execution capability is introduced.
 
 Merged workflow exports validate against the v0.4 Run schema and semantic checker. The workflow summary is a producer-local extension member, not a normative Workflow object or a schema change. Specification maturity and conformance claims are unchanged. No spec release is needed.
+
+## Chaos 0.9.0 interoperability
+
+Chaos 0.9.0 adds:
+
+- resilience probes: `HttpProbe`, `ResponseQualityProbe`, `LatencyProbe` and
+  `FunctionProbe` check steady state before chaos, while faults are active and
+  after recovery. By default no fault is injected when a pre-chaos probe
+  fails; `require_steady_state=False` runs the chaos anyway and leaves the
+  score inconclusive
+- a 0-100 resilience score built from recovery, probe, latency,
+  retry-efficiency and cost evidence, with per-fault verdicts. Components a
+  run cannot show (for example latency without a baseline) are left out and
+  the remaining weights renormalized. The score is inconclusive (`null`) after
+  a failed pre-chaos probe, for dry runs, when no fault fired, or when no
+  component can be computed
+- a local run-history store for score trends, with `max_runs` and
+  `max_age_days` retention, and a `--min-score` CI gate
+- probes and scoring on chaos workflows, experiment files and the pytest marker
+
+Native event IDs and fault types are unchanged. `ChaosReport.probes`,
+`ChaosReport.resilience` and the matching `WorkflowReport` fields are optional
+and additive. When a score was computed, AIOS exports add a derived
+`resilience_score` measurement; inconclusive runs export none. Probe results
+and the score breakdown stay in the `io.deepagentlabs.agentic-chaos`
+producer extension.
+
+See the [v0.9 guide](https://github.com/DeepAgentLabs/agentic-chaos/blob/v0.9.0/docs/v0.9.md)
+and the [offline demo](https://github.com/DeepAgentLabs/agentic-chaos/blob/v0.9.0/examples/chaos_resilience_demo.py).
+The resilience score summarizes the evidence of one chaos run. It is not an
+Evals score, a release-gate decision, a deployment health signal or proof of
+containment. No new shared schema, automatic adapter or hosted execution
+capability is introduced.
+
+The mapping adds one row and changes no existing one:
+
+| Native field | AIOS v0.4 |
+| --- | --- |
+| `ChaosReport.resilience.score` (when computed) | Run `measurements[]`: `name: resilience_score`, `kind: derived`, `unit: score`, value 0-100 |
+| `ChaosReport.probes`, `ChaosReport.resilience` | `extensions["io.deepagentlabs.agentic-chaos"].probes` / `.resilience` |
+
+An inconclusive score emits no measurement. Probe results do not become
+evidence objects or events, and per-fault verdicts do not become
+`aiops.reliability.recovered` events: the export still claims only what the
+native events record.
+
+Scored exports validate against the v0.4 Run schema and semantic checker. `resilience_score` is an ordinary derived Run measurement (0-100, unit `score`). The probe results and score breakdown are producer-local extension members, not normative objects or a schema change. Specification maturity and conformance claims are unchanged. No spec release is needed.
