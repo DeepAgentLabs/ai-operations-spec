@@ -229,3 +229,13 @@ close prerequisite v0.1–v0.5 gates, obtain independent review of canonical
 interpretation and demonstrate unknown-extension preservation through a
 non-DeepAgentLabs producer/consumer. The fixture manifest and internal tests
 provide reproducible inputs, not independent implementation evidence.
+
+## v0.6.x follow-on closeout (repository v0.6.1)
+
+Provenance records, the portable conformance suite and naming conventions are
+drafted; see the v0.6.x section of the
+[acceptance criteria](specification/v0.6/acceptance-criteria.md). Closing them
+needs a non-DeepAgentLabs validator that runs the suite and reports matching
+outcomes, two independent provenance producers describing the same subject,
+and maintainer confirmation of decision `D-006`. The suite's reference checks
+are repository test code; passing them is not independent evidence.
