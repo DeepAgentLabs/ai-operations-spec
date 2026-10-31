@@ -123,6 +123,33 @@ Use this file to record milestone-level review outcomes.
   for `v0.5` on its own merits but does not substitute for the still-open
   independent-implementation validation gate shared with `v0.1`–`v0.4`.
 
+### D-006: v0.6 provenance is a companion artifact under its own marker
+
+- Status: accepted (proposed by editor pass on 2026-10-31; maintainer should
+  confirm rather than treat as externally reviewed)
+- Applies to: `v0.6`
+- Question:
+  Should provenance (source references, evidence lineage and derived
+  findings) be added to the `0.4-draft` Run artifact, carried in an
+  extension, or published as a separate artifact?
+- Decision:
+  A separate `artifact_type: "provenance"` record declaring
+  `spec_version: "0.6-draft"`. A new Run field is Breaking under `D-005` and
+  `specification/v0.5/versioning.md`; the reserved `aiops` namespace cannot be
+  used as an extension name, and a producer namespace would not be a shared
+  concept. The companion record reuses the `0.4-draft` shared definitions
+  (declared as `depends_on` in `compatibility.json`), leaves every existing
+  artifact valid, and is rejected as unsupported by consumers that do not know
+  `0.6-draft`, as `AIOS-0.5-V03` requires.
+- Evidence:
+  `specification/v0.6/provenance.md`, `specification/v0.6/provenance-rules.json`,
+  `specification/v0.6/conformance-suite/` (`run-p01-unknown-top-level-field`,
+  `unsupported-marker-artifact-mismatch`, `unsupported-provenance-under-0.4-draft`)
+- Follow-up:
+  Repo-internal design decision. Revisit before v1.0 if independent producers
+  prefer in-artifact lineage once a frozen schema could add it as a MINOR
+  change under a tolerant-reader mode.
+
 ## Accepted decisions
 
 ### D-100: `Run` remains broader than `Workflow`
