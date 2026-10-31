@@ -86,7 +86,7 @@ A producer claiming draft alignment for a provenance record MUST:
 3. Resolve every source subject and every finding target subject to a subject declared in the record.
 4. Resolve every lineage endpoint to a source or finding in the record with an endpoint kind the lineage type permits.
 5. Give every finding at least one derived-from edge.
-6. Keep derived-from and supersedes lineage free of self-edges and cycles.
+6. Keep every lineage edge free of self-reference, and derived-from and supersedes lineage free of cycles.
 7. Not record a source captured_at later than the record created_at.
 
 ## Consumer requirements
@@ -99,8 +99,8 @@ against the schema its own `spec_version` names before resolving references
 into it. It MUST NOT report an `aios_object` source or finding target as
 resolved unless the subject contains an object with that `id` and declared
 `type`; an unavailable subject leaves its references unresolved, not invalid.
-A subject whose own `id` or `artifact_type` differs from the record's subject
-entry MUST NOT be used to resolve that entry.
+A subject whose own `id`, `artifact_type` or `spec_version` differs from the
+record's subject entry MUST NOT be used to resolve that entry.
 
 A consumer MUST NOT report a digest as verified unless it recomputed the digest
 over the subject bytes it actually holds. A re-emitted artifact that preserves
