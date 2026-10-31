@@ -34,6 +34,12 @@ def semantic_errors(artifact: dict) -> list[str]:
 
 def semantic_issues(artifact: dict) -> list[tuple[str, str]]:
     """Return `(rule_id, message)` pairs citing `specification/v0.4/conformance-rules.json`."""
+    if artifact.get("artifact_type") == "workflow":
+        return [
+            ("AIOS-0.4-X01", f"reference {reference['id']} points outside the Workflow without external: true")
+            for reference in artifact.get("references", [])
+            if not reference.get("external")
+        ]
     if artifact.get("artifact_type") != "run":
         return []
 
@@ -84,7 +90,9 @@ def semantic_issues(artifact: dict) -> list[tuple[str, str]]:
                 continue
             actual_type = object_types.get(endpoint["id"])
             if actual_type is None:
-                errors.append(("AIOS-0.4-P05", f"{relationship['id']} references missing object {endpoint['id']}"))
+                message = f"{relationship['id']} references missing object {endpoint['id']}"
+                errors.append(("AIOS-0.4-P05", message))
+                errors.append(("AIOS-0.4-X01", f"{message} without external: true"))
             elif actual_type != endpoint["type"]:
                 errors.append(("AIOS-0.4-P05", f"{relationship['id']} declares the wrong type for {endpoint['id']}"))
 
