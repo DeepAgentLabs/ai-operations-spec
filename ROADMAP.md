@@ -434,6 +434,29 @@ implementation artifacts, not a normative AIOS extension or conformance claim.
 No shared event meaning, schema version or reviewed specification layer changes.
 There is no Python dependency or specification release required for this alignment.
 
+## AgenticLens 0.11.0 optimization compatibility
+
+See the [compatibility note](docs/lens-0.11-optimization.md).
+
+AgenticLens 0.11.0 implements roadmap v0.9 Optimization Intelligence:
+evidence-backed recommendations from recorded traces for prompts (caching,
+compression), retrieval (top-k pruning, reranking), memory (summarization,
+retention), tools (result caching, non-retryable errors), workflows (redundant
+steps, handoffs that add no work) and models (quality-cost trade-offs between
+variants). Projected benefit, confidence and quality risk stay separate; an
+append-only ledger tracks accepted, rejected, adopted and reverted
+recommendations; and adopted changes are evaluated against later traces, with
+projected and observed outcomes side by side. Recommendations are advisory.
+MCP 0.4.3 exposes read-only `lens.optimization_analyze` and pins hosted Lens
+0.11.0. See the [optimization guide](https://github.com/DeepAgentLabs/agenticlens/blob/v0.11.0/docs/optimization.md)
+and [offline example](https://github.com/DeepAgentLabs/agenticlens/blob/v0.11.0/examples/optimization_demo.py).
+
+Optimization reports, ledger decisions and outcome evaluations are Lens-local
+artifacts (`schemas/optimization/`), not part of the normative AI Operations
+Specification. They read AIOS-compatible traces and define no shared object.
+A shared recommendation or outcome object would be proposed here first. No
+schema change or release is required.
+
 ## Chaos 0.8.0 interoperability
 
 Chaos 0.8.0 adds:
