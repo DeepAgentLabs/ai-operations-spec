@@ -44,7 +44,7 @@ each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
 - **v0.4** 🚧 Exploratory draft — JSON Schema artifacts
 - **v0.5** 🚧 Exploratory draft — Versioning and compatibility rules
 - **v0.6** 🚧 Exploratory draft — Canonical examples and extension model
-- **v0.6.x** 🚧 Planned — Provenance, evidence, and operational artifacts
+- **v0.6.x** 🚧 Exploratory draft (first increment in repository v0.6.1) — Provenance, evidence, and operational artifacts
 - **v1.0** 🚧 Planned — Stable specification
 
 ## Next Steps
@@ -56,8 +56,10 @@ each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
 - Validate the v0.5 compatibility rules against a real version transition
   once one exists; the version-marker grammar and change classification are
   drafted, but no frozen version has yet been superseded.
-- Standardize provenance/evidence concepts and publish producer-independent
-  conformance fixtures and rules.
+- Have a non-DeepAgentLabs validator run the v0.6.1
+  [portable conformance suite](specification/v0.6/conformance-suite/README.md)
+  and report matching outcomes, and gather provenance records from two
+  independent producers.
 
 The six milestone layers form one cumulative specification:
 
@@ -68,7 +70,7 @@ The six milestone layers form one cumulative specification:
 | [v0.3](specification/v0.3/README.md) | Transport-neutral semantic events | Exploratory draft |
 | [v0.4](specification/v0.4/README.md) | JSON Schema artifacts | Exploratory draft |
 | [v0.5](specification/v0.5/README.md) | Versioning and compatibility rules | Exploratory draft |
-| [v0.6](specification/v0.6/README.md) | Canonical examples and extension model | Exploratory draft |
+| [v0.6](specification/v0.6/README.md) | Canonical examples, extension model, provenance records, conformance suite and naming conventions | Exploratory draft |
 
 Later layers depend on earlier ones. They are available for design feedback and prototype implementations; acceptance of a later layer does not bypass open review gates in an earlier layer.
 
@@ -88,6 +90,12 @@ labels:
 - [`specification/v0.5/compatibility.json`](specification/v0.5/compatibility.json)
   — the `spec_version` grammar, the schema set behind each published marker,
   and IDs for each consumer compatibility rule (`AIOS-0.5-V01` …)
+- [`specification/v0.6/provenance-rules.json`](specification/v0.6/provenance-rules.json)
+  — stable IDs for each `0.6-draft` provenance record rule (`AIOS-0.6-R01` …)
+
+The [portable conformance suite](specification/v0.6/conformance-suite/README.md)
+turns those catalogs into fixtures with an expected outcome and the exact rule
+citations for every case, so an implementation can check itself offline.
 
 The Markdown documents stay normative; tests fail if a catalog drifts from them.
 
@@ -98,6 +106,8 @@ The Markdown documents stay normative; tests fail if a catalog drifts from them.
 - **Instrument runtime events:** read [v0.3 semantic conventions](specification/v0.3/semantic-conventions.md).
 - **Prototype a producer or consumer:** read the [v0.4 schema guide](specification/v0.4/README.md) and [validated Run example](specification/v0.4/examples/valid/run.json).
 - **Decide whether you may safely consume an artifact:** read the [v0.5 versioning and compatibility rules](specification/v0.5/versioning.md).
+- **Record where a finding came from:** read [v0.6 provenance records](specification/v0.6/provenance.md) and the [support finding example](specification/v0.6/examples/provenance/support-finding.provenance.json).
+- **Test a validator you wrote:** run the [portable conformance suite](specification/v0.6/conformance-suite/README.md).
 - **Contribute to the design:** review the open acceptance gates in each milestone and the [roadmap](ROADMAP.md).
 
 ## Minimal artifact
@@ -159,14 +169,16 @@ See [SPECIFICATION.md](SPECIFICATION.md) for the complete reading order and matu
 
 Upcoming specification work (see [ROADMAP.md](ROADMAP.md)):
 
-- **Provenance and evidence concepts** — standardize source references,
-  evidence lineage, and derived findings as first-class spec objects
-- **Conformance test suite** — producers can validate artifacts against the
-  spec independently, while implementation repositories can expose convenient
-  CLIs on top
-- **Naming conventions** — lock down field naming rules, casing, and
-  abbreviation policy
+Provenance records, the portable conformance suite and naming conventions
+shipped as exploratory drafts in repository v0.6.1 (see below). Next:
+
+- **Independent suite runs** — a non-DeepAgentLabs validator reporting
+  matching outcomes
 - **Migration guides** — clear upgrade paths between spec versions
+- **OpenTelemetry GenAI binding** — a non-normative mapping from `aiops.*`
+  events to OTel spans and attributes
+- **Verification-signal and audit-event shapes** — once implementations
+  converge
 
 ## Control Tower integration boundary
 
@@ -442,3 +454,27 @@ containment. No new shared schema, automatic adapter or hosted execution
 capability is introduced.
 
 Scored exports validate against the v0.4 Run schema and semantic checker. `resilience_score` is an ordinary derived Run measurement (0-100, unit `score`). The probe results and score breakdown are producer-local extension members, not normative objects or a schema change. Specification maturity and conformance claims are unchanged. No spec release is needed.
+
+## v0.6.1 provenance records and conformance suite
+
+Repository v0.6.1 is the first v0.6.x increment:
+
+- [Provenance records](specification/v0.6/provenance.md): a `0.6-draft`
+  companion artifact with subjects, source references, derived findings and
+  evidence lineage (`derived-from`, `supports`, `contradicts`, `supersedes`).
+  It references objects inside `0.4-draft` Runs and Workflows by id and type,
+  can carry a `sha-256` digest of each subject, and never changes them
+  (decision `D-006`). Rules `AIOS-0.6-R01`–`R07` and consumer rules `C01`–`C08`
+  are in [provenance-rules.json](specification/v0.6/provenance-rules.json).
+- [Portable conformance suite](specification/v0.6/conformance-suite/README.md):
+  39 outcome cases (each breaking one rule family, with expected rule
+  citations) and 5 cross-artifact resolution cases covering subject
+  availability, identity, digests and missing or mistyped objects.
+- [Naming conventions](specification/v0.6/naming-conventions.md), enforced by
+  tests over every published schema.
+
+Run and Workflow artifacts stay `0.4-draft`, and existing exports and
+validators are unaffected. Consumers that do not check `0.6-draft` keep
+rejecting provenance records under `AIOS-0.5-V03`. A verified digest and
+resolved lineage show where a finding came from, never that it is true. No
+review gate closes. See the [sibling compatibility guide](docs/v0.6.1-ecosystem.md).
