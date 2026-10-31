@@ -52,8 +52,10 @@ runtime objects, semantic conventions, schemas, examples, and maturity rules.
 
 ### Current Roadmap Focus
 
-The current focus is provenance/evidence concepts, a conformance test suite,
-and naming conventions. Work here should make independent implementations more
+Repository v0.6.1 delivered the first v0.6.x increment: `0.6-draft`
+provenance records, a portable conformance suite and naming conventions. The
+next focus is independent runs of the suite, migration guides, the
+OpenTelemetry binding and verification-signal/audit-event shapes. Work here should make independent implementations more
 interoperable and more precise, not encode package-specific behavior as if it
 were normative.
 
@@ -89,16 +91,23 @@ implementers. Package-specific behavior belongs in implementation repositories.
 | `specification/v0.3/` | Semantic conventions — event names and meanings |
 | `specification/v0.4/` | JSON Schemas — machine-readable validation |
 | `specification/v0.5/` | Versioning and compatibility — version markers, change classification, deprecation |
-| `specification/v0.6/` | Canonical examples and extension model (exploratory draft) |
+| `specification/v0.6/` | Canonical examples, extension model, provenance records, conformance suite and naming conventions (exploratory draft) |
+| `specification/v0.6/schemas/provenance.schema.json` | `0.6-draft` provenance record schema (reuses v0.4 common definitions) |
+| `specification/v0.6/provenance-rules.json` | `AIOS-0.6-*` rule catalog mirroring `provenance.md` |
+| `specification/v0.6/conformance-suite/` | Portable fixtures with expected outcomes, rule citations and resolution reports |
 | `drafts/` | Superseded or premature experiments (non-normative) |
 | `drafts/v0.4/` | Early schema experiment (retained for history) |
 | `tests/test_spec_docs.py` | Document structure validation |
 | `tests/test_v04_schema.py` | Schema validation tests |
 | `drafts/v0.4/tests/` | Legacy schema fixture tests |
 | `reviews/` | Independent-review evidence: decision log, evidence matrix, framework mappings, and conformance artifacts |
-| `reviews/decision-log.md` | Milestone-level review decisions (`D-001`-`D-005`) — a separate numbering series from `specification/v0.1/decisions.md`'s design decisions |
+| `reviews/decision-log.md` | Milestone-level review decisions (`D-001`-`D-006`) — a separate numbering series from `specification/v0.1/decisions.md`'s design decisions |
 | `tests/test_review_artifacts.py` | Validates `reviews/artifacts/*.conformance.json` against v0.4 schema + semantic rules |
 | `tests/test_v05_versioning.py` | Validates the v0.5 version-marker grammar against its own docs and the v0.4 schemas |
+| `tests/aios_reference.py` | Repository reference checks: marker routing, provenance semantics, cross-artifact resolution (test code, not an SDK) |
+| `tests/test_v06_provenance.py` | Provenance schema, catalog sync, semantic rules and resolution |
+| `tests/test_v06_conformance_suite.py` | Runs every suite case and requires rule coverage |
+| `tests/test_naming_conventions.py` | Enforces `naming-conventions.md` over every published schema |
 | `MILESTONE_CLOSEOUT_PLAN.md` | Plan for closing remaining review gates before each milestone freezes |
 | `SPECIFICATION.md` | Complete reading order and maturity rules |
 | `CONTRIBUTING.md` | Contribution guidelines |
@@ -130,6 +139,7 @@ v0.1 (core concepts)
        └── v0.3 (semantics) — blocked by v0.1 + v0.2
             └── v0.4 (schemas) — blocked by v0.1–v0.3
                  └── v0.5 (versioning) — blocked by v0.1–v0.4
+                      └── v0.6 (examples, extensions, provenance) — blocked by v0.1–v0.5
 ```
 
 ## Package Roles
@@ -144,8 +154,10 @@ v0.1 (core concepts)
 1. Determine which spec layer it belongs to
 2. Check that prerequisite layers are reviewed
 3. Write prose definition with boundaries and examples
-4. Add schema (v0.4) if the concept is schema-representable
-5. Add validation test in `tests/`
+4. Add schema (v0.4) if the concept is schema-representable; a new artifact
+   family gets its own marker and schema set (see decision `D-006`)
+5. Follow `specification/v0.6/naming-conventions.md`, add a rule catalog entry,
+   a conformance-suite case, and a validation test in `tests/`
 6. State maturity clearly in the document
 
 ## Feature Completion Expectations

@@ -41,12 +41,16 @@ Or run directly:
 - Document structure in `specification/` (`tests/test_spec_docs.py`)
 - JSON Schema validity in `specification/v0.4/` (`tests/test_v04_schema.py`)
 - Version marker grammar in `specification/v0.5/` (`tests/test_v05_versioning.py`)
+- Catalog/prose sync for the rule and compatibility catalogs (`tests/test_conformance_catalogs.py`, `tests/test_v06_provenance.py`)
+- v0.6 canonical examples, provenance records and resolution (`tests/test_v06_examples.py`, `tests/test_v06_provenance.py`)
+- Every portable conformance suite case and rule coverage (`tests/test_v06_conformance_suite.py`)
+- Naming conventions over every published schema (`tests/test_naming_conventions.py`)
 - Legacy schema fixtures in `drafts/v0.4/tests/`
 
 ## When tests must pass
 
 - Any change to schema files (`*.schema.json`)
-- Any change to test fixtures (`examples/valid/`, `examples/invalid/`)
+- Any change to test fixtures (`examples/`, `conformance-suite/`)
 - Any structural change to specification documents
 
 ## CI parity

@@ -125,17 +125,29 @@ def test_consumer_rules_mirror_the_compatibility_table() -> None:
 
 def test_published_schema_sets_resolve_and_declare_their_marker() -> None:
     pattern = re.compile(COMPATIBILITY["spec_version_pattern"])
-    for marker, entry in COMPATIBILITY["published_schema_sets"].items():
+    published = COMPATIBILITY["published_schema_sets"]
+    for marker, entry in published.items():
         assert pattern.match(marker), marker
         schema_dir = ROOT / entry["schema_directory"]
-        artifact_schemas = 0
+        declared: set[str] = set()
         for path in sorted(schema_dir.glob("*.schema.json")):
             schema = json.loads(path.read_text(encoding="utf-8"))
             if "artifact_type" not in schema.get("properties", {}):
                 continue  # shared definitions such as common.schema.json
-            artifact_schemas += 1
+            declared.add(schema["properties"]["artifact_type"]["const"])
+            assert path.name == f"{schema['properties']['artifact_type']['const']}.schema.json", path.name
             assert schema["properties"]["spec_version"] == {"const": marker}, path.name
-        assert artifact_schemas >= 2, f"expected workflow and run schemas under {schema_dir}"
+        assert declared == set(entry["artifact_types"]), marker
+        for dependency in entry.get("depends_on", []):
+            assert dependency in published and dependency != marker, marker
         rules_path = ROOT / entry["conformance_rules"]
         assert json.loads(rules_path.read_text(encoding="utf-8"))["spec_version"] == marker
         assert entry["frozen"] == (not marker.endswith("-draft")), marker
+
+
+def test_each_artifact_type_has_exactly_one_published_marker() -> None:
+    owners: dict[str, list[str]] = {}
+    for marker, entry in COMPATIBILITY["published_schema_sets"].items():
+        for artifact_type in entry["artifact_types"]:
+            owners.setdefault(artifact_type, []).append(marker)
+    assert owners == {"workflow": ["0.4-draft"], "run": ["0.4-draft"], "provenance": ["0.6-draft"]}

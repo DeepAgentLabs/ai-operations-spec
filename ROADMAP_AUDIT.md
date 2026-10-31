@@ -247,3 +247,15 @@ exploratory draft. Earlier audit findings above describe their original snapshot
 No independent-review gate closes, no artifact marker or schema changes, and
 v0.6.x provenance objects, naming conventions and portable conformance tooling
 remain future work. See `reviews/evidence-matrix.md` for v0.6 review gates.
+
+## Addendum (2026-10-31): v0.6.x first increment added
+
+Repository v0.6.1 adds the three "implement now" v0.6.x items the original
+audit found missing: a standalone provenance/evidence specification
+(`specification/v0.6/provenance.md`, a `0.6-draft` companion schema and an
+`AIOS-0.6-*` rule catalog), a portable conformance suite with expected
+outcomes and rule citations (`specification/v0.6/conformance-suite/`), and a
+naming-conventions document enforced by tests. v0.4's `evidence` object family
+stays the in-Run precursor; provenance records sit outside the Run (decision
+`D-006`). Migration guides, the OpenTelemetry binding, verification-signal and
+audit-event schemas remain future work, and no layer's review status changed.

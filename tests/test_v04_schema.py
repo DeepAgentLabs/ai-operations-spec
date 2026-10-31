@@ -29,6 +29,17 @@ def validator(artifact: dict) -> Draft202012Validator:
 
 
 def semantic_errors(artifact: dict) -> list[str]:
+    return [message for _, message in semantic_issues(artifact)]
+
+
+def semantic_issues(artifact: dict) -> list[tuple[str, str]]:
+    """Return `(rule_id, message)` pairs citing `specification/v0.4/conformance-rules.json`."""
+    if artifact.get("artifact_type") == "workflow":
+        return [
+            ("AIOS-0.4-X01", f"reference {reference['id']} points outside the Workflow without external: true")
+            for reference in artifact.get("references", [])
+            if not reference.get("external")
+        ]
     if artifact.get("artifact_type") != "run":
         return []
 
@@ -42,10 +53,10 @@ def semantic_errors(artifact: dict) -> list[str]:
     objects.extend((item["id"], item["type"]) for item in artifact.get("occurrences", []))
     objects.extend((item["id"], item["type"]) for item in artifact.get("evidence", []))
 
-    errors: list[str] = []
+    errors: list[tuple[str, str]] = []
     ids = [object_id for object_id, _ in objects]
     if len(ids) != len(set(ids)):
-        errors.append("object identities must be unique within a Run artifact")
+        errors.append(("AIOS-0.4-P02", "object identities must be unique within a Run artifact"))
     object_types = dict(objects)
     occurrence_by_id = {item["id"]: item for item in artifact.get("occurrences", [])}
     evidence_by_id = {item["id"]: item for item in artifact.get("evidence", [])}
@@ -53,30 +64,37 @@ def semantic_errors(artifact: dict) -> list[str]:
     relationships = artifact.get("relationships", [])
     relationship_ids = [item["id"] for item in relationships]
     if len(relationship_ids) != len(set(relationship_ids)):
-        errors.append("relationship identities must be unique")
+        errors.append(("AIOS-0.4-P03", "relationship identities must be unique"))
 
     event_ids = [item["event_id"] for item in artifact.get("events", [])]
     if len(event_ids) != len(set(event_ids)):
-        errors.append("event identities must be unique")
+        errors.append(("AIOS-0.4-P03", "event identities must be unique"))
+
+    def parse_time(value: str) -> datetime:
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
     if artifact.get("ended_at"):
-        started = datetime.fromisoformat(artifact["started_at"].replace("Z", "+00:00"))
-        ended = datetime.fromisoformat(artifact["ended_at"].replace("Z", "+00:00"))
-        if ended < started:
-            errors.append("ended_at must not precede started_at")
+        if parse_time(artifact["ended_at"]) < parse_time(artifact["started_at"]):
+            errors.append(("AIOS-0.4-P04", "ended_at must not precede started_at"))
+    for step in artifact.get("steps", []):
+        if step.get("started_at") and step.get("ended_at"):
+            if parse_time(step["ended_at"]) < parse_time(step["started_at"]):
+                errors.append(("AIOS-0.4-P04", f"Step {step['id']} ended_at must not precede started_at"))
 
     for relationship in relationships:
         source, target = relationship["source"], relationship["target"]
         if source["id"] == target["id"]:
-            errors.append(f"{relationship['id']} cannot relate an object to itself")
+            errors.append(("AIOS-0.4-P11", f"{relationship['id']} cannot relate an object to itself"))
         for endpoint in (source, target):
             if endpoint.get("external"):
                 continue
             actual_type = object_types.get(endpoint["id"])
             if actual_type is None:
-                errors.append(f"{relationship['id']} references missing object {endpoint['id']}")
+                message = f"{relationship['id']} references missing object {endpoint['id']}"
+                errors.append(("AIOS-0.4-P05", message))
+                errors.append(("AIOS-0.4-X01", f"{message} without external: true"))
             elif actual_type != endpoint["type"]:
-                errors.append(f"{relationship['id']} declares the wrong type for {endpoint['id']}")
+                errors.append(("AIOS-0.4-P05", f"{relationship['id']} declares the wrong type for {endpoint['id']}"))
 
     def count_edges(edge_type: str, source_id: str | None = None, target_id: str | None = None) -> int:
         return sum(
@@ -88,24 +106,24 @@ def semantic_errors(artifact: dict) -> list[str]:
 
     for step in artifact.get("steps", []):
         if count_edges("contains", artifact["id"], step["id"]) != 1:
-            errors.append(f"Step {step['id']} must be contained by its Run exactly once")
+            errors.append(("AIOS-0.4-P06", f"Step {step['id']} must be contained by its Run exactly once"))
     for occurrence in artifact.get("occurrences", []):
         if count_edges("observed-in", occurrence["id"]) != 1:
-            errors.append(f"Occurrence {occurrence['id']} must be observed in exactly one Step")
+            errors.append(("AIOS-0.4-P07", f"Occurrence {occurrence['id']} must be observed in exactly one Step"))
     for evidence in artifact.get("evidence", []):
         if evidence["type"] == "evaluation" and count_edges("evaluates", evidence["id"]) < 1:
-            errors.append(f"Evaluation {evidence['id']} must identify a target")
+            errors.append(("AIOS-0.4-P08", f"Evaluation {evidence['id']} must identify a target"))
 
     workflow_id = artifact.get("workflow_id")
     if workflow_id and not any(
         item["type"] == "run-of" and item["source"]["id"] == artifact["id"]
         and item["target"]["id"] == workflow_id for item in relationships
     ):
-        errors.append("workflow_id must be supported by a matching run-of relationship")
+        errors.append(("AIOS-0.4-P09", "workflow_id must be supported by a matching run-of relationship"))
 
     for event in artifact.get("events", []):
         if object_types.get(event["object_id"]) != event["object_type"]:
-            errors.append(f"Event {event['event_id']} must target an object of its declared type")
+            errors.append(("AIOS-0.4-P10", f"Event {event['event_id']} must target an object of its declared type"))
 
     attempt_signal_targets: dict[str, list[tuple[int, str]]] = {}
     for relationship in relationships:
@@ -123,15 +141,17 @@ def semantic_errors(artifact: dict) -> list[str]:
         if occurrence:
             occurrence_attempt = occurrence.get("attributes", {}).get("attempt")
             if isinstance(occurrence_attempt, int) and occurrence_attempt != attempt:
-                errors.append(
-                    f"Retry evidence {source['id']} must target attempt {attempt}, not occurrence attempt {occurrence_attempt}"
-                )
+                errors.append((
+                    "AIOS-0.4-P12",
+                    f"Retry evidence {source['id']} must target attempt {attempt}, not occurrence attempt {occurrence_attempt}",
+                ))
     for target_id, attempts in attempt_signal_targets.items():
         if len(attempts) > 1:
             ordered_attempts = ", ".join(str(attempt) for attempt, _ in sorted(attempts))
-            errors.append(
-                f"Retry attempts {ordered_attempts} must not all signal the same occurrence {target_id}"
-            )
+            errors.append((
+                "AIOS-0.4-P12",
+                f"Retry attempts {ordered_attempts} must not all signal the same occurrence {target_id}",
+            ))
 
     retry_groups: dict[str, dict[int, str]] = {}
     for occurrence in artifact.get("occurrences", []):
@@ -142,7 +162,7 @@ def semantic_errors(artifact: dict) -> list[str]:
             continue
         retry_groups.setdefault(logical_activity_id, {})
         if attempt in retry_groups[logical_activity_id]:
-            errors.append(f"Retry activity {logical_activity_id} duplicates attempt {attempt}")
+            errors.append(("AIOS-0.4-P12", f"Retry activity {logical_activity_id} duplicates attempt {attempt}"))
             continue
         retry_groups[logical_activity_id][attempt] = occurrence["id"]
     for logical_activity_id, attempts in retry_groups.items():
@@ -156,9 +176,10 @@ def semantic_errors(artifact: dict) -> list[str]:
                 count_edges("follows", source_id, target_id)
                 or count_edges("caused", source_id, target_id)
             ):
-                errors.append(
-                    f"Retry activity {logical_activity_id} must link attempt {index + 1} to attempt {next_attempt}"
-                )
+                errors.append((
+                    "AIOS-0.4-P12",
+                    f"Retry activity {logical_activity_id} must link attempt {index + 1} to attempt {next_attempt}",
+                ))
 
     for edge_types in ({"parent-of"}, {"caused", "follows", "depends-on"}):
         graph: dict[str, set[str]] = {}
@@ -180,7 +201,7 @@ def semantic_errors(artifact: dict) -> list[str]:
             return cycle
 
         if any(has_cycle(node) for node in list(graph)):
-            errors.append(f"relationship graph {sorted(edge_types)} must be acyclic")
+            errors.append(("AIOS-0.4-P11", f"relationship graph {sorted(edge_types)} must be acyclic"))
 
     return errors
 
@@ -215,3 +236,12 @@ def test_semantically_invalid_v04_examples(path: Path) -> None:
     artifact = load(path)
     validator(artifact).validate(artifact)
     assert semantic_errors(artifact)
+
+
+def test_semantic_issues_cite_cataloged_semantic_rules() -> None:
+    catalog = load(V04 / "conformance-rules.json")
+    semantic_rules = {rule["id"] for rule in catalog["rules"] if rule["check"] == "semantic"}
+    for path in sorted((V04 / "examples" / "semantic-invalid").glob("*.json")):
+        issues = semantic_issues(load(path))
+        assert issues, path.name
+        assert {rule_id for rule_id, _ in issues} <= semantic_rules, path.name

@@ -6,6 +6,46 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-10-31
+
+### Added
+
+- `specification/v0.6/provenance.md`: exploratory `0.6-draft` provenance
+  records — subjects (with optional `sha-256`/`sha-384`/`sha-512` digests of
+  exact bytes), source references (`aios_object`, `artifact`, `document`,
+  `dataset`, `log`, `tool_output`, `human_input`), derived findings and
+  evidence lineage (`derived-from`, `supports`, `contradicts`, `supersedes`).
+- `specification/v0.6/schemas/provenance.schema.json`, reusing the
+  `0.4-draft` common definitions, and the canonical
+  `examples/provenance/support-finding.provenance.json`.
+- `specification/v0.6/provenance-rules.json`: `AIOS-0.6-R01`–`R07` producer
+  rules, `C01`–`C08` consumer rules (including a new `cross_artifact` check
+  kind), `D01`, `K01` and `S01`.
+- `specification/v0.6/conformance-suite/`: 41 outcome cases with expected
+  rule citations and 5 cross-artifact resolution cases, plus the expected
+  validator behavior.
+- `specification/v0.6/naming-conventions.md` and
+  `tests/test_naming_conventions.py`.
+- Decision `D-006`: provenance is a companion artifact under its own marker.
+- `.gitattributes` keeps JSON fixtures LF-only so digests are reproducible.
+
+### Changed
+
+- `specification/v0.5/compatibility.json`: every published schema set lists
+  its `artifact_types`; a new `0.6-draft` set validates provenance records and
+  declares `depends_on: ["0.4-draft"]`. The `0.4-draft` set is otherwise
+  unchanged.
+- Repository reference checks cite rule IDs. Step end-before-start timestamps
+  are now checked under `AIOS-0.4-P04`, and missing endpoints and unmarked
+  Workflow references cite `AIOS-0.4-X01`, matching deep-agentic-core-mcp.
+
+### Notes
+
+- Run and Workflow artifacts stay `0.4-draft`; no v0.4 schema, catalog or
+  closed vocabulary changed, and no milestone's review status changed.
+- Consumers that do not check `0.6-draft` must keep rejecting provenance
+  records under `AIOS-0.5-V03`. See `docs/v0.6.1-ecosystem.md`.
+
 ## [0.6.0] - 2026-10-19
 
 ### Added

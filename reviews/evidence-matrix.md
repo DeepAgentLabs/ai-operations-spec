@@ -62,3 +62,11 @@ Status values:
 
 Repository validation is internal evidence and does not close these independent
 review gates or establish stable conformance.
+
+## v0.6.x (repository v0.6.1)
+
+| Gate | Status | Evidence | Remaining work |
+|---|---|---|---|
+| Provenance and evidence-lineage concepts | drafted | `specification/v0.6/provenance.md`, `specification/v0.6/schemas/provenance.schema.json`, `specification/v0.6/provenance-rules.json`, `reviews/decision-log.md` (`D-006`) | Two independent producers emit records about the same subject |
+| Portable conformance suite | drafted | `specification/v0.6/conformance-suite/suite.json`, `tests/test_v06_conformance_suite.py` | A non-DeepAgentLabs validator reports matching outcomes |
+| Naming conventions | drafted | `specification/v0.6/naming-conventions.md`, `tests/test_naming_conventions.py` | Independent review of the rules before any freeze |

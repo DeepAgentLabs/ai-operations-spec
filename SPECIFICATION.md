@@ -10,6 +10,7 @@ The AI Operations Specification is one cumulative standard developed in mileston
 4. [v0.4 JSON Schemas](specification/v0.4/README.md)
 5. [v0.5 versioning and compatibility rules](specification/v0.5/versioning.md)
 6. [v0.6 canonical examples and extension model](specification/v0.6/README.md)
+7. [v0.6.x provenance records](specification/v0.6/provenance.md), the [portable conformance suite](specification/v0.6/conformance-suite/README.md) and [naming conventions](specification/v0.6/naming-conventions.md)
 
 Examples explain intended meaning; acceptance criteria track readiness and unresolved review gates. Acceptance checklists are contributor material, not part of the runtime contract.
 
@@ -33,5 +34,12 @@ For the v0.4 draft, structural alignment requires both:
 2. Semantic validation of identity, references, relationships, and graph invariants that JSON Schema cannot express.
 
 Validation does not establish factual accuracy, runtime success, evaluation quality, safety, or reliability.
+
+Provenance records (`0.6-draft`) use the same two-part boundary with their own
+rule catalog, plus optional cross-artifact resolution when the consumer holds
+the subject artifacts. A resolved, digest-verified source shows where a finding
+came from; it never shows that the finding is true. The
+[portable conformance suite](specification/v0.6/conformance-suite/README.md)
+fixes the expected outcome and rule citations for each case.
 
 See [v0.5 versioning and compatibility rules](specification/v0.5/versioning.md) for how a consumer decides whether it may safely treat a differently-versioned artifact as conformant, and the [roadmap](ROADMAP.md) for remaining stable-release work.
