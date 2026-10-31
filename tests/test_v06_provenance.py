@@ -159,6 +159,8 @@ def test_each_semantic_rule_rejects_its_violation(rule_id: str) -> None:
     "change",
     [
         lambda r: r["sources"][0].pop("object"),
+        lambda r: r["sources"][0]["object"].update(external=True),
+        lambda r: r["findings"][1]["targets"][0]["object"].update(external=True),
         lambda r: r["sources"][2].update(kind="artifact"),
         lambda r: r["sources"][3].pop("description"),
         lambda r: r["subjects"][0]["digest"].update(value="abc"),

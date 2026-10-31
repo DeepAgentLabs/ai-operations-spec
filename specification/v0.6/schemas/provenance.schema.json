@@ -21,6 +21,11 @@
   "additionalProperties": false,
   "$defs": {
     "id": {"$ref": "https://deepagentlabs.github.io/ai-operations-spec/v0.4/common.schema.json#/$defs/id"},
+    "subject_object": {
+      "description": "A v0.4 reference to an object inside the subject artifact; it can never be external.",
+      "allOf": [{"$ref": "https://deepagentlabs.github.io/ai-operations-spec/v0.4/common.schema.json#/$defs/reference"}],
+      "properties": {"external": {"const": false}}
+    },
     "producer": {
       "type": "object",
       "required": ["name"],
@@ -66,7 +71,7 @@
         "kind": {"enum": ["aios_object", "artifact", "document", "dataset", "log", "tool_output", "human_input"]},
         "description": {"type": "string", "minLength": 1},
         "subject": {"$ref": "#/$defs/id"},
-        "object": {"$ref": "https://deepagentlabs.github.io/ai-operations-spec/v0.4/common.schema.json#/$defs/reference"},
+        "object": {"$ref": "#/$defs/subject_object"},
         "uri": {"type": "string", "format": "uri"},
         "digest": {"$ref": "#/$defs/digest"},
         "captured_at": {"$ref": "https://deepagentlabs.github.io/ai-operations-spec/v0.4/common.schema.json#/$defs/time"},
@@ -98,7 +103,7 @@
       "required": ["subject", "object"],
       "properties": {
         "subject": {"$ref": "#/$defs/id"},
-        "object": {"$ref": "https://deepagentlabs.github.io/ai-operations-spec/v0.4/common.schema.json#/$defs/reference"}
+        "object": {"$ref": "#/$defs/subject_object"}
       },
       "additionalProperties": false
     },

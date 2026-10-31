@@ -467,7 +467,7 @@ Repository v0.6.1 is the first v0.6.x increment:
   (decision `D-006`). Rules `AIOS-0.6-R01`–`R07` and consumer rules `C01`–`C08`
   are in [provenance-rules.json](specification/v0.6/provenance-rules.json).
 - [Portable conformance suite](specification/v0.6/conformance-suite/README.md):
-  39 outcome cases (each breaking one rule family, with expected rule
+  41 outcome cases (each breaking one rule family, with expected rule
   citations) and 5 cross-artifact resolution cases covering subject
   availability, identity, digests and missing or mistyped objects.
 - [Naming conventions](specification/v0.6/naming-conventions.md), enforced by

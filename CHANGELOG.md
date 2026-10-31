@@ -21,7 +21,7 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 - `specification/v0.6/provenance-rules.json`: `AIOS-0.6-R01`–`R07` producer
   rules, `C01`–`C08` consumer rules (including a new `cross_artifact` check
   kind), `D01`, `K01` and `S01`.
-- `specification/v0.6/conformance-suite/`: 39 outcome cases with expected
+- `specification/v0.6/conformance-suite/`: 41 outcome cases with expected
   rule citations and 5 cross-artifact resolution cases, plus the expected
   validator behavior.
 - `specification/v0.6/naming-conventions.md` and

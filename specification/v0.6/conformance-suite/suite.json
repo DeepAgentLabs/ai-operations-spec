@@ -266,6 +266,24 @@
       ]
     },
     {
+      "id": "provenance-r01-external-object-reference",
+      "path": "cases/provenance-r01-external-object-reference.json",
+      "description": "aios_object reference marked external although it must be inside the subject",
+      "expected": "schema-invalid",
+      "rules": [
+        "AIOS-0.6-R01"
+      ]
+    },
+    {
+      "id": "provenance-r01-external-finding-target",
+      "path": "cases/provenance-r01-external-finding-target.json",
+      "description": "Finding target marked external although it must be inside the subject",
+      "expected": "schema-invalid",
+      "rules": [
+        "AIOS-0.6-R01"
+      ]
+    },
+    {
       "id": "provenance-r01-short-digest",
       "path": "cases/provenance-r01-short-digest.json",
       "description": "sha-256 digest with the wrong length",
