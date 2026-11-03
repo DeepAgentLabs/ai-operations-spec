@@ -1,0 +1,524 @@
+{
+  "profile": "aios.otel/1",
+  "status": "non-normative exploratory draft",
+  "upstream_semconv": "1.37.0",
+  "source": "specification/v0.3/semantic-conventions.md",
+  "events": [
+    {
+      "event_name": "aiops.run.started",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.run.completed",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.run.failed",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.run.cancelled",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.request.received",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.request.completed",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.request.rejected",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.step.started",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.step.completed",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.step.failed",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.step.cancelled",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.agent.started",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.agent.waiting",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.agent.completed",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.agent.failed",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.model.requested",
+      "carrier": "span_event_or_log",
+      "operation_span": "inference",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.model.responded",
+      "carrier": "span_event_or_log",
+      "operation_span": "inference",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.model.failed",
+      "carrier": "span_event_or_log",
+      "operation_span": "inference",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.prompt.rendered",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.context.assembled",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.tool.requested",
+      "carrier": "span_event_or_log",
+      "operation_span": "execute_tool",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.tool.authorized",
+      "carrier": "span_event_or_log",
+      "operation_span": "execute_tool",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.tool.completed",
+      "carrier": "span_event_or_log",
+      "operation_span": "execute_tool",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.tool.failed",
+      "carrier": "span_event_or_log",
+      "operation_span": "execute_tool",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.retrieval.started",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.retrieval.completed",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.retrieval.failed",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.memory.read",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.memory.written",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.memory.updated",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.memory.deleted",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.memory.failed",
+      "carrier": "span_event_or_log",
+      "operation_span": "application",
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.evaluation.completed",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.evaluation.failed",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.safety.detected",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.safety.reviewed",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.safety.mitigated",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.reliability.detected",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.reliability.recovered",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.incident.opened",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.incident.updated",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.incident.mitigated",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    },
+    {
+      "event_name": "aiops.incident.resolved",
+      "carrier": "span_event_or_log",
+      "operation_span": null,
+      "preserve": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "object_id",
+        "object_type"
+      ]
+    }
+  ]
+}

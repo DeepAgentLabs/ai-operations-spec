@@ -1,0 +1,233 @@
+{
+  "profile": "aios.otel/1",
+  "format": "illustrative projection, not OTLP JSON",
+  "artifact": {
+    "spec_version": "0.4-draft",
+    "artifact_type": "run",
+    "id": "run-otel-retry",
+    "started_at": "2026-11-03T12:00:00Z",
+    "status": "completed",
+    "requests": [],
+    "steps": [
+      {
+        "id": "step-tool",
+        "category": "tool"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "contains-tool",
+        "type": "contains",
+        "source": {
+          "id": "run-otel-retry",
+          "type": "run"
+        },
+        "target": {
+          "id": "step-tool",
+          "type": "step"
+        }
+      },
+      {
+        "id": "observed-1",
+        "type": "observed-in",
+        "source": {
+          "id": "tool-1",
+          "type": "tool_invocation"
+        },
+        "target": {
+          "id": "step-tool",
+          "type": "step"
+        }
+      },
+      {
+        "id": "observed-2",
+        "type": "observed-in",
+        "source": {
+          "id": "tool-2",
+          "type": "tool_invocation"
+        },
+        "target": {
+          "id": "step-tool",
+          "type": "step"
+        }
+      },
+      {
+        "id": "retry-order",
+        "type": "follows",
+        "source": {
+          "id": "tool-1",
+          "type": "tool_invocation"
+        },
+        "target": {
+          "id": "tool-2",
+          "type": "tool_invocation"
+        }
+      }
+    ],
+    "occurrences": [
+      {
+        "id": "tool-1",
+        "type": "tool_invocation",
+        "status": "failed",
+        "attributes": {
+          "attempt": 1,
+          "logical_activity_id": "lookup",
+          "tool_name": "lookup",
+          "duration": {
+            "name": "duration",
+            "value": 25,
+            "unit": "ms",
+            "kind": "observed"
+          }
+        }
+      },
+      {
+        "id": "tool-2",
+        "type": "tool_invocation",
+        "status": "completed",
+        "attributes": {
+          "attempt": 2,
+          "logical_activity_id": "lookup",
+          "tool_name": "lookup",
+          "duration": {
+            "name": "duration",
+            "value": 25,
+            "unit": "ms",
+            "kind": "observed"
+          }
+        }
+      }
+    ],
+    "ended_at": "2026-11-03T12:00:00.075Z",
+    "events": [
+      {
+        "event_id": "event-tool-1-requested",
+        "event_name": "aiops.tool.requested",
+        "occurred_at": "2026-11-03T12:00:00.000Z",
+        "object_id": "tool-1",
+        "object_type": "tool_invocation",
+        "attributes": {
+          "run_id": "run-otel-retry"
+        }
+      },
+      {
+        "event_id": "event-tool-1-failed",
+        "event_name": "aiops.tool.failed",
+        "occurred_at": "2026-11-03T12:00:00.025Z",
+        "object_id": "tool-1",
+        "object_type": "tool_invocation",
+        "attributes": {
+          "run_id": "run-otel-retry",
+          "outcome": "failed"
+        }
+      },
+      {
+        "event_id": "event-tool-2-requested",
+        "event_name": "aiops.tool.requested",
+        "occurred_at": "2026-11-03T12:00:00.050Z",
+        "object_id": "tool-2",
+        "object_type": "tool_invocation",
+        "attributes": {
+          "run_id": "run-otel-retry"
+        }
+      },
+      {
+        "event_id": "event-tool-2-completed",
+        "event_name": "aiops.tool.completed",
+        "occurred_at": "2026-11-03T12:00:00.075Z",
+        "object_id": "tool-2",
+        "object_type": "tool_invocation",
+        "attributes": {
+          "run_id": "run-otel-retry",
+          "outcome": "completed"
+        }
+      }
+    ]
+  },
+  "projection": {
+    "resource": {
+      "service.name": "example-lookup-service",
+      "service.version": "1.0"
+    },
+    "spans": [
+      {
+        "trace_id": "1234567890abcdef1234567890abcdef",
+        "span_id": "0000000000000001",
+        "name": "execute_tool lookup",
+        "kind": "INTERNAL",
+        "start_time": "2026-11-03T12:00:00.000Z",
+        "end_time": "2026-11-03T12:00:00.025Z",
+        "duration_ns": 25000000,
+        "status": "ERROR",
+        "attributes": {
+          "gen_ai.operation.name": "execute_tool",
+          "gen_ai.tool.name": "lookup",
+          "aios.object_id": "tool-1",
+          "aios.run_id": "run-otel-retry"
+        },
+        "events": [
+          {
+            "name": "aiops.tool.requested",
+            "timestamp": "2026-11-03T12:00:00.000Z",
+            "attributes": {
+              "aios.event_id": "event-tool-1-requested",
+              "aios.object_id": "tool-1",
+              "aios.object_type": "tool_invocation",
+              "aios.run_id": "run-otel-retry"
+            }
+          },
+          {
+            "name": "aiops.tool.failed",
+            "timestamp": "2026-11-03T12:00:00.025Z",
+            "attributes": {
+              "aios.event_id": "event-tool-1-failed",
+              "aios.object_id": "tool-1",
+              "aios.object_type": "tool_invocation",
+              "aios.run_id": "run-otel-retry",
+              "outcome": "failed"
+            }
+          }
+        ]
+      },
+      {
+        "trace_id": "1234567890abcdef1234567890abcdef",
+        "span_id": "0000000000000002",
+        "name": "execute_tool lookup",
+        "kind": "INTERNAL",
+        "start_time": "2026-11-03T12:00:00.050Z",
+        "end_time": "2026-11-03T12:00:00.075Z",
+        "duration_ns": 25000000,
+        "status": "UNSET",
+        "attributes": {
+          "gen_ai.operation.name": "execute_tool",
+          "gen_ai.tool.name": "lookup",
+          "aios.object_id": "tool-2",
+          "aios.run_id": "run-otel-retry"
+        },
+        "events": [
+          {
+            "name": "aiops.tool.requested",
+            "timestamp": "2026-11-03T12:00:00.050Z",
+            "attributes": {
+              "aios.event_id": "event-tool-2-requested",
+              "aios.object_id": "tool-2",
+              "aios.object_type": "tool_invocation",
+              "aios.run_id": "run-otel-retry"
+            }
+          },
+          {
+            "name": "aiops.tool.completed",
+            "timestamp": "2026-11-03T12:00:00.075Z",
+            "attributes": {
+              "aios.event_id": "event-tool-2-completed",
+              "aios.object_id": "tool-2",
+              "aios.object_type": "tool_invocation",
+              "aios.run_id": "run-otel-retry",
+              "outcome": "completed"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
