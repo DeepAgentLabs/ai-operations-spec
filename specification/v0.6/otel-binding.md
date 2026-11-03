@@ -1,7 +1,7 @@
 # OpenTelemetry companion binding
 
 Status: non-normative, exploratory companion profile `aios.otel/1`, shipped
-in repository v0.6.2. It neither changes canonical events nor establishes
+in repository v0.7.0. It neither changes canonical events nor establishes
 AIOS or OpenTelemetry conformance. There is no exporter SDK in this repository.
 
 ## Upstream baseline

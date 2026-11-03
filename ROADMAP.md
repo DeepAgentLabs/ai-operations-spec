@@ -247,7 +247,7 @@ Formalize concepts proven in implementation repositories.
 Closing these items still needs an independent validator run of the suite and
 independent provenance producers; see the [v0.6 acceptance criteria](specification/v0.6/acceptance-criteria.md).
 
-**Delivered in repository v0.6.2 (non-normative guidance):**
+**Delivered in repository v0.7.0 (non-normative guidance):**
 
 - [Migration guide](specification/v0.6/migration-guide.md) for cumulative
   v0.1→v0.2→v0.3→v0.4 adoption, declared-marker routing, provenance and rollback

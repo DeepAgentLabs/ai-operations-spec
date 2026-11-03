@@ -14,7 +14,7 @@ nav:
   - Migration: specification/v0.6/migration-guide.md
   - OpenTelemetry: specification/v0.6/otel-binding.md
   - Conformance suite: specification/v0.6/conformance-suite/README.md
-  - Ecosystem: docs/v0.6.2-ecosystem.md
+  - Ecosystem: docs/v0.7.0-ecosystem.md
   - Roadmap: ROADMAP.md
 validation:
   nav:

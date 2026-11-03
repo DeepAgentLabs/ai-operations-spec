@@ -1,6 +1,6 @@
 {
   "$comment": "Portable AIOS conformance suite. See README.md for the expected validator behavior. Paths are relative to this file.",
-  "snapshot": "v0.6.2",
+  "snapshot": "v0.7.0",
   "outcomes": {
     "valid": "Schema-valid and semantically valid for the schema set its spec_version names.",
     "schema-invalid": "Fails JSON Schema validation against the schema set its spec_version names.",
