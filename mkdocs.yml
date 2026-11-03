@@ -1,0 +1,24 @@
+site_name: AI Operations Specification
+site_description: Draft operational concepts, schemas and interoperability guidance for AI systems
+site_url: https://deepagentlabs.github.io/ai-operations-spec/
+repo_url: https://github.com/DeepAgentLabs/ai-operations-spec
+edit_uri: edit/main/
+docs_dir: .docs-source
+site_dir: site
+use_directory_urls: true
+theme:
+  name: mkdocs
+nav:
+  - Home: index.md
+  - Specification: SPECIFICATION.md
+  - Migration: specification/v0.6/migration-guide.md
+  - OpenTelemetry: specification/v0.6/otel-binding.md
+  - Conformance suite: specification/v0.6/conformance-suite/README.md
+  - Ecosystem: docs/v0.6.2-ecosystem.md
+  - Roadmap: ROADMAP.md
+validation:
+  nav:
+    omitted_files: info
+  links:
+    not_found: warn
+    unrecognized_links: warn

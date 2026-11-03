@@ -11,6 +11,9 @@ dev = [
     "pytest>=8,<10",
 ]
 
+[dependency-groups]
+docs = ["mkdocs>=1.6,<2"]
+
 [tool.pytest.ini_options]
 addopts = "-p no:cacheprovider"
 testpaths = [

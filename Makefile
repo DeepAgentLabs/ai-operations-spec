@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help install test clean check
+.PHONY: help install test clean check docs docs-serve
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | \
@@ -16,3 +16,11 @@ clean: ## Remove cache artifacts
 	rm -rf .pytest_cache .ruff_cache __pycache__
 
 check: test ## Run all quality gates
+
+docs: ## Build documentation with strict link validation
+	uv run --group docs python scripts/build_docs.py
+	uv run --group docs mkdocs build --strict
+
+docs-serve: ## Preview documentation locally
+	uv run --group docs python scripts/build_docs.py
+	uv run --group docs mkdocs serve
