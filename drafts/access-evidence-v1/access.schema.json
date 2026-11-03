@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deepagentlabs.github.io/ai-operations-spec/drafts/access-evidence-v1/access.schema.json",
+  "title": "Exploratory access evidence extension",
+  "type": "object",
+  "required": [
+    "format",
+    "event_id",
+    "producer",
+    "subject",
+    "task_id",
+    "correlation_id",
+    "occurred_at",
+    "kind",
+    "tool"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "producer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "correlation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tool": {
+      "type": "string",
+      "minLength": 1
+    },
+    "format": {
+      "const": "access/1"
+    },
+    "kind": {
+      "enum": [
+        "dispatched",
+        "completed",
+        "denied",
+        "revocation_acknowledged"
+      ]
+    },
+    "task_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "outcome": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
