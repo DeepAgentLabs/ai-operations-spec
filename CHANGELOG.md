@@ -6,6 +6,21 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-11-03
+
+### Changed
+
+- Publish the next-phase interoperability delivery as repository v0.7.0:
+  cumulative-layer migration/rollback guidance, the pinned non-normative
+  OpenTelemetry companion, tested retry projections and hosted MkDocs docs.
+- Align current documentation, sibling references, package metadata and the
+  portable-suite snapshot with v0.7.0. Suite cases and expected outcomes are
+  unchanged. Repository v0.6.2 was published with an undersized patch version;
+  v0.7.0 supersedes it without deleting or moving that historical tag.
+- Run/Workflow markers remain `0.4-draft` and provenance remains `0.6-draft`.
+  This repository release introduces no `0.7-draft` schema family and closes
+  no independent-review gates. No sibling runtime dependency bump is needed.
+
 ## [0.6.2] - 2026-11-03
 
 ### Added
