@@ -54,7 +54,7 @@ runtime objects, semantic conventions, schemas, examples, and maturity rules.
 
 Repository v0.6.1 delivered the first v0.6.x increment: `0.6-draft`
 provenance records, a portable conformance suite and naming conventions. The
-v0.6.2 increment delivers migration guidance, a pinned non-normative
+v0.7.0 increment delivers migration guidance, a pinned non-normative
 OpenTelemetry companion and strict MkDocs publication. The next focus is
 independent runs of the suite and implementation evidence for verification-signal/audit-event shapes. Work here should make independent implementations more
 interoperable and more precise, not encode package-specific behavior as if it

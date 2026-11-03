@@ -35,7 +35,7 @@ independent review or prove artifact truth, safety or runtime success.
 - [ ] Review confirms that a companion artifact under its own marker
       (decision `D-006`) is preferable to a future Run field.
 
-## v0.6.x interoperability guidance (repository v0.6.2)
+## v0.6.x interoperability guidance (repository v0.7.0)
 
 - [x] Migration guide distinguishes cumulative layers from wire-format versions,
       preserves observations and documents rollout/rollback and loss handling.

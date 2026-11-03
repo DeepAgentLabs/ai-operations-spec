@@ -47,13 +47,13 @@ each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
 - **v0.6.x** 🚧 Exploratory draft (first increment in repository v0.6.1) — Provenance, evidence, and operational artifacts
 - **v1.0** 🚧 Planned — Stable specification
 
-## Repository v0.6.2 — implementation guidance
+## Repository v0.7.0 — implementation guidance
 
 The next v0.6.x increment adds a [migration guide](specification/v0.6/migration-guide.md),
 a [non-normative OpenTelemetry companion](specification/v0.6/otel-binding.md)
 with a complete event mapping and tested retry example, and a strict
 [MkDocs documentation build and publishing workflow](docs/documentation-site.md).
-See the [sibling compatibility matrix](docs/v0.6.2-ecosystem.md).
+See the [sibling compatibility matrix](docs/v0.7.0-ecosystem.md).
 Run/Workflow stay `0.4-draft`; provenance stays `0.6-draft`. No runtime
 dependency or independent-review status changes.
 
@@ -66,7 +66,7 @@ dependency or independent-review status changes.
 - Validate the v0.5 compatibility rules against a real version transition
   once one exists; the version-marker grammar and change classification are
   drafted, but no frozen version has yet been superseded.
-- Have a non-DeepAgentLabs validator run the v0.6.2
+- Have a non-DeepAgentLabs validator run the v0.7.0
   [portable conformance suite](specification/v0.6/conformance-suite/README.md)
   and report matching outcomes, and gather provenance records from two
   independent producers.

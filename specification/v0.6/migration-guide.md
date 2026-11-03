@@ -1,6 +1,6 @@
 # Adopting the cumulative AIOS draft layers
 
-Status: non-normative implementation guide, repository v0.6.2. All layers
+Status: non-normative implementation guide, repository v0.7.0. All layers
 remain drafts; this guide does not close independent-review gates.
 
 ## Layers are not wire-format upgrades
@@ -8,7 +8,7 @@ remain drafts; this guide does not close independent-review gates.
 v0.1, v0.2 and v0.3 introduce concepts, relationships and events. They do
 not define three historical JSON formats. There is no supported automatic
 `0.1` → `0.2` → `0.3` JSON rewrite. The first published Run/Workflow schema
-set is `0.4-draft`. Repository v0.6.2 is a snapshot tag, never an artifact's
+set is `0.4-draft`. Repository v0.7.0 is a snapshot tag, never an artifact's
 `spec_version`. Pin both producer and validator snapshot when using drafts.
 
 | Adoption step | Preserve | Add or verify | Stop when |
@@ -81,5 +81,5 @@ reported separately; none establishes a successful verification.
 5. Roll back the adapter/configuration if needed; do not rewrite stored
    markers or describe retained older artifacts as a newer version.
 
-See [ecosystem compatibility](../../docs/v0.6.2-ecosystem.md) for sibling
+See [ecosystem compatibility](../../docs/v0.7.0-ecosystem.md) for sibling
 ownership, dependencies and the absence of automatic adapters in this release.
