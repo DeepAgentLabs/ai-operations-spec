@@ -66,7 +66,7 @@ dependency or independent-review status changes.
 - Validate the v0.5 compatibility rules against a real version transition
   once one exists; the version-marker grammar and change classification are
   drafted, but no frozen version has yet been superseded.
-- Have a non-DeepAgentLabs validator run the v0.6.1
+- Have a non-DeepAgentLabs validator run the v0.6.2
   [portable conformance suite](specification/v0.6/conformance-suite/README.md)
   and report matching outcomes, and gather provenance records from two
   independent producers.
