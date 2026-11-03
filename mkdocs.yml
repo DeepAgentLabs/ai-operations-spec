@@ -2,7 +2,7 @@ site_name: AI Operations Specification
 site_description: Draft operational concepts, schemas and interoperability guidance for AI systems
 site_url: https://deepagentlabs.github.io/ai-operations-spec/
 repo_url: https://github.com/DeepAgentLabs/ai-operations-spec
-edit_uri: edit/main/
+edit_uri: ""  # Staged home is index.md; its source is README.md.
 docs_dir: .docs-source
 site_dir: site
 use_directory_urls: true
