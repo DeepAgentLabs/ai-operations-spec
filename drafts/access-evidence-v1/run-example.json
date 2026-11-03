@@ -1,0 +1,33 @@
+{
+  "spec_version": "0.4-draft",
+  "artifact_type": "run",
+  "id": "run-ext-001",
+  "started_at": "2026-07-21T06:00:00Z",
+  "status": "completed",
+  "requests": [],
+  "steps": [],
+  "relationships": [],
+  "events": [
+    {
+      "event_id": "evt-601",
+      "event_name": "io.deepagentlabs.access.denied",
+      "occurred_at": "2026-11-02T12:00:00Z",
+      "object_id": "run-ext-001",
+      "object_type": "run",
+      "extensions": {
+        "io.deepagentlabs.access": {
+          "format": "access/1",
+          "event_id": "evt-601",
+          "producer": "deep-agentic-core-mcp",
+          "subject": "isolated-user",
+          "task_id": "task-601",
+          "correlation_id": "call-601",
+          "occurred_at": "2026-11-02T12:00:00Z",
+          "kind": "denied",
+          "tool": "tower.execute",
+          "reason": "tool denied by policy"
+        }
+      }
+    }
+  ]
+}

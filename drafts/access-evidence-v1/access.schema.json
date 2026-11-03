@@ -50,7 +50,8 @@
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "minLength": 1
     },
     "occurred_at": {
       "type": "string",

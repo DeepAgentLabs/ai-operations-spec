@@ -27,3 +27,15 @@ Example: MCP `dispatch` maps to `dispatched`, `completion` to `completed`,
 `denial` to `denied`; the original `mcp.access-decision.v1` record stays intact.
 A Run event uses the producer-namespaced event name and includes this object in
 `extensions`; the Run's object references still follow the v0.4 semantic rules.
+
+## Validation boundary
+
+`access.schema.json` validates **one observation only**. Conformance to this
+schema does not detect missing events, establish stream order or enforce an
+in-flight limit. This profile makes no stream-coverage or maximum-in-flight
+contract claim. Expected stream identity and declared coverage belong to the
+Lens manifest; the scenario host must supply expected attempts and acknowledgement
+identity. The native Chaos assertion checks that authenticated snapshot and
+reports observed in-flight calls separately. It does not set a maximum number of
+already-reserved calls. See `run-example.json` for non-normative embedding in an
+existing Run; producer event names are namespaced, not additions to the AIOS catalog.
