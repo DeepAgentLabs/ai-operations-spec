@@ -1,0 +1,12 @@
+{
+  "format": "access/1",
+  "event_id": "evt-601",
+  "producer": "deep-agentic-core-mcp",
+  "subject": "isolated-user",
+  "task_id": "task-601",
+  "correlation_id": "call-601",
+  "occurred_at": "2026-11-02T12:00:00Z",
+  "kind": "denied",
+  "tool": "tower.execute",
+  "reason": "tool denied by policy"
+}
