@@ -16,32 +16,10 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 - Align current documentation, sibling references, package metadata and the
   portable-suite snapshot with v0.7.0. Suite cases and expected outcomes are
   unchanged. Repository v0.6.2 was published with an undersized patch version;
-  v0.7.0 supersedes it without deleting or moving that historical tag.
+  the incorrect v0.6.2 release and tag have been removed.
 - Run/Workflow markers remain `0.4-draft` and provenance remains `0.6-draft`.
   This repository release introduces no `0.7-draft` schema family and closes
   no independent-review gates. No sibling runtime dependency bump is needed.
-
-## [0.6.2] - 2026-11-03
-
-### Added
-
-- Non-normative migration guide for cumulative draft-layer adoption,
-  schema routing, provenance, loss reporting and rollout/rollback.
-- OpenTelemetry companion profile `aios.otel/1`, pinned to upstream semantic
-  conventions 1.37.0, with full canonical-event mapping and a paired retry
-  projection. This readable example is not OTLP JSON or an exporter SDK.
-- Strict MkDocs build from tracked documentation sources, historical raw
-  schema URL aliases, PR validation and main-only GitHub Pages publication.
-- Tests for catalog coverage, projection identity/outcomes/units and the
-  documentation publication boundary; sibling compatibility matrix.
-
-### Notes
-
-- Run/Workflow stay `0.4-draft`; provenance stays `0.6-draft`. No normative
-  schema, event vocabulary, runtime dependency or review gate changes.
-- Sibling updates are documentation-only; no sibling patch release is needed.
-- Verification-signal, audit-event and incident-summary shapes remain deferred
-  pending implementation evidence. Independent validation/review remains open.
 
 ## [0.6.1] - 2026-10-31
 
