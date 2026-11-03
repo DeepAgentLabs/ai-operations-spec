@@ -1,5 +1,14 @@
 # AI Operations Specification Roadmap
 
+## Release sequencing
+
+The final specification-readiness roadmap phase uses **v0.7**, with implementation guidance already shipped in repository v0.7.0;
+remaining review/readiness work can use further minor releases. **v1.0 is reserved for one coordinated DeepAgentLabs
+ecosystem release**, after the shared readiness and compatibility gates pass.
+Completing this minor milestone does not independently declare stable APIs or
+AIOS conformance. Existing acceptance criteria remain required. See the
+[ecosystem release policy](https://github.com/DeepAgentLabs/.github/blob/main/profile/RELEASE_POLICY.md).
+
 > An evidence-based audit of this roadmap against the actual contents of
 > `specification/`, `drafts/`, and `reviews/` is recorded in
 > [ROADMAP_AUDIT.md](ROADMAP_AUDIT.md). It found the Release Status badges
@@ -16,7 +25,7 @@
 - **v0.5** 🚧 Exploratory draft — Versioning and compatibility rules
 - **v0.6** 🚧 Exploratory draft — Canonical examples and extension model
 - **v0.6.x** 🚧 Exploratory draft (first increment in repository v0.6.1) — Provenance, evidence, and operational artifacts
-- **v1.0** 🚧 Planned — Stable specification
+- **v0.7** 🚧 Readiness work in progress — Review and stabilization preparation; implementation guidance shipped in repository v0.7.0
 
 ## Next Steps
 
@@ -275,9 +284,9 @@ independent provenance producers; see the [v0.6 acceptance criteria](specificati
 Success means implementations can attach provenance to findings using
 spec-standard objects, and producers can run conformance checks independently.
 
-### v1.0 — Stable specification
+### v0.7 — Review and stabilization readiness
 
-Freeze the reviewed core model, relationships, semantic conventions, schemas, versioning, examples, and extension model.
+Prepare the reviewed core model, relationships, semantic conventions, schemas, versioning, examples, and extension model for the coordinated ecosystem v1.0 freeze. Independent review and implementation gates remain required; repository v0.7.0 delivered guidance, not a stable specification.
 
 Success means third parties can implement the standard without importing DeepAgentLabs packages.
 
@@ -333,8 +342,8 @@ AIOS maturity or add a runtime dependency.
 Sidecar 0.8 provides Shared/Exclusive context-only, guardrails-only or combined
 configuration, explicit host context delivery and mandatory guardrail composition.
 Exclusive rules cannot weaken shared restrictions. Cross-framework privacy,
-revocation and delegated authority remain v0.9 validation; stable schemas remain
-v1.0. Native correlated Lens readback requires Lens 0.7.1. All sibling packages
+revocation and delegated authority remain v0.9 validation; contract readiness continues in v0.10; the stable freeze is reserved for
+the coordinated ecosystem v1.0 release. Native correlated Lens readback requires Lens 0.7.1. All sibling packages
 stay optional; no dependency floor is increased without a runtime requirement.
 See the [Sidecar integration contract](https://github.com/DeepAgentLabs/agentic-sidecar/blob/main/docs/integrations.md).
 
