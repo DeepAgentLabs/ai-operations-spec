@@ -12,6 +12,8 @@ The AI Operations Specification is one cumulative standard developed in mileston
 6. [v0.6 canonical examples and extension model](specification/v0.6/README.md)
 7. [v0.6.x provenance records](specification/v0.6/provenance.md), the [portable conformance suite](specification/v0.6/conformance-suite/README.md) and [naming conventions](specification/v0.6/naming-conventions.md)
 
+8. [Migration guide](specification/v0.6/migration-guide.md) and [OpenTelemetry companion profile](specification/v0.6/otel-binding.md) (non-normative implementation guidance)
+
 Examples explain intended meaning; acceptance criteria track readiness and unresolved review gates. Acceptance checklists are contributor material, not part of the runtime contract.
 
 ## Maturity

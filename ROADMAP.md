@@ -247,17 +247,21 @@ Formalize concepts proven in implementation repositories.
 Closing these items still needs an independent validator run of the suite and
 independent provenance producers; see the [v0.6 acceptance criteria](specification/v0.6/acceptance-criteria.md).
 
-**Implement next:**
+**Delivered in repository v0.6.2 (non-normative guidance):**
 
-- migration guides between spec versions (v0.1→v0.2→v0.3→v0.4)
-- hosted documentation site for browsable spec (MkDocs)
+- [Migration guide](specification/v0.6/migration-guide.md) for cumulative
+  v0.1→v0.2→v0.3→v0.4 adoption, declared-marker routing, provenance and rollback
+- [MkDocs site](docs/documentation-site.md), strict PR builds and main-only
+  GitHub Pages publication, with unchanged raw schema aliases
+- [OpenTelemetry companion binding](specification/v0.6/otel-binding.md),
+  pinned to upstream semantic conventions 1.37.0, full event mapping and
+  a paired retry example; no SDK or automatic sibling adapter
+
+**Implement next (requires implementation evidence):**
+
 - optional report/investigation artifact schemas (if implementation usage
   proves the need)
 - incident context and operator-facing summary semantics
-- OpenTelemetry GenAI semantic convention binding — a non-normative mapping
-  document from canonical `aiops.*` events and common attributes to OTel
-  spans, span events, and resource attributes, so producers already emitting
-  OTel do not need to invent their own bridge independently
 - verification-signal schema — a standard shape for second-opinion/judge
   results (verdict, confidence, evidence-grounding, safety concerns) as a
   first-class signal object, once judge-output shapes stabilize across

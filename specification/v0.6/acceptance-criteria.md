@@ -34,3 +34,16 @@ independent review or prove artifact truth, safety or runtime success.
       subject artifact and a consumer resolves both.
 - [ ] Review confirms that a companion artifact under its own marker
       (decision `D-006`) is preferable to a future Run field.
+
+## v0.6.x interoperability guidance (repository v0.6.2)
+
+- [x] Migration guide distinguishes cumulative layers from wire-format versions,
+      preserves observations and documents rollout/rollback and loss handling.
+- [x] Non-normative OTel profile pins upstream conventions, covers canonical
+      events and demonstrates retries, identity, outcomes, privacy and units.
+- [x] Strict MkDocs build validates publication sources and schema aliases;
+      main-only GitHub Pages workflow publishes browsable guidance.
+- [x] Sibling ownership and unchanged dependency floors are recorded.
+- [ ] Independent implementations exercise the migration and transport guidance.
+
+These delivery checks do not close earlier review or independence gates.

@@ -3,7 +3,7 @@
 ## Status
 
 Exploratory draft. This layer cannot freeze before v0.1–v0.5 and independent
-review. Repository releases v0.6.0 and v0.6.1 do not close decision D-001 or
+review. Repository releases v0.6.0, v0.6.1 and v0.6.2 do not close decision D-001 or
 establish stable conformance.
 
 Run and Workflow artifacts continue to declare `spec_version: "0.4-draft"`.
@@ -38,5 +38,9 @@ Repository v0.6.1 (the first v0.6.x increment):
 
 The v0.4 schemas and semantic conformance rules remain authoritative for Run
 and Workflow validation. This layer adds no runtime objects to Runs, no event
-names and no dependency requirements. Migration guides, an OpenTelemetry
-binding, verification-signal and audit-event shapes remain later v0.6.x work.
+names and no dependency requirements. Repository v0.6.2 adds a non-normative [migration guide](migration-guide.md),
+[OpenTelemetry companion binding](otel-binding.md) with a
+[mapping catalog](otel/mapping.json) and [paired example](otel/example.json),
+and a [MkDocs publishing pipeline](../../docs/documentation-site.md).
+Verification-signal and audit-event shapes remain later v0.6.x work pending
+implementation evidence.

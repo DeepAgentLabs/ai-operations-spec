@@ -47,6 +47,16 @@ each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
 - **v0.6.x** 🚧 Exploratory draft (first increment in repository v0.6.1) — Provenance, evidence, and operational artifacts
 - **v1.0** 🚧 Planned — Stable specification
 
+## Repository v0.6.2 — implementation guidance
+
+The next v0.6.x increment adds a [migration guide](specification/v0.6/migration-guide.md),
+a [non-normative OpenTelemetry companion](specification/v0.6/otel-binding.md)
+with a complete event mapping and tested retry example, and a strict
+[MkDocs documentation build and publishing workflow](docs/documentation-site.md).
+See the [sibling compatibility matrix](docs/v0.6.2-ecosystem.md).
+Run/Workflow stay `0.4-draft`; provenance stays `0.6-draft`. No runtime
+dependency or independent-review status changes.
+
 ## Next Steps
 
 - Close the remaining v0.1 external review gate so later layers can move
