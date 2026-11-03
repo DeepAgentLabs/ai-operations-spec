@@ -42,7 +42,10 @@ def test_retry_projection_preserves_observations_and_units():
         assert span['attributes']['aios.run_id'] == run['id']
         start = datetime.fromisoformat(span['start_time'].replace('Z', '+00:00'))
         end = datetime.fromisoformat(span['end_time'].replace('Z', '+00:00'))
-        duration_ms = occurrence['attributes']['duration']['value']
+        duration = occurrence['attributes']['duration']
+        assert duration['unit'] == 'ms'
+        assert duration['kind'] == 'observed'
+        duration_ms = duration['value']
         assert (end - start).total_seconds() * 1_000_000_000 == span['duration_ns']
         assert span['duration_ns'] == duration_ms * 1_000_000
         for event in span['events']:
