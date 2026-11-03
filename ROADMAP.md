@@ -608,4 +608,10 @@ The MCP 0.6.0 / Chaos 0.10.0 / Sidecar 0.9.2 candidate includes live task-scoped
 stop/revoke, hosted Tower user bindings and authenticated native assertions.
 See the [tested matrix, limitations and commands](docs/phase6-containment.md).
 Release acceptance requires CI and publication of the paired wheels. Evals
-v0.11 reusable containment scoring remains the following milestone.
+v0.11 reusable containment scoring now ships in 0.11.0; see
+[the updated matrix](docs/evals-0.11-containment.md).
+
+## Evals 0.11 containment scoring
+
+The Evals envelope and scenario configuration are implementation-local inputs. The existing exploratory access profile defines individual observations only; it does not define an exhaustive stream, a score, or a new normative AIOS family. Evals 0.11 uses existing 0.4-draft evaluation exports unchanged.
+See [the compatibility matrix and operator example](docs/evals-0.11-containment.md).
