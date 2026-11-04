@@ -646,3 +646,7 @@ alignment does not require a specification package release.
 
 There is no runtime Lens dependency. Lens enterprise audit/compliance/gate artifacts use Lens-local 1-candidate markers. They do not introduce normative AIOS schemas; existing native exporters retain 0.4-draft and shared specification review gates remain open.
 See [compatibility, boundaries and offline operator example](docs/lens-0.13.md).
+
+## Tower 0.10 capability contract readiness
+
+See [compatibility, operator example and dependency boundaries](docs/tower-0.10-compatibility.md). Tower publishes the local candidate `tower.capabilities.v1` with Python/Node HTTP validation. AIOS owns shared normative semantics. tower.capabilities.v1 is a Tower-local candidate identifier, not an AIOS artifact or conformance claim. Existing optional dependencies remain sufficient; no package release or stable ecosystem claim is introduced.
