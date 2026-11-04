@@ -520,3 +520,9 @@ for MCP 0.6.0 / Chaos 0.10.0 / Sidecar 0.9.2 are documented in the
 
 The Evals envelope and scenario configuration are implementation-local inputs. The existing exploratory access profile defines individual observations only; it does not define an exhaustive stream, a score, or a new normative AIOS family. Evals 0.11 uses existing 0.4-draft evaluation exports unchanged.
 See [the compatibility matrix and operator example](docs/evals-0.11-containment.md).
+
+## Evals 0.12 readiness compatibility
+
+See [the candidate API, unchanged native schema and support matrix](docs/evals-0.12.md).
+Existing compatible dependency ranges remain sufficient; coordinated ecosystem
+v1.0 acceptance remains open.
