@@ -634,3 +634,10 @@ See [the compatibility matrix and operator example](docs/evals-0.11-containment.
 See [the candidate API, unchanged native schema and support matrix](docs/evals-0.12.md).
 Existing compatible dependency ranges remain sufficient; coordinated ecosystem
 v1.0 acceptance remains open.
+
+## Sidecar 0.10 candidate contracts
+
+Versioned native intent, decision, audit, scope and transfer schemas are published
+as a [non-normative implementation draft](drafts/sidecar-contracts-v1/README.md).
+Existing AIOS artifact families and review gates are unchanged. This document-only
+alignment does not require a specification package release.
