@@ -6,6 +6,10 @@ pattern redaction, trace retention and reproducible Evals release receipts.
 
 There is no runtime Lens dependency. Lens enterprise audit/compliance/gate artifacts use Lens-local 1-candidate markers. They do not introduce normative AIOS schemas; existing native exporters retain 0.4-draft and shared specification review gates remain open.
 
+Agentic Evals owns scoring and release-gate computation. Lens composes the
+submitted native Evals report and policy into a reproducible receipt; Lens-local
+gate markers do not move scoring ownership into the artifact service.
+
 Native trace, evaluation and integrity contracts retain their existing meanings.
 Audit integrity is explicitly not verified; compliance export is not certification.
 No new automatic sibling reader or shared conformance claim is introduced.
