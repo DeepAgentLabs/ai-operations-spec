@@ -9,7 +9,7 @@ use_directory_urls: true
 theme:
   name: mkdocs
 nav:
-  - Chaos 0.11 ChaosHub: chaos-0.11-chaoshub.md
+  - Chaos 0.11 ChaosHub: docs/chaos-0.11-chaoshub.md
   - Tower 0.10 contract readiness: docs/tower-0.10-compatibility.md
   - Lens 0.13 readiness: docs/lens-0.13.md
   - Evals 0.12 compatibility: docs/evals-0.12.md
