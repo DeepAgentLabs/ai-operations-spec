@@ -547,3 +547,11 @@ See [compatibility, operator example and dependency boundaries](docs/tower-0.10-
 
 Repository 0.7.0 retains the draft artifact layers. ChaosHub recipes and plugin metadata are producer configuration, not new normative AIOS objects. Existing Chaos AIOS exports remain 0.4-draft Runs with producer extensions; no schema or spec release is needed.
 See [the compatibility guide and offline operator example](docs/chaos-0.11-chaoshub.md).
+
+
+## MCP 0.7 integration readiness
+
+The MCP 0.7 candidate baseline includes this project's released integration.
+Its read-only compatibility observations remain separate from runtime readiness
+and native producer verdicts. See [the matrix, example and boundaries](docs/mcp-0.7-readiness.md).
+No runtime dependency or native schema changes are required here.
