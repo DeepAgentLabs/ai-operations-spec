@@ -533,3 +533,8 @@ Versioned native intent, decision, audit, scope and transfer schemas are publish
 as a [non-normative implementation draft](drafts/sidecar-contracts-v1/README.md).
 Existing AIOS artifact families and review gates are unchanged. This document-only
 alignment does not require a specification package release.
+
+## Lens 0.13 readiness compatibility — 2026-11-04
+
+There is no runtime Lens dependency. Lens enterprise audit/compliance/gate artifacts use Lens-local 1-candidate markers. They do not introduce normative AIOS schemas; existing native exporters retain 0.4-draft and shared specification review gates remain open.
+See [compatibility, boundaries and offline operator example](docs/lens-0.13.md).
