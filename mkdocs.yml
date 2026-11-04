@@ -9,6 +9,7 @@ use_directory_urls: true
 theme:
   name: mkdocs
 nav:
+  - Lens 0.13 readiness: lens-0.13.md
   - Evals 0.12 compatibility: docs/evals-0.12.md
   - Home: index.md
   - Specification: SPECIFICATION.md
@@ -19,6 +20,7 @@ nav:
   - Roadmap: ROADMAP.md
 validation:
   nav:
+  - Lens 0.13 readiness: lens-0.13.md
     omitted_files: info
   links:
     not_found: warn
