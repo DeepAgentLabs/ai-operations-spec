@@ -9,6 +9,7 @@ use_directory_urls: true
 theme:
   name: mkdocs
 nav:
+  - Evals 0.12 compatibility: evals-0.12.md
   - Home: index.md
   - Specification: SPECIFICATION.md
   - Migration: specification/v0.6/migration-guide.md
