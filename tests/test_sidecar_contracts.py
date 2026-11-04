@@ -16,6 +16,9 @@ def test_candidate_schema_examples_and_negative_markers(kind):
     Draft202012Validator.check_schema(schema)
     validator = Draft202012Validator(schema, format_checker=FormatChecker())
     validator.validate(example)
+    example.pop("schema_version")
+    with pytest.raises(ValidationError):
+        validator.validate(example)
     example["schema_version"] = f"sidecar.{kind}/999"
     with pytest.raises(ValidationError):
         validator.validate(example)
