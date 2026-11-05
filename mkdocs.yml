@@ -29,5 +29,3 @@ validation:
   links:
     not_found: warn
     unrecognized_links: warn
-
-

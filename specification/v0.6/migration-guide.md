@@ -83,3 +83,11 @@ reported separately; none establishes a successful verification.
 
 See [ecosystem compatibility](../../docs/v0.7.0-ecosystem.md) for sibling
 ownership, dependencies and the absence of automatic adapters in this release.
+
+## Operational companions in repository v0.8.0
+
+Verification signals, audit events and investigation reports use a separate
+0.8-draft schema set. Keep earlier artifacts and markers intact and make
+companion emission optional. See the [adoption and rollback procedure](../../docs/v0.8.0-ecosystem.md)
+and [operational schemas](../v0.8/README.md). New-family support is explicit;
+existing validators do not gain it from updating documentation.

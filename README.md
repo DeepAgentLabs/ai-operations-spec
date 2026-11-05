@@ -200,18 +200,17 @@ See [SPECIFICATION.md](SPECIFICATION.md) for the complete reading order and matu
 
 ## What's Next
 
-Upcoming specification work (see [ROADMAP.md](ROADMAP.md)):
+The planned Phase 6.x development is delivered as exploratory drafts:
+provenance, portable conformance and naming (v0.6.1), migration/OTel guidance
+(v0.7.0), and operational companions (v0.8.0). Next:
 
-Provenance records, the portable conformance suite and naming conventions
-shipped as exploratory drafts in repository v0.6.1 (see below). Next:
+- Independent review of the concepts, canonical examples and operational mappings.
+- External validator runs of the expanded portable suite.
+- Independent producer/consumer evidence, extension preservation and real
+  compatibility transitions.
+- Maintainer confirmation and review-gated stabilization before ecosystem v1.0.
 
-- **Independent suite runs** — a non-DeepAgentLabs validator reporting
-  matching outcomes
-- **Migration guides** — clear upgrade paths between spec versions
-- **OpenTelemetry GenAI binding** — a non-normative mapping from `aiops.*`
-  events to OTel spans and attributes
-- **Verification-signal and audit-event shapes** — once implementations
-  converge
+See [the roadmap](ROADMAP.md) and [operational acceptance criteria](specification/v0.8/acceptance-criteria.md).
 
 ## Control Tower integration boundary
 
