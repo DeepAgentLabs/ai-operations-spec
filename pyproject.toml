@@ -2,6 +2,7 @@
 name = "ai-operations-spec"
 version = "0.8.0"
 description = "Language-neutral operational data specification for AI systems"
+license = { file = "LICENSE" }
 requires-python = ">=3.10"
 dependencies = []
 
