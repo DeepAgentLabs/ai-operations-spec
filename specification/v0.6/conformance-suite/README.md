@@ -3,7 +3,7 @@
 ## Status
 
 Exploratory draft, first published in repository release v0.6.1. The current
-manifest identifies snapshot v0.8.0 and adds operational-artifact cases; earlier cases and expected outcomes are unchanged. The suite turns the
+manifest identifies snapshot v0.8.1 and adds operational-artifact cases; earlier cases and expected outcomes are unchanged. The suite turns the
 v0.4 conformance rules, the v0.5 marker routing rule and the v0.6 provenance
 rules into fixtures with expected outcomes and rule citations, so any
 implementation can check itself without importing a DeepAgentLabs package. It

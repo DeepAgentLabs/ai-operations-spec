@@ -79,3 +79,12 @@ review gates or establish stable conformance.
 | Schema/semantic conformance and examples | drafted | Expanded portable suite and tests/test_operational_artifacts.py | Non-DeepAgentLabs validator run |
 | Incident context and operator summary semantics | drafted | investigation_report schema and guide | Independent producer/consumer evidence |
 | Prerequisite acceptance and maturity | open | D-001 and operational acceptance criteria | Close earlier gates in order; confirm D-007 |
+
+## Coordinated internal implementation acceptance
+
+Lens 0.14.0 and MCP 0.8.0 implement the full portable outcome and provenance
+resolution suite using package-owned runtime code and pinned schemas. Sidecar
+0.11.0/MCP 0.8.0 provide native audit projections; Lens 0.14.0 provides judge
+verification signals; Tower 0.11.0 provides incident investigations. The org
+release acceptance runner validates installed wheels and records exact source
+pins and wheel digests. This is internal evidence; no independent gate closes.
