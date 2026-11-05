@@ -142,7 +142,7 @@ The Markdown documents stay normative; tests fail if a catalog drifts from them.
 - **Record where a finding came from:** read [v0.6 provenance records](specification/v0.6/provenance.md) and the [support finding example](specification/v0.6/examples/provenance/support-finding.provenance.json).
 - **Test a validator you wrote:** run the [portable conformance suite](specification/v0.6/conformance-suite/README.md).
 - **Contribute to the design:** review the open acceptance gates in each milestone and the [roadmap](ROADMAP.md).
-- **Review as an external expert:** choose tasks from the [reviewer checklist](reviews/EXTERNAL_REVIEW_TASKS.md), with scenarios, test expectations and submission instructions.
+- **Review as an external expert:** [start here](https://github.com/DeepAgentLabs/.github/blob/main/profile/EXTERNAL_REVIEW_CHECKLIST.md), choose one area and send the single linked report.
 
 ## Minimal artifact
 
