@@ -3,7 +3,7 @@
 ## Status
 
 Exploratory draft, first published in repository release v0.6.1. The current
-manifest identifies snapshot v0.7.0; its cases and expected outcomes are unchanged. The suite turns the
+manifest identifies snapshot v0.8.0 and adds operational-artifact cases; earlier cases and expected outcomes are unchanged. The suite turns the
 v0.4 conformance rules, the v0.5 marker routing rule and the v0.6 provenance
 rules into fixtures with expected outcomes and rule citations, so any
 implementation can check itself without importing a DeepAgentLabs package. It
@@ -20,7 +20,7 @@ conformance.
 
 The suite needs only a JSON Schema 2020-12 validator with `date-time` and
 `uri` format checking, the schemas under `specification/v0.4/schemas/` and
-`specification/v0.6/schemas/`, and
+`specification/v0.6/schemas/`, `specification/v0.8/schemas/`, and
 [compatibility.json](../../v0.5/compatibility.json). No network access is
 needed: register every schema by its `$id` before validating.
 
@@ -40,7 +40,7 @@ For each entry in `cases`, a validator reads the document on its own and:
 A validator passes a case when its outcome equals `expected`. A validator that
 reports rule identifiers also passes only if, for a `semantic-invalid` or
 `unsupported` case, the set of rules it cites equals `rules`. Schema-invalid
-cases list only the schema rule (`AIOS-0.4-P01` or `AIOS-0.6-R01`) because
+cases list only the schema rule (`AIOS-0.4-P01` or `AIOS-0.6-R01` or `AIOS-0.8-R01`) because
 schema error reporting differs between validator libraries; the `description`
 names any closed-vocabulary or extension rule the schema error enforces.
 
@@ -81,7 +81,7 @@ safe or successful. Claims still follow the draft claim formats in
 [provenance records](../provenance.md), for example:
 
 ```text
-Aligned with AI Operations Specification v0.4-draft as observed on 2026-11-03; passes the v0.7.0 conformance suite.
+Aligned with AI Operations Specification v0.4-draft as observed on 2026-11-03; passes the v0.8.0 conformance suite.
 ```
 
 ## Running it in this repository
@@ -90,3 +90,5 @@ Aligned with AI Operations Specification v0.4-draft as observed on 2026-11-03; p
 runs the repository's reference checks (`tests/aios_reference.py`) over every
 case and fails if a cataloged schema or semantic rule has no case. Those checks
 are test code, not an SDK; implementations are expected to bring their own.
+
+Operational cases use the [0.8-draft rules](../../v0.8/conformance.md). References to native artifacts are citation handles, not resolved or authenticated sources. Process obligations require separate implementation validation.

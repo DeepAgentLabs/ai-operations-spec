@@ -14,6 +14,7 @@ SUITE = json.loads((SUITE_DIR / "suite.json").read_text(encoding="utf-8"))
 CATALOGS = [
     ROOT / "specification" / "v0.4" / "conformance-rules.json",
     ROOT / "specification" / "v0.6" / "provenance-rules.json",
+    ROOT / "specification" / "v0.8" / "operational-rules.json",
 ]
 
 

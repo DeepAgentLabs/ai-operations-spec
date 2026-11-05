@@ -1,6 +1,6 @@
 {
   "$comment": "Portable AIOS conformance suite. See README.md for the expected validator behavior. Paths are relative to this file.",
-  "snapshot": "v0.7.0",
+  "snapshot": "v0.8.0",
   "outcomes": {
     "valid": "Schema-valid and semantically valid for the schema set its spec_version names.",
     "schema-invalid": "Fails JSON Schema validation against the schema set its spec_version names.",
@@ -361,6 +361,205 @@
       "description": "Schema- and semantically valid record whose references do not resolve in the subject",
       "expected": "valid",
       "rules": []
+    },
+    {
+      "id": "operational-valid-signal",
+      "path": "cases/operational-valid-signal.json",
+      "description": "operational valid signal",
+      "expected": "valid",
+      "rules": []
+    },
+    {
+      "id": "operational-valid-unavailable",
+      "path": "cases/operational-valid-unavailable.json",
+      "description": "operational valid unavailable",
+      "expected": "valid",
+      "rules": []
+    },
+    {
+      "id": "operational-valid-audit",
+      "path": "cases/operational-valid-audit.json",
+      "description": "operational valid audit",
+      "expected": "valid",
+      "rules": []
+    },
+    {
+      "id": "operational-valid-investigation",
+      "path": "cases/operational-valid-investigation.json",
+      "description": "operational valid investigation",
+      "expected": "valid",
+      "rules": []
+    },
+    {
+      "id": "operational-signal-unavailable-verdict",
+      "path": "cases/operational-signal-unavailable-verdict.json",
+      "description": "operational signal unavailable verdict",
+      "expected": "schema-invalid",
+      "rules": [
+        "AIOS-0.8-R01"
+      ]
+    },
+    {
+      "id": "operational-signal-confidence-range",
+      "path": "cases/operational-signal-confidence-range.json",
+      "description": "operational signal confidence range",
+      "expected": "schema-invalid",
+      "rules": [
+        "AIOS-0.8-R01"
+      ]
+    },
+    {
+      "id": "operational-signal-unassessed-safety-concern",
+      "path": "cases/operational-signal-unassessed-safety-concern.json",
+      "description": "operational signal unassessed safety concern",
+      "expected": "schema-invalid",
+      "rules": [
+        "AIOS-0.8-R01"
+      ]
+    },
+    {
+      "id": "operational-signal-missing-native",
+      "path": "cases/operational-signal-missing-native.json",
+      "description": "operational signal missing native",
+      "expected": "schema-invalid",
+      "rules": [
+        "AIOS-0.8-R01"
+      ]
+    },
+    {
+      "id": "operational-audit-missing-actor-id",
+      "path": "cases/operational-audit-missing-actor-id.json",
+      "description": "operational audit missing actor id",
+      "expected": "schema-invalid",
+      "rules": [
+        "AIOS-0.8-R01"
+      ]
+    },
+    {
+      "id": "operational-audit-raw-arguments",
+      "path": "cases/operational-audit-raw-arguments.json",
+      "description": "operational audit raw arguments",
+      "expected": "schema-invalid",
+      "rules": [
+        "AIOS-0.8-R01"
+      ]
+    },
+    {
+      "id": "operational-audit-naive-time",
+      "path": "cases/operational-audit-naive-time.json",
+      "description": "operational audit naive time",
+      "expected": "schema-invalid",
+      "rules": [
+        "AIOS-0.8-R01"
+      ]
+    },
+    {
+      "id": "operational-signal-duplicate-evidence",
+      "path": "cases/operational-signal-duplicate-evidence.json",
+      "description": "operational signal duplicate evidence",
+      "expected": "semantic-invalid",
+      "rules": [
+        "AIOS-0.8-R02"
+      ]
+    },
+    {
+      "id": "operational-report-duplicate-entry",
+      "path": "cases/operational-report-duplicate-entry.json",
+      "description": "operational report duplicate entry",
+      "expected": "semantic-invalid",
+      "rules": [
+        "AIOS-0.8-R02"
+      ]
+    },
+    {
+      "id": "operational-report-undeclared-citation",
+      "path": "cases/operational-report-undeclared-citation.json",
+      "description": "operational report undeclared citation",
+      "expected": "semantic-invalid",
+      "rules": [
+        "AIOS-0.8-R03"
+      ]
+    },
+    {
+      "id": "operational-audit-future-occurrence",
+      "path": "cases/operational-audit-future-occurrence.json",
+      "description": "operational audit future occurrence",
+      "expected": "semantic-invalid",
+      "rules": [
+        "AIOS-0.8-R04"
+      ]
+    },
+    {
+      "id": "operational-report-future-detection",
+      "path": "cases/operational-report-future-detection.json",
+      "description": "operational report future detection",
+      "expected": "semantic-invalid",
+      "rules": [
+        "AIOS-0.8-R04"
+      ]
+    },
+    {
+      "id": "operational-report-future-timeline",
+      "path": "cases/operational-report-future-timeline.json",
+      "description": "operational report future timeline",
+      "expected": "semantic-invalid",
+      "rules": [
+        "AIOS-0.8-R04"
+      ]
+    },
+    {
+      "id": "operational-signal-grounding-without-evidence",
+      "path": "cases/operational-signal-grounding-without-evidence.json",
+      "description": "operational signal grounding without evidence",
+      "expected": "semantic-invalid",
+      "rules": [
+        "AIOS-0.8-R05"
+      ]
+    },
+    {
+      "id": "operational-report-observed-without-evidence",
+      "path": "cases/operational-report-observed-without-evidence.json",
+      "description": "operational report observed without evidence",
+      "expected": "semantic-invalid",
+      "rules": [
+        "AIOS-0.8-R06"
+      ]
+    },
+    {
+      "id": "operational-report-verified-without-evidence",
+      "path": "cases/operational-report-verified-without-evidence.json",
+      "description": "operational report verified without evidence",
+      "expected": "semantic-invalid",
+      "rules": [
+        "AIOS-0.8-R06"
+      ]
+    },
+    {
+      "id": "operational-audit-self-causation",
+      "path": "cases/operational-audit-self-causation.json",
+      "description": "operational audit self causation",
+      "expected": "semantic-invalid",
+      "rules": [
+        "AIOS-0.8-R07"
+      ]
+    },
+    {
+      "id": "operational-unsupported-old-marker",
+      "path": "cases/operational-unsupported-old-marker.json",
+      "description": "operational unsupported old marker",
+      "expected": "unsupported",
+      "rules": [
+        "AIOS-0.5-V03"
+      ]
+    },
+    {
+      "id": "operational-unsupported-run",
+      "path": "cases/operational-unsupported-run.json",
+      "description": "operational unsupported run",
+      "expected": "unsupported",
+      "rules": [
+        "AIOS-0.5-V03"
+      ]
     }
   ],
   "resolution_cases": [
