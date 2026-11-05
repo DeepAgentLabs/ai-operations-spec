@@ -55,8 +55,9 @@ runtime objects, semantic conventions, schemas, examples, and maturity rules.
 Repository v0.6.1 delivered the first v0.6.x increment: `0.6-draft`
 provenance records, a portable conformance suite and naming conventions. The
 v0.7.0 increment delivers migration guidance, a pinned non-normative
-OpenTelemetry companion and strict MkDocs publication. The next focus is
-independent runs of the suite and implementation evidence for verification-signal/audit-event shapes. Work here should make independent implementations more
+OpenTelemetry companion and strict MkDocs publication. Repository v0.8.0 delivers exploratory verification-signal, audit-event and
+investigation-report companions under 0.8-draft. The next focus is independent
+review, validator runs and producer/consumer evidence. Work here should make independent implementations more
 interoperable and more precise, not encode package-specific behavior as if it
 were normative.
 
@@ -102,7 +103,7 @@ implementers. Package-specific behavior belongs in implementation repositories.
 | `tests/test_v04_schema.py` | Schema validation tests |
 | `drafts/v0.4/tests/` | Legacy schema fixture tests |
 | `reviews/` | Independent-review evidence: decision log, evidence matrix, framework mappings, and conformance artifacts |
-| `reviews/decision-log.md` | Milestone-level review decisions (`D-001`-`D-006`) — a separate numbering series from `specification/v0.1/decisions.md`'s design decisions |
+| `reviews/decision-log.md` | Milestone-level review decisions (`D-001`-`D-007`) — a separate numbering series from `specification/v0.1/decisions.md`'s design decisions |
 | `tests/test_review_artifacts.py` | Validates `reviews/artifacts/*.conformance.json` against v0.4 schema + semantic rules |
 | `tests/test_v05_versioning.py` | Validates the v0.5 version-marker grammar against its own docs and the v0.4 schemas |
 | `tests/aios_reference.py` | Repository reference checks: marker routing, provenance semantics, cross-artifact resolution (test code, not an SDK) |
@@ -208,3 +209,5 @@ compatibility gates pass. Follow the current minor target in ROADMAP.md and
 [the shared release policy](https://github.com/DeepAgentLabs/.github/blob/main/profile/RELEASE_POLICY.md).
 A documentation-only roadmap update does not bump package metadata or publish
 a new package release. Schema versions remain independent of package versions.
+
+Operational companions live under `specification/v0.8/`; their `0.8-draft` schemas do not change existing Run/Workflow/provenance markers. `tests/operational_reference.py` holds repository semantic checks, not runtime SDK code.

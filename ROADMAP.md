@@ -3,7 +3,8 @@
 ## Release sequencing
 
 The final specification-readiness roadmap phase uses **v0.7**, with implementation guidance already shipped in repository v0.7.0;
-remaining review/readiness work can use further minor releases. **v1.0 is reserved for one coordinated DeepAgentLabs
+repository v0.8.0 delivers the remaining operational-artifact drafts;
+remaining independent review/readiness work can use further minor releases. **v1.0 is reserved for one coordinated DeepAgentLabs
 ecosystem release**, after the shared readiness and compatibility gates pass.
 Completing this minor milestone does not independently declare stable APIs or
 AIOS conformance. Existing acceptance criteria remain required. See the
@@ -266,20 +267,24 @@ independent provenance producers; see the [v0.6 acceptance criteria](specificati
   pinned to upstream semantic conventions 1.37.0, full event mapping and
   a paired retry example; no SDK or automatic sibling adapter
 
-**Implement next (requires implementation evidence):**
+**Delivered in repository v0.8.0 as exploratory operational artifacts:**
 
-- optional report/investigation artifact schemas (if implementation usage
-  proves the need)
-- incident context and operator-facing summary semantics
-- verification-signal schema — a standard shape for second-opinion/judge
-  results (verdict, confidence, evidence-grounding, safety concerns) as a
-  first-class signal object, once judge-output shapes stabilize across
-  implementation repos; candidate prior art: `devops-open-agent`'s
-  LLM-as-a-Judge verifier output
-- audit-event schema — a standard shape for who-did-what operational events
-  (actor, action, target artifact reference, timestamp, no secret values),
-  feeding the incident-context/operator-facing summary semantics above;
-  candidate prior art: `devops-open-agent`'s structured audit log
+- [Verification-signal schema](specification/v0.8/verification-signals.md):
+  assessment availability, verdict, confidence, grounding and safety state.
+- [Audit-event schema](specification/v0.8/audit-events.md): actor, action,
+  target, occurrence time, native outcome and correlation, with privacy rules.
+- [Investigation-report schema](specification/v0.8/investigation-reports.md):
+  incident context, operator summary, cited findings, timeline, missing inputs
+  and recovery state. This is the bounded report shape supported by current
+  implementation evidence; a universal report wrapper is not justified.
+- Shared definitions, a 0.8-draft marker/schema set, rule catalog, offline
+  validation and expanded portable conformance fixtures.
+
+[Source-inspected sibling mappings](reviews/operational-artifact-mappings.md)
+justify the shared shapes; they are internal design evidence. Remaining work is
+[independent acceptance](specification/v0.8/acceptance-criteria.md), maintainer
+confirmation and optional implementation-specific exporters/consumers in the
+owning repositories. No internal test or Copilot review closes D-001.
 
 Success means implementations can attach provenance to findings using
 spec-standard objects, and producers can run conformance checks independently.
@@ -664,3 +669,7 @@ sibling acceptance matrix. See [the integration note](docs/mcp-0.7-readiness.md)
 This does not close this project's independent production/stability gates or
 AIOS review gates. Native schemas and optional dependency ranges are unchanged;
 no package release is needed for this documentation-only alignment.
+
+## AIOS 0.8.0 implementation delivery
+
+Phase 6.x operational-artifact development is drafted. See the [schemas and acceptance gates](specification/v0.8/README.md) and [sibling compatibility](docs/v0.8.0-ecosystem.md). Review/stabilization remains in progress; no layer is frozen.

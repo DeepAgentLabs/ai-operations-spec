@@ -47,3 +47,10 @@ independent review or prove artifact truth, safety or runtime success.
 - [ ] Independent implementations exercise the migration and transport guidance.
 
 These delivery checks do not close earlier review or independence gates.
+
+## Operational follow-on (repository v0.8.0)
+
+Verification signals, audit events, incident context and investigation summaries
+are drafted in the [operational companion family](../v0.8/README.md).
+Its [acceptance criteria](../v0.8/acceptance-criteria.md) retain all prerequisite
+review gates; delivery does not freeze this layer.

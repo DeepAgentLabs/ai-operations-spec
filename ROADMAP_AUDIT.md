@@ -259,3 +259,13 @@ naming-conventions document enforced by tests. v0.4's `evidence` object family
 stays the in-Run precursor; provenance records sit outside the Run (decision
 `D-006`). Migration guides, the OpenTelemetry binding, verification-signal and
 audit-event schemas remain future work, and no layer's review status changed.
+
+## Addendum (2026-11-04): operational artifacts delivered
+
+Repository v0.8.0 drafts verification signals, audit events and investigation
+reports with incident context/operator summaries, using inspected sibling
+implementation evidence. It adds the 0.8-draft family, conformance catalog,
+portable fixtures, schema/semantic checks and adoption guidance. Earlier audit
+missing-item findings describe their original snapshots. Independent acceptance
+and coordinated v1.0 remain open; native sibling reports are not automatically
+new-family artifacts.

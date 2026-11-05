@@ -45,3 +45,12 @@ came from; it never shows that the finding is true. The
 fixes the expected outcome and rule citations for each case.
 
 See [v0.5 versioning and compatibility rules](specification/v0.5/versioning.md) for how a consumer decides whether it may safely treat a differently-versioned artifact as conformant, and the [roadmap](ROADMAP.md) for remaining stable-release work.
+
+## Operational companions (repository v0.8.0)
+
+Continue with [0.8-draft operational artifacts](specification/v0.8/README.md)
+after the earlier layers: verification signals, audit events and investigation
+reports. This directory packages Phase 6.x operational artifacts under a new
+schema marker, rather than replacing earlier layers. It inherits their open
+review gates. Conformance uses its own schema and semantic rules; process
+requirements remain outside what fixture validation can establish.

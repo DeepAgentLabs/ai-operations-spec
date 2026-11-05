@@ -42,5 +42,6 @@ names and no dependency requirements. Repository v0.7.0 adds a non-normative [mi
 [OpenTelemetry companion binding](otel-binding.md) with a
 [mapping catalog](otel/mapping.json) and [paired example](otel/example.json),
 and a [MkDocs publishing pipeline](../../docs/documentation-site.md).
-Verification-signal and audit-event shapes remain later v0.6.x work pending
-implementation evidence.
+Repository v0.8.0 delivers [operational companions](../v0.8/README.md) under
+their own 0.8-draft marker, supported by source-inspected sibling mappings.
+Independent acceptance remains open.
