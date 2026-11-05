@@ -673,3 +673,10 @@ no package release is needed for this documentation-only alignment.
 ## AIOS 0.8.0 implementation delivery
 
 Phase 6.x operational-artifact development is drafted. See the [schemas and acceptance gates](specification/v0.8/README.md) and [sibling compatibility](docs/v0.8.0-ecosystem.md). Review/stabilization remains in progress; no layer is frozen.
+
+## Coordinated v1.0 engineering readiness
+
+See [the implementation and migration guide](docs/coordinated-v1-readiness.md)
+for the current candidate scope, interoperability evidence and remaining gates.
+Current version: 0.8.1. Internal tests do not close independent review,
+live-provider/deployment acceptance or the coordinated stable freeze.

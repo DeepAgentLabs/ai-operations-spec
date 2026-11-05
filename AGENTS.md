@@ -211,3 +211,5 @@ A documentation-only roadmap update does not bump package metadata or publish
 a new package release. Schema versions remain independent of package versions.
 
 Operational companions live under `specification/v0.8/`; their `0.8-draft` schemas do not change existing Run/Workflow/provenance markers. `tests/operational_reference.py` holds repository semantic checks, not runtime SDK code.
+
+Repository 0.8.1 adds MIT licensing and coordinated internal acceptance guidance. Preserve the MIT notice in bundled copies. External review gates remain unchanged.

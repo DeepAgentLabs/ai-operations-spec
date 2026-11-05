@@ -9,6 +9,7 @@ use_directory_urls: true
 theme:
   name: mkdocs
 nav:
+  - Coordinated v1 readiness: docs/coordinated-v1-readiness.md
   - MCP 0.7 readiness: docs/mcp-0.7-readiness.md
   - Chaos 0.11 ChaosHub: docs/chaos-0.11-chaoshub.md
   - Tower 0.10 contract readiness: docs/tower-0.10-compatibility.md

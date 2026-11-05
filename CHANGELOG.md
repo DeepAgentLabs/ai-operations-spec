@@ -6,6 +6,23 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 ## [Unreleased]
 
+## [0.8.1] - 2026-11-04
+
+### Added
+
+- MIT license and metadata for specification text, schemas, fixtures and code,
+  matching the sibling package license and enabling notice-preserving schema reuse.
+- Coordinated engineering-readiness guidance for native companion exporters,
+  full runtime validators, installed-wheel acceptance and the independent gates.
+
+### Compatibility
+
+- Published schemas, markers, catalogs and all portable case expectations remain
+  unchanged from v0.8.0. Only the suite snapshot identifier advances.
+- Independent review, deployment/live-provider acceptance and the stable freeze
+  remain open; this patch does not claim stable conformance.
+
+
 ## [0.8.0] - 2026-11-04
 
 ### Added
