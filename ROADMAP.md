@@ -1,14 +1,14 @@
 # AI Operations Specification Roadmap
 
-## Release sequencing
+## Coordinated 1.0.0 milestone
 
-The final specification-readiness roadmap phase uses **v0.7**, with implementation guidance already shipped in repository v0.7.0;
-repository v0.8.0 delivers the remaining operational-artifact drafts;
-remaining independent review/readiness work can use further minor releases. **v1.0 is reserved for one coordinated DeepAgentLabs
-ecosystem release**, after the shared readiness and compatibility gates pass.
-Completing this minor milestone does not independently declare stable APIs or
-AIOS conformance. Existing acceptance criteria remain required. See the
-[ecosystem release policy](https://github.com/DeepAgentLabs/.github/blob/main/profile/RELEASE_POLICY.md).
+Version 1.0.0 marks the coordinated DeepAgentLabs milestone on 2026-11-05.
+Development and roadmap delivery continue after this release. Existing draft
+and candidate schema markers retain their maturity; package versions do not
+certify AIOS conformance or production deployment readiness. Independent review,
+independent implementations, security/deployment acceptance, live-provider
+validation and the stable contract freeze remain tracked follow-up work.
+See the [ecosystem release policy](https://github.com/DeepAgentLabs/.github/blob/main/profile/RELEASE_POLICY.md).
 
 > An evidence-based audit of this roadmap against the actual contents of
 > `specification/`, `drafts/`, and `reviews/` is recorded in

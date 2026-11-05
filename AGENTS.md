@@ -203,13 +203,8 @@ Run `make check` before every push. It runs the schema validation tests.
 
 ## Coordinated major release policy
 
-Keep the remaining local roadmap phases on minor versions. Reserve v1.0 for
-one coordinated ecosystem release after each project's acceptance and
-compatibility gates pass. Follow the current minor target in ROADMAP.md and
-[the shared release policy](https://github.com/DeepAgentLabs/.github/blob/main/profile/RELEASE_POLICY.md).
-A documentation-only roadmap update does not bump package metadata or publish
-a new package release. Schema versions remain independent of package versions.
-
-Operational companions live under `specification/v0.8/`; their `0.8-draft` schemas do not change existing Run/Workflow/provenance markers. `tests/operational_reference.py` holds repository semantic checks, not runtime SDK code.
-
-Repository 0.8.1 adds MIT licensing and coordinated internal acceptance guidance. Preserve the MIT notice in bundled copies. External review gates remain unchanged.
+The maintainer authorized 1.0.0 as a coordinated milestone with outstanding
+validation disclosed. Preserve draft/candidate schema labels and track remaining
+acceptance work on the roadmap. Follow the updated
+[shared release policy](https://github.com/DeepAgentLabs/.github/blob/main/profile/RELEASE_POLICY.md).
+Schema versions remain independent of package versions.
