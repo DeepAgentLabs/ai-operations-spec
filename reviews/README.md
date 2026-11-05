@@ -1,5 +1,8 @@
 # Review Pack
 
+**New reviewer?** Start with the [plain-language task list](EXTERNAL_REVIEW_TASKS.md).
+It explains what to read, test and submit, with links to the ecosystem checklist.
+
 This directory contains the evidence scaffolding needed to move `v0.1` through `v0.4` from draft status toward reviewed acceptance.
 
 These files do not by themselves close milestone gates. They provide a structured place to record:

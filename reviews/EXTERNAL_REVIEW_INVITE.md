@@ -1,5 +1,10 @@
 # External Review Invite
 
+For the complete task breakdown, send reviewers the
+[AIOS task list](EXTERNAL_REVIEW_TASKS.md) and
+[ecosystem checklist](https://github.com/DeepAgentLabs/.github/blob/main/profile/EXTERNAL_REVIEW_CHECKLIST.md).
+The invitation below is the smaller scenario-mapping request for D-001.
+
 This is a ready-to-send packet for closing `reviews/decision-log.md` decision
 `D-001` — the one gate every `v0.1`–`v0.4` acceptance criteria still needs:
 review from someone with no DeepAgentLabs authorship, funding, or editorial
