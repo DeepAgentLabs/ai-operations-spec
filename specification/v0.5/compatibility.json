@@ -22,6 +22,19 @@
       "depends_on": [
         "0.4-draft"
       ]
+    },
+    "0.8-draft": {
+      "schema_directory": "specification/v0.8/schemas",
+      "conformance_rules": "specification/v0.8/operational-rules.json",
+      "frozen": false,
+      "artifact_types": [
+        "verification_signal",
+        "audit_event",
+        "investigation_report"
+      ],
+      "depends_on": [
+        "0.4-draft"
+      ]
     }
   },
   "consumer_rules": [

@@ -70,3 +70,12 @@ review gates or establish stable conformance.
 | Provenance and evidence-lineage concepts | drafted | `specification/v0.6/provenance.md`, `specification/v0.6/schemas/provenance.schema.json`, `specification/v0.6/provenance-rules.json`, `reviews/decision-log.md` (`D-006`) | Two independent producers emit records about the same subject |
 | Portable conformance suite | drafted | `specification/v0.6/conformance-suite/suite.json`, `tests/test_v06_conformance_suite.py` | A non-DeepAgentLabs validator reports matching outcomes |
 | Naming conventions | drafted | `specification/v0.6/naming-conventions.md`, `tests/test_naming_conventions.py` | Independent review of the rules before any freeze |
+
+## Operational artifacts (repository v0.8.0)
+
+| Gate | Status | Evidence | Remaining work |
+| --- | --- | --- | --- |
+| Verification, audit and investigation schemas | drafted | specification/v0.8/, operational-artifact-mappings.md | Independent mapping review |
+| Schema/semantic conformance and examples | drafted | Expanded portable suite and tests/test_operational_artifacts.py | Non-DeepAgentLabs validator run |
+| Incident context and operator summary semantics | drafted | investigation_report schema and guide | Independent producer/consumer evidence |
+| Prerequisite acceptance and maturity | open | D-001 and operational acceptance criteria | Close earlier gates in order; confirm D-007 |

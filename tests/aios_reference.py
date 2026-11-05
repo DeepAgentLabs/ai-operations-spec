@@ -31,7 +31,7 @@ def _schemas(marker: str) -> dict[str, dict]:
 def _registry(marker: str) -> Registry:
     documents: dict[str, dict] = {}
     for dependency in [*SCHEMA_SETS[marker].get("depends_on", []), marker]:
-        documents.update(_schemas(dependency))
+        documents.update((schema["$id"], schema) for schema in _schemas(dependency).values())
     return Registry().with_resources(
         (schema["$id"], Resource.from_contents(schema)) for schema in documents.values()
     )
@@ -57,6 +57,9 @@ def validator(document: dict) -> Draft202012Validator:
 
 
 def semantic_issues(document: dict) -> list[tuple[str, str]]:
+    if document.get("spec_version") == "0.8-draft":
+        from operational_reference import operational_issues
+        return operational_issues(document)
     if document.get("artifact_type") == "provenance":
         return provenance_issues(document)
     return run_semantic_issues(document)
@@ -68,7 +71,9 @@ def check(document: object) -> tuple[str, list[str]]:
         return "unsupported", ["AIOS-0.5-V03"]
     assert isinstance(document, dict)
     if any(True for _ in validator(document).iter_errors(document)):
-        rule = "AIOS-0.6-R01" if document["artifact_type"] == "provenance" else "AIOS-0.4-P01"
+        rule = {
+            "0.8-draft": "AIOS-0.8-R01", "0.6-draft": "AIOS-0.6-R01",
+        }.get(document["spec_version"], "AIOS-0.4-P01")
         return "schema-invalid", [rule]
     issues = semantic_issues(document)
     if issues:

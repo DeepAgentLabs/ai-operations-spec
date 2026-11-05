@@ -18,7 +18,8 @@ Configure the repository's Pages source as GitHub Actions. Deployment uses the
 cannot deploy. The hosted URL is
 <https://deepagentlabs.github.io/ai-operations-spec/> (the organization custom
 domain may redirect it). Raw schemas are copied unchanged at both their source
-paths and the historical `v0.4/*.schema.json` / `v0.6/*.schema.json` URL paths.
+paths and the versioned `v0.4/*.schema.json`, `v0.6/*.schema.json` and
+`v0.8/*.schema.json` URL paths. Each schema directory is discovered automatically.
 The JSON `$id` values and relative `$ref` behavior remain unchanged.
 
 A repository release snapshots sources, not a stable specification. `main`

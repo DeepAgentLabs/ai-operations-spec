@@ -3,7 +3,8 @@
 ## Release sequencing
 
 The final specification-readiness roadmap phase uses **v0.7**, with implementation guidance already shipped in repository v0.7.0;
-remaining review/readiness work can use further minor releases. **v1.0 is reserved for one coordinated DeepAgentLabs
+repository v0.8.0 delivers the remaining operational-artifact drafts;
+remaining independent review/readiness work can use further minor releases. **v1.0 is reserved for one coordinated DeepAgentLabs
 ecosystem release**, after the shared readiness and compatibility gates pass.
 Completing this minor milestone does not independently declare stable APIs or
 AIOS conformance. Existing acceptance criteria remain required. See the
@@ -53,8 +54,21 @@ each milestone's acceptance criteria and the [roadmap](ROADMAP.md)). Treat
 - **v0.4** 🚧 Exploratory draft — JSON Schema artifacts
 - **v0.5** 🚧 Exploratory draft — Versioning and compatibility rules
 - **v0.6** 🚧 Exploratory draft — Canonical examples and extension model
-- **v0.6.x** 🚧 Exploratory draft (first increment in repository v0.6.1) — Provenance, evidence, and operational artifacts
+- **v0.6.x** 🚧 Exploratory draft — Provenance in repository v0.6.1; operational companions in repository v0.8.0
 - **v0.7** 🚧 Readiness work in progress — Review and stabilization preparation; repository v0.7.0 guidance delivered
+
+## Repository v0.8.0 — operational artifacts
+
+The remaining Phase 6.x development delivers exploratory
+[verification signals, audit events and investigation reports](specification/v0.8/README.md),
+including incident context and operator summaries. The new families declare
+`0.8-draft`; existing Run/Workflow and provenance markers remain unchanged.
+Schemas, rule catalogs, positive/negative fixtures and the portable suite
+validate them offline. See [examples](specification/v0.8/examples.md),
+[source mappings](reviews/operational-artifact-mappings.md) and the
+[ecosystem compatibility matrix](docs/v0.8.0-ecosystem.md).
+Sibling adoption remains optional; documentation alignment adds no runtime
+exporter, dependency floor or stable-conformance claim.
 
 ## Repository v0.7.0 — implementation guidance
 
@@ -75,7 +89,7 @@ dependency or independent-review status changes.
 - Validate the v0.5 compatibility rules against a real version transition
   once one exists; the version-marker grammar and change classification are
   drafted, but no frozen version has yet been superseded.
-- Have a non-DeepAgentLabs validator run the v0.7.0
+- Have a non-DeepAgentLabs validator run the v0.8.0
   [portable conformance suite](specification/v0.6/conformance-suite/README.md)
   and report matching outcomes, and gather provenance records from two
   independent producers.
@@ -186,18 +200,17 @@ See [SPECIFICATION.md](SPECIFICATION.md) for the complete reading order and matu
 
 ## What's Next
 
-Upcoming specification work (see [ROADMAP.md](ROADMAP.md)):
+The planned Phase 6.x development is delivered as exploratory drafts:
+provenance, portable conformance and naming (v0.6.1), migration/OTel guidance
+(v0.7.0), and operational companions (v0.8.0). Next:
 
-Provenance records, the portable conformance suite and naming conventions
-shipped as exploratory drafts in repository v0.6.1 (see below). Next:
+- Independent review of the concepts, canonical examples and operational mappings.
+- External validator runs of the expanded portable suite.
+- Independent producer/consumer evidence, extension preservation and real
+  compatibility transitions.
+- Maintainer confirmation and review-gated stabilization before ecosystem v1.0.
 
-- **Independent suite runs** — a non-DeepAgentLabs validator reporting
-  matching outcomes
-- **Migration guides** — clear upgrade paths between spec versions
-- **OpenTelemetry GenAI binding** — a non-normative mapping from `aiops.*`
-  events to OTel spans and attributes
-- **Verification-signal and audit-event shapes** — once implementations
-  converge
+See [the roadmap](ROADMAP.md) and [operational acceptance criteria](specification/v0.8/acceptance-criteria.md).
 
 ## Control Tower integration boundary
 
@@ -555,3 +568,5 @@ The MCP 0.7 candidate baseline includes this project's released integration.
 Its read-only compatibility observations remain separate from runtime readiness
 and native producer verdicts. See [the matrix, example and boundaries](docs/mcp-0.7-readiness.md).
 No runtime dependency or native schema changes are required here.
+
+The [0.8-draft operational rule catalog](specification/v0.8/operational-rules.json) extends the portable suite without changing earlier schema families.

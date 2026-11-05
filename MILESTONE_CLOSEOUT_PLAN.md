@@ -239,3 +239,10 @@ needs a non-DeepAgentLabs validator that runs the suite and reports matching
 outcomes, two independent provenance producers describing the same subject,
 and maintainer confirmation of decision `D-006`. The suite's reference checks
 are repository test code; passing them is not independent evidence.
+
+## Operational-artifact delivery (repository v0.8.0)
+
+Phase 6.x implementation is drafted under specification/v0.8/. Close its
+independent review, validator and producer/consumer acceptance criteria after
+prerequisite review gates. Repository checks and Copilot code review provide
+engineering validation, not independence evidence.

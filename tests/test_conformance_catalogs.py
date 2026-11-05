@@ -150,4 +150,8 @@ def test_each_artifact_type_has_exactly_one_published_marker() -> None:
     for marker, entry in COMPATIBILITY["published_schema_sets"].items():
         for artifact_type in entry["artifact_types"]:
             owners.setdefault(artifact_type, []).append(marker)
-    assert owners == {"workflow": ["0.4-draft"], "run": ["0.4-draft"], "provenance": ["0.6-draft"]}
+    assert owners == {
+        "workflow": ["0.4-draft"], "run": ["0.4-draft"], "provenance": ["0.6-draft"],
+        "verification_signal": ["0.8-draft"], "audit_event": ["0.8-draft"],
+        "investigation_report": ["0.8-draft"],
+    }

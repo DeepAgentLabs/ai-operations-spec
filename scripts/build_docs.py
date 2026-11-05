@@ -56,10 +56,8 @@ def stage() -> None:
         markdown.write_text(re.sub(r'\]\(([^)]+)\)', link, markdown.read_text()), encoding='utf-8')
     # Existing schema $ids predate the source-directory layout. Serve aliases
     # without changing their identity or rewriting $refs.
-    for version in ('v0.4', 'v0.6'):
-        schemas = STAGING / 'specification' / version / 'schemas'
-        if schemas.exists():
-            shutil.copytree(schemas, STAGING / version)
+    for schemas in sorted((STAGING / 'specification').glob('v*/schemas')):
+        shutil.copytree(schemas, STAGING / schemas.parent.name)
 
 
 if __name__ == '__main__':

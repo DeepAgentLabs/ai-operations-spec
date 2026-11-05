@@ -191,3 +191,18 @@ Copy this block for each new decision:
 - Follow-up:
   ...
 ```
+
+## D-007: Operational artifacts are a separate companion family
+
+- Status: editor-proposed, pending maintainer confirmation and independent review.
+- Applies to: Phase 6.x operational artifacts, repository v0.8.0.
+- Decision: verification_signal, audit_event and investigation_report declare
+  0.8-draft, with a separate schema set. Existing Run/Workflow/provenance schema
+  markers remain unchanged. Incident context and summaries are embedded in the
+  bounded investigation report; no evidence supports a universal report family.
+- Evidence: [source mappings](operational-artifact-mappings.md), operational
+  schemas, catalog and positive/negative suite cases.
+- Rationale: extending closed v0.4 enums/fields breaks existing consumers.
+  Companion artifacts preserve native evidence while allowing explicit uptake.
+- Follow-up: obtain external validator/producer evidence and confirm this
+  packaging before freeze. This decision does not close D-001.
