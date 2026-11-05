@@ -20,7 +20,17 @@ Operational adoption is optional and existing artifacts remain valid. Consumers
 that do not implement these schemas continue rejecting unsupported markers.
 This documentation/evidence alignment requires no new specification release.
 
-Independent acceptance, live/deployment evidence and the stable freeze remain
-separate gates. See the [shared release policy](https://github.com/DeepAgentLabs/.github/blob/main/profile/RELEASE_POLICY.md).
+These acceptances remain open as follow-up work under the
+[1.0.0 milestone policy](https://github.com/DeepAgentLabs/.github/blob/main/profile/RELEASE_POLICY.md).
 
 Repository v0.8.1 adds the MIT license and this evidence/adoption guidance. Schema bytes, markers, rule catalogs and portable outcomes are unchanged from v0.8.0.
+
+## Coordinated 1.0.0 milestone
+
+Version 1.0.0 marks the coordinated DeepAgentLabs milestone on 2026-11-05.
+Development and roadmap delivery continue after this release. Existing draft
+and candidate schema markers retain their maturity; package versions do not
+certify AIOS conformance or production deployment readiness. Independent review,
+independent implementations, security/deployment acceptance, live-provider
+validation and the stable contract freeze remain tracked follow-up work.
+See the [ecosystem release policy](https://github.com/DeepAgentLabs/.github/blob/main/profile/RELEASE_POLICY.md).
