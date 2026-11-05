@@ -560,6 +560,23 @@
       "rules": [
         "AIOS-0.5-V03"
       ]
+    },
+    {
+      "id": "operational-report-verified-undeclared-evidence",
+      "path": "cases/operational-report-verified-undeclared-evidence.json",
+      "description": "operational report verified undeclared evidence",
+      "expected": "semantic-invalid",
+      "rules": [
+        "AIOS-0.8-R03",
+        "AIOS-0.8-R06"
+      ]
+    },
+    {
+      "id": "operational-valid-lowercase-time",
+      "path": "cases/operational-valid-lowercase-time.json",
+      "description": "operational valid lowercase time",
+      "expected": "valid",
+      "rules": []
     }
   ],
   "resolution_cases": [

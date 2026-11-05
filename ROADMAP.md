@@ -25,7 +25,7 @@ AIOS conformance. Existing acceptance criteria remain required. See the
 - **v0.4** 🚧 Exploratory draft — JSON Schema artifacts
 - **v0.5** 🚧 Exploratory draft — Versioning and compatibility rules
 - **v0.6** 🚧 Exploratory draft — Canonical examples and extension model
-- **v0.6.x** 🚧 Exploratory draft (first increment in repository v0.6.1) — Provenance, evidence, and operational artifacts
+- **v0.6.x** 🚧 Exploratory draft — Provenance in repository v0.6.1; operational companions in repository v0.8.0
 - **v0.7** 🚧 Readiness work in progress — Review and stabilization preparation; implementation guidance shipped in repository v0.7.0
 
 ## Next Steps

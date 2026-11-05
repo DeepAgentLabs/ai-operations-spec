@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 def instant(value: str) -> datetime:
-    return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    return datetime.fromisoformat(value.upper().replace("Z", "+00:00"))
 
 
 def operational_issues(document: dict) -> list[tuple[str, str]]:
@@ -44,8 +44,8 @@ def operational_issues(document: dict) -> list[tuple[str, str]]:
         if instant(value) > created:
             problem("R04", "An incident or timeline observation follows report creation")
     for item in [document["summary"], *document["findings"]]:
-        if item["certainty"] in {"observed", "contradictory"} and not item["evidence_ids"]:
+        if item["certainty"] in {"observed", "contradictory"} and not evidence.intersection(item["evidence_ids"]):
             problem("R06", "Observed or contradictory claims need citations")
-    if document["recovery"]["status"] == "verified" and not document["recovery"]["evidence_ids"]:
+    if document["recovery"]["status"] == "verified" and not evidence.intersection(document["recovery"]["evidence_ids"]):
         problem("R06", "Verified recovery needs citations")
     return issues

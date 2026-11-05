@@ -109,6 +109,36 @@ def test_time_comparison_uses_timezone_instants():
     assert check(doc) == ('semantic-invalid', ['AIOS-0.8-R04'])
 
 
+@pytest.mark.parametrize('field', ['summary', 'recovery'])
+def test_observed_and_verified_claims_need_a_declared_citation(field):
+    doc = example('investigation_report')
+    doc[field]['evidence_ids'] = ['not-declared']
+    if field == 'recovery':
+        doc[field]['status'] = 'verified'
+    assert check(doc) == ('semantic-invalid', ['AIOS-0.8-R03', 'AIOS-0.8-R06'])
+
+
+def test_timestamp_designator_case_does_not_change_the_instant():
+    doc = example('audit_event')
+    doc['occurred_at'] = doc['occurred_at'].lower()
+    doc['created_at'] = doc['created_at'].lower()
+    assert check(doc) == ('valid', [])
+
+
+def test_catalog_applicability_matches_semantic_rule_domains():
+    expected = {
+        'R02': ['verification_signal', 'investigation_report'],
+        'R03': ['investigation_report'],
+        'R04': ['audit_event', 'investigation_report'],
+        'R05': ['verification_signal'],
+        'R06': ['investigation_report'],
+        'R07': ['audit_event'],
+    }
+    for rule in CATALOG['rules']:
+        if rule['check'] == 'semantic':
+            assert rule['applies_to'] == expected[rule['id'].split('-')[-1]]
+
+
 @pytest.mark.parametrize('secret_field', ['credentials', 'credential_hash', 'arguments', 'execution_context'])
 def test_closed_envelopes_reject_raw_privileged_fields(secret_field):
     for kind in ['audit_event', 'verification_signal', 'investigation_report']:

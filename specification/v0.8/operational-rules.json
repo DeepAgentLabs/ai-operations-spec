@@ -27,7 +27,6 @@
       "level": "MUST",
       "applies_to": [
         "verification_signal",
-        "audit_event",
         "investigation_report"
       ],
       "requirement": "Evidence, finding and timeline entry identities MUST be unique across those collections within an artifact.",
@@ -39,8 +38,6 @@
       "check": "semantic",
       "level": "MUST",
       "applies_to": [
-        "verification_signal",
-        "audit_event",
         "investigation_report"
       ],
       "requirement": "Every investigation summary, finding, timeline and recovery citation MUST name an evidence entry declared in that report.",
@@ -52,7 +49,6 @@
       "check": "semantic",
       "level": "MUST NOT",
       "applies_to": [
-        "verification_signal",
         "audit_event",
         "investigation_report"
       ],
@@ -65,9 +61,7 @@
       "check": "semantic",
       "level": "MUST",
       "applies_to": [
-        "verification_signal",
-        "audit_event",
-        "investigation_report"
+        "verification_signal"
       ],
       "requirement": "A verification signal with grounded or partial grounding MUST contain at least one evidence reference.",
       "source_text": "A verification signal with grounded or partial grounding MUST contain at least one evidence reference."
@@ -78,8 +72,6 @@
       "check": "semantic",
       "level": "MUST",
       "applies_to": [
-        "verification_signal",
-        "audit_event",
         "investigation_report"
       ],
       "requirement": "Observed or contradictory investigation claims and verified recovery MUST cite at least one declared evidence entry.",
@@ -91,9 +83,7 @@
       "check": "semantic",
       "level": "MUST NOT",
       "applies_to": [
-        "verification_signal",
-        "audit_event",
-        "investigation_report"
+        "audit_event"
       ],
       "requirement": "An audit event MUST NOT name its own identity in causal_event_ids.",
       "source_text": "An audit event MUST NOT name its own identity in causal_event_ids."
