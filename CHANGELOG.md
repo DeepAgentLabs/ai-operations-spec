@@ -6,6 +6,34 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-11-04
+
+### Added
+
+- Exploratory operational companions under `0.8-draft`: verification signals,
+  audit events and investigation reports with incident context/operator summaries.
+- Source-pinned sibling mappings, JSON Schemas, operational rule catalog,
+  canonical examples and portable positive/schema-negative/semantic-negative cases.
+- Explicit unavailable/unknown states, native attribution, evidence citations,
+  timestamp checks and privacy/interpretation obligations.
+- Adoption/rollback and compatibility guidance for every sibling and org profile.
+
+### Changed
+
+- Route the new family explicitly through the compatibility catalog; register
+  schemas by full `$id` so shared filenames cannot overwrite earlier definitions.
+- Publish schema aliases for every specification schema directory, including v0.8.
+- Mark Phase 6.x operational development as drafted; independent acceptance,
+  maintainer confirmation and coordinated v1.0 readiness remain open.
+
+### Compatibility
+
+- Run/Workflow remain `0.4-draft`; provenance remains `0.6-draft`. Existing
+  schemas and semantic rules are unchanged. Unsupported consumers reject the
+  new marker rather than falling back. No sibling runtime dependency or
+  package patch release is needed for documentation-only alignment.
+
+
 ## [0.7.0] - 2026-11-03
 
 ### Changed
