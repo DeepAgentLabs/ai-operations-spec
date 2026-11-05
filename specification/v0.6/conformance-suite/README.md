@@ -3,7 +3,8 @@
 ## Status
 
 Exploratory draft, first published in repository release v0.6.1. The current
-manifest identifies snapshot v0.8.1 and adds operational-artifact cases; earlier cases and expected outcomes are unchanged. The suite turns the
+manifest identifies snapshot v0.8.1. Operational-artifact cases were added in
+v0.8.0; their expectations and earlier cases are unchanged. The suite turns the
 v0.4 conformance rules, the v0.5 marker routing rule and the v0.6 provenance
 rules into fixtures with expected outcomes and rule citations, so any
 implementation can check itself without importing a DeepAgentLabs package. It
@@ -81,7 +82,7 @@ safe or successful. Claims still follow the draft claim formats in
 [provenance records](../provenance.md), for example:
 
 ```text
-Aligned with AI Operations Specification v0.4-draft as observed on 2026-11-03; passes the v0.8.0 conformance suite.
+Aligned with AI Operations Specification v0.4-draft as observed on 2026-11-04; passes the v0.8.1 conformance suite.
 ```
 
 ## Running it in this repository
