@@ -1,7 +1,8 @@
 # Review Pack
 
-**New reviewer?** Start with the [plain-language task list](EXTERNAL_REVIEW_TASKS.md).
-It explains what to read, test and submit, with links to the ecosystem checklist.
+**New reviewer? [Start here](https://github.com/DeepAgentLabs/.github/blob/main/profile/EXTERNAL_REVIEW_CHECKLIST.md).**
+Choose one area, follow its steps and send the single linked report.
+The [detailed AIOS tasks](EXTERNAL_REVIEW_TASKS.md) are supporting reference.
 
 This directory contains the evidence scaffolding needed to move `v0.1` through `v0.4` from draft status toward reviewed acceptance.
 

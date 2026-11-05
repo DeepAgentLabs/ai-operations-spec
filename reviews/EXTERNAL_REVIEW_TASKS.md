@@ -8,9 +8,10 @@ Choose the tasks that fit your experience. You do not need to review every
 layer or implement a complete validator. Partial findings and disagreements are
 useful; say what you did and did not test.
 
-For runtime security, staging operations, live providers and a copyable report,
-start with the [ecosystem reviewer checklist](https://github.com/DeepAgentLabs/.github/blob/main/profile/EXTERNAL_REVIEW_CHECKLIST.md).
-Its R1–R6 tasks correspond to the specification work below.
+**New here? [Start on the single reviewer page](https://github.com/DeepAgentLabs/.github/blob/main/profile/EXTERNAL_REVIEW_CHECKLIST.md)**
+and choose one area. If you chose specification or data compatibility and need
+full AIOS requirements, continue below. Use the one report template linked
+from the start page; formal scenario mappings can be attached as evidence.
 
 ## 1. Record your review scope
 
