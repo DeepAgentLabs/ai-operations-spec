@@ -9,6 +9,7 @@ use_directory_urls: true
 theme:
   name: mkdocs
 nav:
+  - External reviewer tasks: reviews/EXTERNAL_REVIEW_TASKS.md
   - Coordinated v1 readiness: docs/coordinated-v1-readiness.md
   - MCP 0.7 readiness: docs/mcp-0.7-readiness.md
   - Chaos 0.11 ChaosHub: docs/chaos-0.11-chaoshub.md
