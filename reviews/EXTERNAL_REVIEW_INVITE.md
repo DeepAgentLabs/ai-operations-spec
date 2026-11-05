@@ -1,7 +1,7 @@
 # External Review Invite
 
 Send new reviewers this **[single start page](https://github.com/DeepAgentLabs/.github/blob/main/profile/EXTERNAL_REVIEW_CHECKLIST.md)**.
-It offers five areas with direct steps and one submission route. The invitation
+Choose an area for direct steps and one submission route. The invitation
 below is a focused scenario-mapping request for D-001; the
 [detailed AIOS worksheet](EXTERNAL_REVIEW_TASKS.md) is optional supporting guidance.
 
