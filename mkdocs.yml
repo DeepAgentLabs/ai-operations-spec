@@ -14,6 +14,8 @@ nav:
   - Tower 0.10 contract readiness: docs/tower-0.10-compatibility.md
   - Lens 0.13 readiness: docs/lens-0.13.md
   - Evals 0.12 compatibility: docs/evals-0.12.md
+  - Operational artifacts: specification/v0.8/README.md
+  - AIOS 0.8 compatibility: docs/v0.8.0-ecosystem.md
   - Home: index.md
   - Specification: SPECIFICATION.md
   - Migration: specification/v0.6/migration-guide.md
@@ -27,3 +29,5 @@ validation:
   links:
     not_found: warn
     unrecognized_links: warn
+
+
