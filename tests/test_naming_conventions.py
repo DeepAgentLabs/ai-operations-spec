@@ -9,9 +9,8 @@ from pathlib import Path
 ROOT = Path(__file__).parents[1]
 SCHEMA_PATHS = sorted((ROOT / "specification").glob("v*/schemas/*.schema.json"))
 CATALOG_PATHS = [
-    ROOT / "specification" / "v0.4" / "conformance-rules.json",
     ROOT / "specification" / "v0.5" / "compatibility.json",
-    *sorted((ROOT / "specification" / "v0.6").glob("*-rules.json")),
+    *sorted((ROOT / "specification").glob("v*/*-rules.json")),
 ]
 
 FIELD = re.compile(r"^[a-z][a-z0-9]*(_[a-z0-9]+)*$")
