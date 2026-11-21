@@ -6,6 +6,13 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-11-20
+
+### Fixed
+
+- Redirect the shared `/ai-operations-spec/docs/` landing URL to the native documentation home when GitHub Pages serves the specification repository.
+- Preserve native developer-guide URLs, schema aliases and exact AI reference downloads.
+
 ## [1.0.1] - 2026-11-20
 
 ### Added
