@@ -974,7 +974,7 @@ The [0.8-draft operational rule catalog](https://github.com/DeepAgentLabs/ai-ope
 
 See [the implementation and migration guide](https://github.com/DeepAgentLabs/ai-operations-spec/blob/main/docs/coordinated-v1-readiness.md)
 for the current candidate scope, interoperability evidence and remaining gates.
-Current repository version: 1.0.1. Internal tests do not close independent review,
+Current repository version: 1.0.2. Internal tests do not close independent review,
 live-provider/deployment acceptance or the coordinated stable freeze.
 
 ## License
@@ -1811,6 +1811,13 @@ snapshots the documents, schemas, catalogs, and fixtures; it does not by
 itself change any milestone's review status (see [ROADMAP.md](https://github.com/DeepAgentLabs/ai-operations-spec/blob/main/ROADMAP.md)).
 
 ## [Unreleased]
+
+## [1.0.2] - 2026-11-20
+
+### Fixed
+
+- Redirect the shared `/ai-operations-spec/docs/` landing URL to the native documentation home when GitHub Pages serves the specification repository.
+- Preserve native developer-guide URLs, schema aliases and exact AI reference downloads.
 
 ## [1.0.1] - 2026-11-20
 
@@ -20145,7 +20152,7 @@ Source: [specification/v0.6/conformance-suite/suite.json](https://github.com/Dee
 ```json
 {
   "$comment": "Portable AIOS conformance suite. See README.md for the expected validator behavior. Paths are relative to this file.",
-  "snapshot": "v1.0.1",
+  "snapshot": "v1.0.2",
   "outcomes": {
     "valid": "Schema-valid and semantically valid for the schema set its spec_version names.",
     "schema-invalid": "Fails JSON Schema validation against the schema set its spec_version names.",
