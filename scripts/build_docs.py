@@ -18,7 +18,9 @@ def stage() -> None:
     ).decode().split('\0')
     for name in tracked:
         path = Path(name)
-        if not name or path.suffix not in {'.md', '.json'}:
+        if not name or (path.suffix not in {'.md', '.json'} and not (
+            path.parts[:3] == ('docs', 'guide', 'examples') and path.suffix == '.py'
+        )):
             continue
         if len(path.parts) > 1 and path.parts[0] not in {
             'specification', 'docs', 'reviews', 'drafts',
@@ -34,6 +36,8 @@ def stage() -> None:
     # MkDocs treats README and index as the same page. Normalize links to the
     # root overview; link code and directory references to the source browser.
     for markdown in STAGING.rglob('*.md'):
+        if markdown.name == 'llms-full.md':
+            continue  # Publish the generated reference verbatim; its checksum must match.
         def link(match):
             target = match.group(1)
             if ':' in target or target.startswith('#'):
