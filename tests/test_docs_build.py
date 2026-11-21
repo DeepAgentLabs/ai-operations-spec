@@ -14,6 +14,8 @@ def test_staging_publishes_only_tracked_document_sources(tmp_path, monkeypatch):
     tracked = {
         'README.md': '# Draft\n\n[Code](tests/check.py)\n',
         'docs/guide.md': '[Home](../README.md)\n',
+        'docs/llms-full.md': '# Raw reference\n\n[Home](../README.md)\n',
+        'docs/guide/examples/tutorial.py': 'print("tutorial")\n',
         'specification/v0.4/schemas/run.schema.json': '{"$id":"unchanged"}\n',
         'specification/v0.8/schemas/audit_event.schema.json': '{"$id":"operational"}\n',
         'tests/check.py': 'private implementation\n',
@@ -33,6 +35,8 @@ def test_staging_publishes_only_tracked_document_sources(tmp_path, monkeypatch):
     staged = tmp_path / '.docs-source'
     assert not (staged / 'docs/secret.md').exists()
     assert not (staged / 'docs/link.md').exists()
+    assert (staged / 'docs/llms-full.md').read_bytes() == (tmp_path / 'docs/llms-full.md').read_bytes()
+    assert (staged / 'docs/guide/examples/tutorial.py').is_file()
     assert not (staged / 'tests').exists()
     assert not (staged / 'src').exists()
     assert '[Home](../index.md)' in (staged / 'docs/guide.md').read_text()
