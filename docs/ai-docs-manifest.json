@@ -4,7 +4,7 @@
   "distribution": "ai-operations-spec",
   "document": "llms-full.md",
   "content_type": "text/markdown; charset=utf-8",
-  "sha256": "199f437a3c0932b811e85a0cea8001fe11b5e1115cc36148d4d35623f7abaab9",
+  "sha256": "11618403fa9e25c710a63be691c261b6c9c46b1606e3d603cfc9e286bf042b7a",
   "source_hash_normalization": "UTF-8 text with LF newlines",
   "human_guide": "developer-guide.md",
   "sources": [
@@ -1006,7 +1006,7 @@
     {
       "path": "specification/v0.6/conformance-suite/suite.json",
       "kind": "reference-data",
-      "sha256": "208ba0abbc766eed917a782f80bcdbffc677780603ca67a131922b995acf0c25"
+      "sha256": "1661c079931fe3d458f081911573f07f1076173bf0e929801e2ddca209c6be68"
     },
     {
       "path": "specification/v0.6/examples/advanced-support-run.json",
