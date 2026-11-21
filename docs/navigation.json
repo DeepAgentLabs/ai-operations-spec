@@ -1,0 +1,83 @@
+[
+  {
+    "Overview": "index.md"
+  },
+  {
+    "Developer Guide (simple)": "docs/developer-guide.md"
+  },
+  {
+    "AI Reference (robust)": "docs/ai-reference-index.md"
+  },
+  {
+    "Specification reading order": "SPECIFICATION.md"
+  },
+  {
+    "Runtime model": "specification/v0.1/core-concepts.md"
+  },
+  {
+    "Execution relationships": "specification/v0.2/relationships.md"
+  },
+  {
+    "Semantic conventions": "specification/v0.3/semantic-conventions.md"
+  },
+  {
+    "Artifact schemas": "specification/v0.4/README.md"
+  },
+  {
+    "Conformance rules": "specification/v0.4/conformance.md"
+  },
+  {
+    "Versioning and compatibility": "specification/v0.5/versioning.md"
+  },
+  {
+    "Canonical examples": "specification/v0.6/examples.md"
+  },
+  {
+    "Extensions": "specification/v0.6/extension-model.md"
+  },
+  {
+    "Naming": "specification/v0.6/naming-conventions.md"
+  },
+  {
+    "Provenance": "specification/v0.6/provenance.md"
+  },
+  {
+    "Portable conformance suite": "specification/v0.6/conformance-suite/README.md"
+  },
+  {
+    "Verification signals": "specification/v0.8/verification-signals.md"
+  },
+  {
+    "Audit events": "specification/v0.8/audit-events.md"
+  },
+  {
+    "Investigation reports": "specification/v0.8/investigation-reports.md"
+  },
+  {
+    "Operational conformance": "specification/v0.8/conformance.md"
+  },
+  {
+    "Migration and rollback": "specification/v0.6/migration-guide.md"
+  },
+  {
+    "OpenTelemetry companion": "specification/v0.6/otel-binding.md"
+  },
+  {
+    "Access evidence profile (non-normative)": "drafts/access-evidence-v1/README.md"
+  },
+  {
+    "Sidecar correlation (non-normative)": "drafts/sidecar-correlation-v1/README.md"
+  },
+  {
+    "Sidecar contracts (non-normative)": "drafts/sidecar-contracts-v1/README.md"
+  },
+  {
+    "Review evidence": "reviews/evidence-matrix.md"
+  },
+  {
+    "Documentation maintenance": "docs/documentation-site.md"
+  },
+  {
+    "Contributing": "CONTRIBUTING.md"
+  }
+]
