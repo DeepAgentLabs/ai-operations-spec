@@ -21,6 +21,7 @@ docs: ## Build documentation with strict link validation
 	uv run --group docs python scripts/build_docs.py
 	uv run --group docs mkdocs build --strict
 	cp .docs-source/docs/llms-full.md site/docs/llms-full.md
+	uv run --group docs python scripts/build_docs.py --publish-alias site
 
 docs-serve: ## Preview documentation locally
 	uv run --group docs python scripts/build_docs.py
