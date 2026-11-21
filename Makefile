@@ -20,6 +20,7 @@ check: test ## Run all quality gates
 docs: ## Build documentation with strict link validation
 	uv run --group docs python scripts/build_docs.py
 	uv run --group docs mkdocs build --strict
+	cp .docs-source/docs/llms-full.md site/docs/llms-full.md
 
 docs-serve: ## Preview documentation locally
 	uv run --group docs python scripts/build_docs.py
