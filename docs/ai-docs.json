@@ -1,0 +1,414 @@
+{
+  "name": "AI Operations Specification",
+  "scope": "Language-neutral draft operational contract, not a runtime SDK or published Python library. Python requirements below apply to repository validation tools. Repository 1.0.0 does not freeze the 0.4-draft, 0.6-draft or 0.8-draft artifact families. Specification prose defines draft requirements; schemas, catalogs and fixtures complement it. Non-normative and historical profiles retain their stated scope and maturity.",
+  "references": [
+    {
+      "title": "AI Reference capability index",
+      "path": "docs/ai-reference-index.md"
+    },
+    {
+      "title": "Setup and capability workflows",
+      "path": "docs/developer-guide.md"
+    },
+    {
+      "title": "README.md: AI Operations Specification",
+      "path": "README.md"
+    },
+    {
+      "title": "Detailed reference: Specification reading order and maturity",
+      "path": "SPECIFICATION.md"
+    },
+    {
+      "title": "CONTRIBUTING.md: Contributing",
+      "path": "CONTRIBUTING.md"
+    },
+    {
+      "title": "ROADMAP.md: AI Operations Specification Roadmap",
+      "path": "ROADMAP.md"
+    },
+    {
+      "title": "CHANGELOG.md: Changelog",
+      "path": "CHANGELOG.md"
+    },
+    {
+      "title": "CI.md: CI Readiness — Pre-push Checklist",
+      "path": "CI.md"
+    },
+    {
+      "title": "MILESTONE_CLOSEOUT_PLAN.md: AIOS Milestone Close-Out Plan",
+      "path": "MILESTONE_CLOSEOUT_PLAN.md"
+    },
+    {
+      "title": "ROADMAP_AUDIT.md: AI Operations Specification roadmap implementation audit",
+      "path": "ROADMAP_AUDIT.md"
+    },
+    {
+      "title": "specification/v0.1/README.md: README",
+      "path": "specification/v0.1/README.md"
+    },
+    {
+      "title": "specification/v0.1/acceptance-criteria.md: acceptance-criteria",
+      "path": "specification/v0.1/acceptance-criteria.md"
+    },
+    {
+      "title": "Detailed reference: Core runtime concepts",
+      "path": "specification/v0.1/core-concepts.md"
+    },
+    {
+      "title": "specification/v0.1/decisions.md: v0.1 Design Decisions",
+      "path": "specification/v0.1/decisions.md"
+    },
+    {
+      "title": "specification/v0.1/examples.md: examples",
+      "path": "specification/v0.1/examples.md"
+    },
+    {
+      "title": "specification/v0.1/terminology.md: terminology",
+      "path": "specification/v0.1/terminology.md"
+    },
+    {
+      "title": "specification/v0.2/README.md: v0.2 — Relationships and Execution Structure",
+      "path": "specification/v0.2/README.md"
+    },
+    {
+      "title": "specification/v0.2/acceptance-criteria.md: v0.2 Acceptance Criteria",
+      "path": "specification/v0.2/acceptance-criteria.md"
+    },
+    {
+      "title": "specification/v0.2/examples.md: v0.2 Relationship Examples",
+      "path": "specification/v0.2/examples.md"
+    },
+    {
+      "title": "Detailed reference: Relationships and execution structure",
+      "path": "specification/v0.2/relationships.md"
+    },
+    {
+      "title": "specification/v0.3/README.md: v0.3 — Semantic Conventions",
+      "path": "specification/v0.3/README.md"
+    },
+    {
+      "title": "specification/v0.3/acceptance-criteria.md: v0.3 Acceptance Criteria",
+      "path": "specification/v0.3/acceptance-criteria.md"
+    },
+    {
+      "title": "specification/v0.3/examples.md: v0.3 Semantic Event Examples",
+      "path": "specification/v0.3/examples.md"
+    },
+    {
+      "title": "Detailed reference: Semantic event conventions",
+      "path": "specification/v0.3/semantic-conventions.md"
+    },
+    {
+      "title": "Detailed reference: JSON Schema artifacts",
+      "path": "specification/v0.4/README.md"
+    },
+    {
+      "title": "specification/v0.4/acceptance-criteria.md: v0.4 Acceptance Criteria",
+      "path": "specification/v0.4/acceptance-criteria.md"
+    },
+    {
+      "title": "Detailed reference: Run and Workflow conformance",
+      "path": "specification/v0.4/conformance.md"
+    },
+    {
+      "title": "specification/v0.4/examples.md: v0.4 Schema Examples",
+      "path": "specification/v0.4/examples.md"
+    },
+    {
+      "title": "specification/v0.5/README.md: v0.5 — Versioning and Compatibility Rules",
+      "path": "specification/v0.5/README.md"
+    },
+    {
+      "title": "specification/v0.5/acceptance-criteria.md: v0.5 Acceptance Criteria",
+      "path": "specification/v0.5/acceptance-criteria.md"
+    },
+    {
+      "title": "specification/v0.5/examples.md: v0.5 Versioning Examples",
+      "path": "specification/v0.5/examples.md"
+    },
+    {
+      "title": "Detailed reference: Versioning and compatibility",
+      "path": "specification/v0.5/versioning.md"
+    },
+    {
+      "title": "specification/v0.6/README.md: v0.6 — Canonical Examples, Extension Model and Provenance",
+      "path": "specification/v0.6/README.md"
+    },
+    {
+      "title": "specification/v0.6/acceptance-criteria.md: v0.6 Acceptance Criteria",
+      "path": "specification/v0.6/acceptance-criteria.md"
+    },
+    {
+      "title": "Detailed reference: Portable conformance suite",
+      "path": "specification/v0.6/conformance-suite/README.md"
+    },
+    {
+      "title": "Detailed reference: Canonical examples and negative controls",
+      "path": "specification/v0.6/examples.md"
+    },
+    {
+      "title": "Detailed reference: Extension model",
+      "path": "specification/v0.6/extension-model.md"
+    },
+    {
+      "title": "Detailed reference: Migration and rollout",
+      "path": "specification/v0.6/migration-guide.md"
+    },
+    {
+      "title": "Detailed reference: Naming conventions",
+      "path": "specification/v0.6/naming-conventions.md"
+    },
+    {
+      "title": "Detailed reference: OpenTelemetry companion binding",
+      "path": "specification/v0.6/otel-binding.md"
+    },
+    {
+      "title": "Detailed reference: Provenance records",
+      "path": "specification/v0.6/provenance.md"
+    },
+    {
+      "title": "specification/v0.8/README.md: Operational artifacts — 0.8-draft",
+      "path": "specification/v0.8/README.md"
+    },
+    {
+      "title": "specification/v0.8/acceptance-criteria.md: Operational artifact acceptance criteria",
+      "path": "specification/v0.8/acceptance-criteria.md"
+    },
+    {
+      "title": "Detailed reference: Audit events",
+      "path": "specification/v0.8/audit-events.md"
+    },
+    {
+      "title": "Detailed reference: Operational companion conformance",
+      "path": "specification/v0.8/conformance.md"
+    },
+    {
+      "title": "specification/v0.8/examples.md: Operational artifact examples",
+      "path": "specification/v0.8/examples.md"
+    },
+    {
+      "title": "Detailed reference: Investigation reports",
+      "path": "specification/v0.8/investigation-reports.md"
+    },
+    {
+      "title": "Detailed reference: Verification signals",
+      "path": "specification/v0.8/verification-signals.md"
+    },
+    {
+      "title": "docs/chaos-0.11-chaoshub.md: Chaos 0.11 ChaosHub compatibility",
+      "path": "docs/chaos-0.11-chaoshub.md"
+    },
+    {
+      "title": "docs/chaos-0.7.md: Chaos 0.7 compatibility",
+      "path": "docs/chaos-0.7.md"
+    },
+    {
+      "title": "docs/chaos-0.8.md: Chaos 0.8 compatibility",
+      "path": "docs/chaos-0.8.md"
+    },
+    {
+      "title": "docs/chaos-0.9.md: Chaos 0.9 compatibility",
+      "path": "docs/chaos-0.9.md"
+    },
+    {
+      "title": "docs/control-tower-0.6.md: Control Tower 0.6.0 compatibility",
+      "path": "docs/control-tower-0.6.md"
+    },
+    {
+      "title": "Detailed reference: Coordinated engineering readiness",
+      "path": "docs/coordinated-v1-readiness.md"
+    },
+    {
+      "title": "Detailed reference: Documentation build and publication",
+      "path": "docs/documentation-site.md"
+    },
+    {
+      "title": "docs/evals-0.10-aios-evidence.md: Evals 0.10.0 evaluation evidence export",
+      "path": "docs/evals-0.10-aios-evidence.md"
+    },
+    {
+      "title": "docs/evals-0.11-containment.md: Evals 0.11 containment compatibility",
+      "path": "docs/evals-0.11-containment.md"
+    },
+    {
+      "title": "docs/evals-0.12.md: Evals 0.12 API and report readiness",
+      "path": "docs/evals-0.12.md"
+    },
+    {
+      "title": "docs/evals-0.8-cli.md: Evals 0.8.0 CLI interoperability",
+      "path": "docs/evals-0.8-cli.md"
+    },
+    {
+      "title": "docs/evals-0.9-judge-reliability.md: Evals 0.9.0 judge reliability and live resilience",
+      "path": "docs/evals-0.9-judge-reliability.md"
+    },
+    {
+      "title": "docs/evals-report-contract.md: Evals native contract compatibility",
+      "path": "docs/evals-report-contract.md"
+    },
+    {
+      "title": "docs/lens-0.10-routing.md: Lens routing integration boundary",
+      "path": "docs/lens-0.10-routing.md"
+    },
+    {
+      "title": "docs/lens-0.11-optimization.md: Lens optimization artifacts and the specification",
+      "path": "docs/lens-0.11-optimization.md"
+    },
+    {
+      "title": "docs/lens-0.13.md: Lens 0.13 readiness compatibility",
+      "path": "docs/lens-0.13.md"
+    },
+    {
+      "title": "docs/mcp-0.4-unified-workflows.md: MCP 0.4.0 unified workflows",
+      "path": "docs/mcp-0.4-unified-workflows.md"
+    },
+    {
+      "title": "docs/mcp-0.5-access-control.md: MCP 0.5.0 hosted access control",
+      "path": "docs/mcp-0.5-access-control.md"
+    },
+    {
+      "title": "docs/mcp-0.7-readiness.md: MCP 0.7 integration readiness — AIOS repository 0.7.0",
+      "path": "docs/mcp-0.7-readiness.md"
+    },
+    {
+      "title": "docs/phase6-containment.md: MCP Phase 6 coordinated containment release",
+      "path": "docs/phase6-containment.md"
+    },
+    {
+      "title": "docs/sidecar-0.9.md: Sidecar 0.9.0 compatibility",
+      "path": "docs/sidecar-0.9.md"
+    },
+    {
+      "title": "docs/sidecar-v0.8.md: Sidecar 0.8 integration boundary",
+      "path": "docs/sidecar-v0.8.md"
+    },
+    {
+      "title": "docs/tower-0.10-compatibility.md: Tower 0.10 capability contract compatibility",
+      "path": "docs/tower-0.10-compatibility.md"
+    },
+    {
+      "title": "docs/tower-0.7-fleet-operations.md: Tower 0.7.0 integration compatibility",
+      "path": "docs/tower-0.7-fleet-operations.md"
+    },
+    {
+      "title": "docs/tower-0.8-live-operations.md: Control Tower 0.8.0 live operations compatibility",
+      "path": "docs/tower-0.8-live-operations.md"
+    },
+    {
+      "title": "docs/tower-0.9-runbooks.md: Control Tower 0.9.0 runbooks compatibility",
+      "path": "docs/tower-0.9-runbooks.md"
+    },
+    {
+      "title": "docs/v0.6-ecosystem.md: AIOS repository v0.6.0 ecosystem compatibility",
+      "path": "docs/v0.6-ecosystem.md"
+    },
+    {
+      "title": "docs/v0.6.1-ecosystem.md: AIOS repository v0.6.1 ecosystem compatibility",
+      "path": "docs/v0.6.1-ecosystem.md"
+    },
+    {
+      "title": "docs/v0.7.0-ecosystem.md: AIOS repository v0.7.0 interoperability",
+      "path": "docs/v0.7.0-ecosystem.md"
+    },
+    {
+      "title": "docs/v0.8.0-ecosystem.md: AIOS repository v0.8.0 interoperability",
+      "path": "docs/v0.8.0-ecosystem.md"
+    },
+    {
+      "title": "reviews/EXTERNAL_REVIEW_INVITE.md: External Review Invite",
+      "path": "reviews/EXTERNAL_REVIEW_INVITE.md"
+    },
+    {
+      "title": "reviews/EXTERNAL_REVIEW_TASKS.md: AIOS external reviewer task list",
+      "path": "reviews/EXTERNAL_REVIEW_TASKS.md"
+    },
+    {
+      "title": "reviews/README.md: Review Pack",
+      "path": "reviews/README.md"
+    },
+    {
+      "title": "reviews/artifacts/README.md: Review Artifacts",
+      "path": "reviews/artifacts/README.md"
+    },
+    {
+      "title": "reviews/decision-log.md: Review Decision Log",
+      "path": "reviews/decision-log.md"
+    },
+    {
+      "title": "reviews/evidence-matrix.md: Acceptance Evidence Matrix",
+      "path": "reviews/evidence-matrix.md"
+    },
+    {
+      "title": "reviews/framework-mappings/README.md: Framework Mappings",
+      "path": "reviews/framework-mappings/README.md"
+    },
+    {
+      "title": "reviews/framework-mappings/agentic-chaos-template.md: Agentic Chaos Review Mapping Template",
+      "path": "reviews/framework-mappings/agentic-chaos-template.md"
+    },
+    {
+      "title": "reviews/framework-mappings/agentic-chaos.md: Agentic Chaos Review Mapping",
+      "path": "reviews/framework-mappings/agentic-chaos.md"
+    },
+    {
+      "title": "reviews/framework-mappings/agenticlens-template.md: AgenticLens Review Mapping Template",
+      "path": "reviews/framework-mappings/agenticlens-template.md"
+    },
+    {
+      "title": "reviews/framework-mappings/agenticlens.md: AgenticLens Review Mapping",
+      "path": "reviews/framework-mappings/agenticlens.md"
+    },
+    {
+      "title": "reviews/framework-mappings/external-reviewer-template.md: External Review Mapping Template",
+      "path": "reviews/framework-mappings/external-reviewer-template.md"
+    },
+    {
+      "title": "reviews/operational-artifact-mappings.md: Operational artifact implementation evidence",
+      "path": "reviews/operational-artifact-mappings.md"
+    },
+    {
+      "title": "reviews/scenarios/README.md: Shared Review Scenarios",
+      "path": "reviews/scenarios/README.md"
+    },
+    {
+      "title": "reviews/scenarios/scenario-01-customer-support.md: Scenario 01: Customer Support Answer",
+      "path": "reviews/scenarios/scenario-01-customer-support.md"
+    },
+    {
+      "title": "reviews/scenarios/scenario-02-retry-and-recovery.md: Scenario 02: Retry and Recovery",
+      "path": "reviews/scenarios/scenario-02-retry-and-recovery.md"
+    },
+    {
+      "title": "reviews/scenarios/scenario-03-safety-and-incident.md: Scenario 03: Safety Signal and Incident Escalation",
+      "path": "reviews/scenarios/scenario-03-safety-and-incident.md"
+    },
+    {
+      "title": "Detailed reference: Non-normative access evidence profile",
+      "path": "drafts/access-evidence-v1/README.md"
+    },
+    {
+      "title": "Detailed reference: Non-normative Sidecar candidate contracts",
+      "path": "drafts/sidecar-contracts-v1/README.md"
+    },
+    {
+      "title": "Detailed reference: Non-normative Sidecar correlation",
+      "path": "drafts/sidecar-correlation-v1/README.md"
+    },
+    {
+      "title": "drafts/v0.4/README.md: README",
+      "path": "drafts/v0.4/README.md"
+    }
+  ],
+  "schemas": [
+    "specification/**/schemas/*.schema.json",
+    "drafts/access-evidence-v1/access.schema.json",
+    "drafts/sidecar-correlation-v1/schema.json",
+    "drafts/sidecar-contracts-v1/*.schema.json",
+    "drafts/v0.4/schemas/*.schema.json"
+  ],
+  "data": [
+    "specification/**/*.json",
+    "drafts/**/*.json",
+    "reviews/**/*.json"
+  ]
+}

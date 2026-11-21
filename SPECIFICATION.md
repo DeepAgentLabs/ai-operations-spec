@@ -2,6 +2,9 @@
 
 The AI Operations Specification is one cumulative standard developed in milestone layers. A milestone number identifies the layer introduced; it is not a separate competing edition of the entire standard.
 
+For short implementation workflows, start with the [Developer Guide (simple)](docs/developer-guide.md).
+The [AI Reference capability index](docs/ai-reference-index.md) opens the complete generated reference.
+
 ## Reading order
 
 1. [v0.1 core concepts](specification/v0.1/core-concepts.md) and [terminology](specification/v0.1/terminology.md)

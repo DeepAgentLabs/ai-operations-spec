@@ -17,6 +17,14 @@ See the [ecosystem release policy](https://github.com/DeepAgentLabs/.github/blob
 > sections stale relative to review evidence already committed under
 > `reviews/`.
 
+## Documentation coverage
+
+The [Developer Guide (simple)](docs/developer-guide.md) and
+[AI Reference capability index](docs/ai-reference-index.md) inventory the supported
+specification and interoperability-profile capabilities. The generated robust
+reference includes maintained prose, schemas, rule catalogs and portable fixtures.
+Documentation coverage does not close the independent-review or acceptance gates.
+
 ## Release Status
 
 - **v0.1** 🏗️ In review — Core runtime concepts and boundaries
