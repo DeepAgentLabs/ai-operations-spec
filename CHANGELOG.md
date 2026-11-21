@@ -6,6 +6,17 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 ## [Unreleased]
 
+### Added
+
+- Simple developer guide and robust AI reference with matching capability indexes,
+  offline structural-validation tutorial, complete specification/profile sources,
+  schemas, catalogs, fixtures and a source/checksum manifest.
+- Shared website publication support and reference freshness/coverage checks.
+
+### Fixed
+
+- Current README repository version and portable-suite case count.
+
 ## [1.0.0] - 2026-11-05
 
 ### Changed
