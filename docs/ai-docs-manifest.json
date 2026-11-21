@@ -4,14 +4,14 @@
   "distribution": "ai-operations-spec",
   "document": "llms-full.md",
   "content_type": "text/markdown; charset=utf-8",
-  "sha256": "11618403fa9e25c710a63be691c261b6c9c46b1606e3d603cfc9e286bf042b7a",
+  "sha256": "d0a580b10a2424c4d43207d1125cd93df3565ece84c51dc13eb2e282db199061",
   "source_hash_normalization": "UTF-8 text with LF newlines",
   "human_guide": "developer-guide.md",
   "sources": [
     {
       "path": "pyproject.toml",
       "kind": "package-metadata",
-      "sha256": "1485aec2b332a10da2094072b873ca98602a6d62fb53cc714e1bdbd7bb5905f9"
+      "sha256": "25446ede553f5e5dc850fc737446a640810be935d0a23ff184e859309dd08d97"
     },
     {
       "path": "docs/ai-docs.json",
@@ -31,7 +31,7 @@
     {
       "path": "README.md",
       "kind": "reference",
-      "sha256": "869844b838f7e3d4467acc7649b2b27497b18026f99e5ab4b111e89393c60518"
+      "sha256": "1981431c1bac85ebd4373bb1e5042457ecac8c3eeb6f25bb1a8e27c1f671df6f"
     },
     {
       "path": "SPECIFICATION.md",
@@ -51,7 +51,7 @@
     {
       "path": "CHANGELOG.md",
       "kind": "reference",
-      "sha256": "bd838941884e2817b34e138bb26a450b8a001d109b6c6e02f2d5642f9906d538"
+      "sha256": "146bd7cc8a20014fc117fe591c45dca1b2f13a273f8573831eb8932f0e46a459"
     },
     {
       "path": "CI.md",
@@ -1006,7 +1006,7 @@
     {
       "path": "specification/v0.6/conformance-suite/suite.json",
       "kind": "reference-data",
-      "sha256": "1661c079931fe3d458f081911573f07f1076173bf0e929801e2ddca209c6be68"
+      "sha256": "2e78b41becbd629e059b9e1d81456b5aa12359a103877ecee17ad85e21c12762"
     },
     {
       "path": "specification/v0.6/examples/advanced-support-run.json",
