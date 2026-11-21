@@ -114,7 +114,7 @@ Conformance should be understood in two layers:
 - **implementations may provide tooling**: for example, AgenticLens can expose
   a practical `conformance` CLI over those rules without owning the standard
 
-Two machine-readable catalogs mirror the normative text for tooling, so
+Machine-readable catalogs mirror the normative text for tooling, so
 validators can cite the rule an issue violates instead of inventing their own
 labels:
 
@@ -126,11 +126,20 @@ labels:
 - [`specification/v0.6/provenance-rules.json`](specification/v0.6/provenance-rules.json)
   — stable IDs for each `0.6-draft` provenance record rule (`AIOS-0.6-R01` …)
 
+- [`specification/v0.8/operational-rules.json`](specification/v0.8/operational-rules.json)
+  — schema, semantic and process rules for `0.8-draft` operational companions
+
 The [portable conformance suite](specification/v0.6/conformance-suite/README.md)
 turns those catalogs into fixtures with an expected outcome and the exact rule
 citations for every case, so an implementation can check itself offline.
 
 The Markdown documents stay normative; tests fail if a catalog drifts from them.
+
+## Documentation
+
+- [Developer Guide (simple)](docs/developer-guide.md): capability index and short producer/consumer workflows.
+- [AI Reference (robust)](https://deepagentlabs.io/ai-operations-spec/docs/llms-full.md): complete specification, profiles, schemas, catalogs and fixtures.
+- [AI Reference capability index](docs/ai-reference-index.md): detailed source links and reference-maintenance instructions.
 
 ## Choose a path
 
@@ -209,7 +218,7 @@ provenance, portable conformance and naming (v0.6.1), migration/OTel guidance
 - External validator runs of the expanded portable suite.
 - Independent producer/consumer evidence, extension preservation and real
   compatibility transitions.
-- Maintainer confirmation and review-gated stabilization before ecosystem v1.0.
+- Maintainer confirmation and review-gated stabilization following the coordinated 1.0.0 milestone.
 
 See [the roadmap](ROADMAP.md) and [operational acceptance criteria](specification/v0.8/acceptance-criteria.md).
 
@@ -500,7 +509,7 @@ Repository v0.6.1 is the first v0.6.x increment:
   (decision `D-006`). Rules `AIOS-0.6-R01`–`R07` and consumer rules `C01`–`C08`
   are in [provenance-rules.json](specification/v0.6/provenance-rules.json).
 - [Portable conformance suite](specification/v0.6/conformance-suite/README.md):
-  41 outcome cases (each breaking one rule family, with expected rule
+  66 outcome cases (each breaking one rule family, with expected rule
   citations) and 5 cross-artifact resolution cases covering subject
   availability, identity, digests and missing or mistyped objects.
 - [Naming conventions](specification/v0.6/naming-conventions.md), enforced by
@@ -576,7 +585,7 @@ The [0.8-draft operational rule catalog](specification/v0.8/operational-rules.js
 
 See [the implementation and migration guide](docs/coordinated-v1-readiness.md)
 for the current candidate scope, interoperability evidence and remaining gates.
-Current version: 0.8.1. Internal tests do not close independent review,
+Current repository version: 1.0.0. Internal tests do not close independent review,
 live-provider/deployment acceptance or the coordinated stable freeze.
 
 ## License
