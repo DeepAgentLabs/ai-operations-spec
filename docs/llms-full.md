@@ -20145,7 +20145,7 @@ Source: [specification/v0.6/conformance-suite/suite.json](https://github.com/Dee
 ```json
 {
   "$comment": "Portable AIOS conformance suite. See README.md for the expected validator behavior. Paths are relative to this file.",
-  "snapshot": "v1.0.0",
+  "snapshot": "v1.0.1",
   "outcomes": {
     "valid": "Schema-valid and semantically valid for the schema set its spec_version names.",
     "schema-invalid": "Fails JSON Schema validation against the schema set its spec_version names.",
