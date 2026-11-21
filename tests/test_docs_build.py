@@ -51,3 +51,21 @@ def test_staging_publishes_only_tracked_document_sources(tmp_path, monkeypatch):
     (staged / 'stale.md').write_text('old')
     module.stage()
     assert not (staged / 'stale.md').exists()
+
+
+def test_public_landing_alias_preserves_native_guides_and_raw_reference(tmp_path):
+    spec = importlib.util.spec_from_file_location('build_docs', ROOT / 'scripts/build_docs.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    (tmp_path / 'index.html').write_text('Native documentation home')
+    (tmp_path / 'docs/developer-guide').mkdir(parents=True)
+    guide = tmp_path / 'docs/developer-guide/index.html'
+    guide.write_text('Native developer guide')
+    reference = tmp_path / 'docs/llms-full.md'
+    reference.write_bytes(b'# Exact reference snapshot\n')
+    module.publish_alias(tmp_path)
+    alias = (tmp_path / 'docs/index.html').read_text()
+    assert 'content="0;url=../"' in alias
+    assert '<a href="../">' in alias
+    assert guide.read_text() == 'Native developer guide'
+    assert reference.read_bytes() == b'# Exact reference snapshot\n'
