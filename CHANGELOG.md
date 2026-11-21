@@ -6,6 +6,8 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-11-20
+
 ### Added
 
 - Simple developer guide and robust AI reference with matching capability indexes,
