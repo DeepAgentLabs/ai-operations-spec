@@ -64,5 +64,27 @@ def stage() -> None:
         shutil.copytree(schemas, STAGING / schemas.parent.name)
 
 
+def publish_alias(site: Path) -> None:
+    """Keep the shared /docs/ landing URL usable beside native document paths."""
+    if not (site / 'index.html').is_file():
+        raise ValueError('Build the documentation site before publishing aliases')
+    target = site / 'docs/index.html'
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(
+        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        '<meta http-equiv="refresh" content="0;url=../">'
+        '<link rel="canonical" href="../"><title>AI Operations Specification</title>'
+        '</head><body><a href="../">Open AI Operations Specification documentation</a>'
+        '</body></html>\n', encoding='utf-8',
+    )
+
+
 if __name__ == '__main__':
-    stage()
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--publish-alias', type=Path)
+    args = parser.parse_args()
+    if args.publish_alias is not None:
+        publish_alias(args.publish_alias)
+    else:
+        stage()
