@@ -1,6 +1,6 @@
 # API Reference (detailed)
 
-**Repository version:** 1.0.2
+**Repository version:** 1.1.0
 
 AIOS is a contract: its public interface is the set of JSON artifacts that producers emit and
 consumers accept. This page lists every field, type, constraint and conformance rule of each
