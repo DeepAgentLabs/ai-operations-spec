@@ -6,6 +6,15 @@ itself change any milestone's review status (see [ROADMAP.md](ROADMAP.md)).
 
 ## [Unreleased]
 
+### Added
+
+- API Reference (detailed): every field, type, constraint, conditional requirement and conformance rule of the six artifact families, generated from the schemas and rule catalogs by `scripts/build_api_reference.py` (`make api-reference`); a test keeps it current.
+
+### Changed
+
+- Documentation follows the shared product layout: Developer Guide (simple), API Reference (detailed) and AI Readable Documentation under Getting started, with the Material theme for local previews.
+- The AI-readable reference uses the specification layout, without package install sections.
+
 ## [1.0.2] - 2026-11-20
 
 ### Fixed
