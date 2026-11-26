@@ -12,7 +12,8 @@ exclude_docs: |
   docs/llms-full.md
 nav:
   - Developer Guide (simple): docs/developer-guide.md
-  - AI Reference (robust): docs/ai-reference-index.md
+  - API Reference (detailed): docs/api-reference.md
+  - AI Readable Documentation: docs/ai-reference-index.md
   - Reviewer start here: https://github.com/DeepAgentLabs/.github/blob/main/profile/EXTERNAL_REVIEW_CHECKLIST.md
   - Detailed AIOS review tasks: reviews/EXTERNAL_REVIEW_TASKS.md
   - Coordinated v1 readiness: docs/coordinated-v1-readiness.md
