@@ -188,7 +188,7 @@ See [Limitations](https://github.com/DeepAgentLabs/ai-operations-spec/blob/main/
 
 - [Developer Guide (simple)](https://github.com/DeepAgentLabs/ai-operations-spec/blob/main/docs/developer-guide.md): short task workflows and a capability index
 - [API Reference (detailed)](https://github.com/DeepAgentLabs/ai-operations-spec/blob/main/docs/api-reference.md): every field, constraint and conformance rule of each artifact family
-- [AI Readable Documentation](https://github.com/DeepAgentLabs/ai-operations-spec/blob/main/docs/ai-reference-index.md): the full reference as one file for AI tools, with schemas, rule catalogs and fixtures
+- [AI Readable Documentation](https://deepagentlabs.io/ai-operations-spec/docs/llms-full.md): the full reference as one file for AI tools, with schemas, rule catalogs and fixtures
 
 ---
 
