@@ -19,7 +19,7 @@ This page lists what the AI Operations Specification defines and what it leaves 
 
 - **One marker per family.** Run and Workflow use `0.4-draft`, provenance uses `0.6-draft` and the operational artifacts use `0.8-draft`. Consumers route by the marker an artifact declares.
 - **No patch levels.** Version markers are `MAJOR.MINOR` only; every normative change is additive (minor) or breaking (major). See [Versioning and compatibility](../specification/v0.5/versioning.md).
-- **Repository versions are separate.** A repository release (such as 1.0.2) packages documents, schemas and fixtures; it does not change any artifact marker.
+- **Repository versions are separate.** A repository release (such as 1.1.0) packages documents, schemas and fixtures; it does not change any artifact marker.
 
 ## Vocabularies and extensions
 
