@@ -4,6 +4,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 STAGING = ROOT / '.docs-source'
@@ -82,27 +83,77 @@ def stage() -> None:
         shutil.copytree(schemas, STAGING / schemas.parent.name)
 
 
-def publish_alias(site: Path) -> None:
-    """Keep the shared /docs/ landing URL usable beside native document paths."""
-    if not (site / 'index.html').is_file():
-        raise ValueError('Build the documentation site before publishing aliases')
-    target = site / 'docs/index.html'
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(
+def redirect(page: Path, target: str) -> None:
+    """Write a static redirect that keeps the URL fragment (#anchor)."""
+    page.parent.mkdir(parents=True, exist_ok=True)
+    page.write_text(
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
-        '<meta http-equiv="refresh" content="0;url=../">'
-        '<link rel="canonical" href="../"><title>AI Operations Specification</title>'
-        '</head><body><a href="../">Open AI Operations Specification documentation</a>'
+        f'<meta http-equiv="refresh" content="0;url={target}">'
+        f'<link rel="canonical" href="{target}"><title>AI Operations Specification</title>'
+        f'<script>location.replace("{target}" + location.hash)</script>'
+        f'</head><body><a href="{target}">Open AI Operations Specification documentation</a>'
         '</body></html>\n', encoding='utf-8',
     )
+
+
+def page_url(relative: Path) -> str:
+    """The directory URL MkDocs serves a staged Markdown page at."""
+    parts = list(relative.with_suffix('').parts)
+    if parts and parts[-1] in ('index', 'README'):
+        parts.pop()
+    return '/'.join(parts) + '/' if parts else ''
+
+
+def publish_shared(site: Path, website: Path) -> None:
+    """Publish the shared-theme site at docs/ and keep every earlier URL working.
+
+    deepagentlabs.io/ai-operations-spec/ is this repository's Pages site, so
+    it must publish the same shared-theme build the product sites use. The
+    pages live under docs/ like every product. Schema $ids, catalogs and
+    fixtures keep their root URLs, and earlier page URLs redirect to docs/.
+    """
+    builder = website / 'scripts/build_docs.py'
+    if not builder.is_file():
+        raise ValueError(f'Shared docs builder not found: {builder}')
+    if site.exists():
+        shutil.rmtree(site)
+    subprocess.run(
+        [sys.executable, str(builder), '--repo', str(ROOT),
+         '--project', 'ai-operations-spec', '--output', str(site / 'docs')],
+        check=True,
+    )
+    stage()
+    for source in sorted(p for p in STAGING.rglob('*') if p.is_file()):
+        relative = source.relative_to(STAGING)
+        if source.suffix == '.md':
+            url = page_url(relative)
+            target = site / url / 'index.html'
+            if not target.exists():
+                depth = url.count('/')
+                redirect(target, '../' * depth + 'docs/' + url)
+        else:
+            target = site / relative
+            if not target.exists():
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(source, target)
+    # GitHub Pages serves the root 404 page for every missing URL; use the themed one.
+    if (site / 'docs/404.html').is_file() and not (site / '404.html').exists():
+        shutil.copyfile(site / 'docs/404.html', site / '404.html')
+    # Earlier native sites served the raw AI reference at docs/llms-full.md;
+    # the shared build publishes it at that same URL.
+    if not (site / 'docs/llms-full.md').is_file():
+        raise ValueError('Shared build did not publish docs/llms-full.md')
 
 
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--publish-alias', type=Path)
+    parser.add_argument('--shared-site', type=Path, help='publish the shared-theme site here')
+    parser.add_argument('--website', type=Path, help='deepagentlabs.github.io checkout')
     args = parser.parse_args()
-    if args.publish_alias is not None:
-        publish_alias(args.publish_alias)
+    if args.shared_site is not None:
+        if args.website is None:
+            parser.error('--shared-site requires --website')
+        publish_shared(args.shared_site.resolve(), args.website.resolve())
     else:
         stage()
