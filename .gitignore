@@ -6,3 +6,5 @@ __pycache__/
 
 .docs-source/
 site/
+.native-site/
+_website/

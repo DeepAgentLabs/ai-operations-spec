@@ -4,7 +4,7 @@
   "distribution": "ai-operations-spec",
   "document": "llms-full.md",
   "content_type": "text/markdown; charset=utf-8",
-  "sha256": "482c79a4295ce5843301db6d311566ee517f2024cbc117ee0f22e602377426bc",
+  "sha256": "981e84e2d7ef961b9170a25d95d9f06727daa574549d6b78ac2dcbc079bca635",
   "source_hash_normalization": "UTF-8 text with LF newlines",
   "human_guide": "developer-guide.md",
   "sources": [
@@ -31,7 +31,7 @@
     {
       "path": "docs/developer-guide.md",
       "kind": "reference",
-      "sha256": "f213c5b35c5f9752d72ff648156ff7a0aad33e7b72249f60688a7f0a67279c1e"
+      "sha256": "f6c678479bdc60e029dec7a1ef769e1cdac7ab94f11f895c02f5e2d0f6cc64d6"
     },
     {
       "path": "docs/api-reference.md",
@@ -66,7 +66,7 @@
     {
       "path": "CHANGELOG.md",
       "kind": "reference",
-      "sha256": "e9e44089ab84f9dc9e888ed8717f6642e17783c8d576c363ea6754b3ffea5011"
+      "sha256": "aae80f7db567bc25967ef39b764b9fed56d8134957a16bfa011543142cf8ce31"
     },
     {
       "path": "CI.md",
@@ -306,7 +306,7 @@
     {
       "path": "docs/documentation-site.md",
       "kind": "reference",
-      "sha256": "a6b75223423e21c1d12012e7e2c5213880496c7a86d3985845f4415d87f8d048"
+      "sha256": "6fcf0590cb4366d4c55cd1f325aefaff931e31aceeb0360fd4b9e60274fc7b75"
     },
     {
       "path": "docs/evals-0.10-aios-evidence.md",

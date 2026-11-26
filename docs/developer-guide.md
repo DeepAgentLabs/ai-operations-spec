@@ -266,7 +266,7 @@ Detailed reference: [Specification reading order and maturity](../SPECIFICATION.
 
 ## Documentation and contribution workflow
 
-Run `make check` for repository validation and `make docs` for the strict repository documentation build. The shared website also publishes these sources with its common product theme. New user-facing capabilities need a row in both capability indexes and detailed maintained sources. Refresh/check the robust pack from this repository root:
+Run `make check` for repository validation and `make docs` for the strict documentation build; it publishes the site with the shared DeepAgentLabs theme, like every product. New user-facing capabilities need a row in both capability indexes and detailed maintained sources. Refresh/check the robust pack from this repository root:
 
 ```bash
 python3 ../deepagentlabs.github.io/scripts/build_ai_docs.py --sources .. --project ai-operations-spec

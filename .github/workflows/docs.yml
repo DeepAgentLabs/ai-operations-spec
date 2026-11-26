@@ -18,9 +18,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      # The shared DeepAgentLabs docs builder and theme, used by every product site.
+      - uses: actions/checkout@v7
+        with:
+          repository: DeepAgentLabs/deepagentlabs.github.io
+          path: _website
       - uses: astral-sh/setup-uv@v7
       - run: uv python install 3.12
-      - run: make docs
+      - run: make docs WEBSITE=_website
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site

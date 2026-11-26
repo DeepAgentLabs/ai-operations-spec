@@ -20,11 +20,12 @@ check: test ## Run all quality gates
 api-reference: ## Regenerate docs/api-reference.md from schemas and rule catalogs
 	uv run python scripts/build_api_reference.py
 
-docs: ## Build documentation with strict link validation
+WEBSITE ?= ../deepagentlabs.github.io
+
+docs: ## Build the published site (shared theme at site/docs/) with strict link validation
 	uv run --group docs python scripts/build_docs.py
-	uv run --group docs mkdocs build --strict
-	cp .docs-source/docs/llms-full.md site/docs/llms-full.md
-	uv run --group docs python scripts/build_docs.py --publish-alias site
+	uv run --group docs mkdocs build --strict --site-dir .native-site
+	uv run --group docs python scripts/build_docs.py --shared-site site --website $(WEBSITE)
 
 docs-serve: ## Preview documentation locally
 	uv run --group docs python scripts/build_docs.py
