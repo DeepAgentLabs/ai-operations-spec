@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help install test clean check docs docs-serve
+.PHONY: help install test clean check docs docs-serve api-reference
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | \
@@ -16,6 +16,9 @@ clean: ## Remove cache artifacts
 	rm -rf .pytest_cache .ruff_cache __pycache__
 
 check: test ## Run all quality gates
+
+api-reference: ## Regenerate docs/api-reference.md from schemas and rule catalogs
+	uv run python scripts/build_api_reference.py
 
 docs: ## Build documentation with strict link validation
 	uv run --group docs python scripts/build_docs.py
