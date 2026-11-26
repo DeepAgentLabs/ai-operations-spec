@@ -1,6 +1,6 @@
 [project]
 name = "ai-operations-spec"
-version = "1.0.2"
+version = "1.1.0"
 description = "Language-neutral operational data specification for AI systems"
 license = { file = "LICENSE" }
 requires-python = ">=3.10"
@@ -13,7 +13,7 @@ dev = [
 ]
 
 [dependency-groups]
-docs = ["mkdocs>=1.6,<2"]
+docs = ["mkdocs>=1.6,<2", "mkdocs-material>=9.5,<10"]
 
 [tool.pytest.ini_options]
 addopts = "-p no:cacheprovider"

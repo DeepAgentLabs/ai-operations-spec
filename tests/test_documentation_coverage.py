@@ -67,6 +67,35 @@ def test_capability_indexes_match_and_link_to_included_sections():
                 assert (source.parent / target.split("#")[0]).exists(), target
 
 
+def test_api_reference_is_generated_from_current_schemas_and_catalogs():
+    spec = importlib.util.spec_from_file_location("api_reference", ROOT / "scripts/build_api_reference.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    reference = (DOCS / "api-reference.md").read_text(encoding="utf-8")
+    assert reference == module.render(), "Regenerate with: make api-reference"
+    # Every published family, shared definition and rule must be reachable.
+    for _, schema, *_ in module.FAMILIES:
+        properties = json.loads((ROOT / schema).read_text())["properties"]
+        assert f'<a id="{module.anchor(schema)}"></a>' in reference
+        for field in properties:
+            assert f"| `{field}` |" in reference, (schema, field)
+    for _, catalog in module.CATALOGS:
+        for rule in json.loads((ROOT / catalog).read_text())["rules"]:
+            assert f'<a id="{rule["id"].lower()}"></a>' in reference
+    for target in re.findall(r"\]\(#([^)]+)\)", reference):
+        assert f'<a id="{target}"></a>' in reference, target
+    for target in re.findall(r"\]\((\.\./[^)#]+)", reference):
+        assert (DOCS / target).resolve().is_file(), target
+
+
+def test_unrendered_schema_keywords_fail_generation():
+    spec = importlib.util.spec_from_file_location("api_reference", ROOT / "scripts/build_api_reference.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    with pytest.raises(ValueError, match="Unrendered schema keywords"):
+        module.Renderer().check({"dependentRequired": {}}, "fixture")
+
+
 def tutorial():
     source = DOCS / "guide/examples/validate_structure.py"
     spec = importlib.util.spec_from_file_location("structure_tutorial", source)

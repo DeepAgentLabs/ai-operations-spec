@@ -32,7 +32,25 @@ def stage() -> None:
         destination = STAGING / path
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, destination)
-    (STAGING / 'README.md').rename(STAGING / 'index.md')
+    overview = STAGING / 'docs/index.md'
+    if overview.is_file():
+        # Like the product sites, the curated docs overview is the home page.
+        # Rebase its docs/-relative links onto the site root it is served from.
+        def rebase(match):
+            target = match.group(1)
+            if ':' in target or target.startswith('#'):
+                return match.group(0)
+            file_part, marker, anchor = target.partition('#')
+            relative = os.path.relpath((overview.parent / file_part).resolve(), STAGING)
+            return '](' + Path(relative).as_posix() + marker + anchor + ')'
+        (STAGING / 'index.md').write_text(
+            re.sub(r'\]\(([^)]+)\)', rebase, overview.read_text(encoding='utf-8')),
+            encoding='utf-8',
+        )
+        overview.unlink()
+        (STAGING / 'README.md').unlink()
+    else:
+        (STAGING / 'README.md').rename(STAGING / 'index.md')
     # MkDocs treats README and index as the same page. Normalize links to the
     # root overview; link code and directory references to the source browser.
     for markdown in STAGING.rglob('*.md'):

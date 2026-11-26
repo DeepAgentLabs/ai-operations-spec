@@ -1,7 +1,12 @@
 {
   "name": "AI Operations Specification",
-  "scope": "Language-neutral draft operational contract, not a runtime SDK or published Python library. Python requirements below apply to repository validation tools. Repository 1.0.0 does not freeze the 0.4-draft, 0.6-draft or 0.8-draft artifact families. Specification prose defines draft requirements; schemas, catalogs and fixtures complement it. Non-normative and historical profiles retain their stated scope and maturity.",
+  "kind": "specification",
+  "scope": "Language-neutral operational contract for AI and agentic systems: runtime concepts, execution graphs, semantic events, JSON Schemas, rule catalogs, canonical examples and a portable conformance suite. Runtimes, SDKs and exporters implement it; the Python tooling in this repository validates the specification itself.",
   "references": [
+    {
+      "title": "Overview",
+      "path": "docs/index.md"
+    },
     {
       "title": "AI Reference capability index",
       "path": "docs/ai-reference-index.md"
@@ -9,6 +14,14 @@
     {
       "title": "Setup and capability workflows",
       "path": "docs/developer-guide.md"
+    },
+    {
+      "title": "API Reference (detailed)",
+      "path": "docs/api-reference.md"
+    },
+    {
+      "title": "Limitations",
+      "path": "docs/limitations.md"
     },
     {
       "title": "README.md: AI Operations Specification",

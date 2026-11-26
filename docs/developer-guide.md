@@ -1,8 +1,8 @@
 # AI Operations Specification developer guide
 
-Use this simple guide to choose a capability and prototype a producer or consumer. The [AI Reference (robust)](https://deepagentlabs.io/ai-operations-spec/docs/llms-full.md) includes the full capability index, maintained specification/profile text, schema sets, rule catalogs, canonical examples and portable fixtures with a source/checksum manifest.
+Use this simple guide to choose a capability and prototype a producer or consumer. The [API Reference (detailed)](api-reference.md) lists every field, constraint and rule of each artifact family. The [AI Readable Documentation](https://deepagentlabs.io/ai-operations-spec/docs/llms-full.md) includes the full capability index, maintained specification/profile text, schema sets, rule catalogs, canonical examples and portable fixtures with a source/checksum manifest.
 
-AIOS defines a language-neutral contract. This repository supplies no agent runtime, SDK, exporter or end-user conformance CLI. Repository release **1.0.0** retains draft schemas and open independent-review gates.
+AIOS defines a language-neutral contract; runtimes, SDKs and exporters implement it. Repository release **1.0.0** ships every artifact family with its schemas, rule catalogs, canonical examples and the portable conformance suite.
 
 [Capability index](#capability-index) · [Quickstart](#quickstart) · [Artifact markers](#artifact-markers) · [Troubleshooting](#troubleshooting)
 

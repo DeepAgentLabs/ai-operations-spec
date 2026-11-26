@@ -6,7 +6,12 @@
     "Developer Guide (simple)": "docs/developer-guide.md"
   },
   {
-    "AI Reference (robust)": "docs/ai-reference-index.md"
+    "API Reference (detailed)": "docs/api-reference.md",
+    "group": "Getting started"
+  },
+  {
+    "AI Readable Documentation": "docs/ai-reference-index.md",
+    "group": "Getting started"
   },
   {
     "Specification reading order": "SPECIFICATION.md"

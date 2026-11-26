@@ -2,17 +2,39 @@ site_name: AI Operations Specification
 site_description: Draft operational concepts, schemas and interoperability guidance for AI systems
 site_url: https://deepagentlabs.github.io/ai-operations-spec/
 repo_url: https://github.com/DeepAgentLabs/ai-operations-spec
-edit_uri: ""  # Staged home is index.md; its source is README.md.
+edit_uri: ""  # Staged home is index.md; its source is docs/index.md.
 docs_dir: .docs-source
 site_dir: site
 use_directory_urls: true
+# Local preview only; deepagentlabs.io publishes these pages with the shared
+# DeepAgentLabs theme (deepagentlabs.github.io docs-theme).
 theme:
-  name: mkdocs
+  name: material
+  palette:
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc
 exclude_docs: |
   docs/llms-full.md
 nav:
   - Developer Guide (simple): docs/developer-guide.md
-  - AI Reference (robust): docs/ai-reference-index.md
+  - API Reference (detailed): docs/api-reference.md
+  - AI Readable Documentation: docs/ai-reference-index.md
   - Reviewer start here: https://github.com/DeepAgentLabs/.github/blob/main/profile/EXTERNAL_REVIEW_CHECKLIST.md
   - Detailed AIOS review tasks: reviews/EXTERNAL_REVIEW_TASKS.md
   - Coordinated v1 readiness: docs/coordinated-v1-readiness.md

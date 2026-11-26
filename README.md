@@ -585,7 +585,7 @@ The [0.8-draft operational rule catalog](specification/v0.8/operational-rules.js
 
 See [the implementation and migration guide](docs/coordinated-v1-readiness.md)
 for the current candidate scope, interoperability evidence and remaining gates.
-Current repository version: 1.0.2. Internal tests do not close independent review,
+Current repository version: 1.1.0. Internal tests do not close independent review,
 live-provider/deployment acceptance or the coordinated stable freeze.
 
 ## License
