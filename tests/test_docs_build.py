@@ -53,6 +53,36 @@ def test_staging_publishes_only_tracked_document_sources(tmp_path, monkeypatch):
     assert not (staged / 'stale.md').exists()
 
 
+def test_docs_overview_becomes_the_home_page_with_rebased_links(tmp_path, monkeypatch):
+    spec = importlib.util.spec_from_file_location('build_docs', ROOT / 'scripts/build_docs.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    subprocess.run(['git', 'init', '-q', str(tmp_path)], check=True)
+    tracked = {
+        'README.md': '# Repository readme\n',
+        'docs/index.md': '# Overview\n\n[Guide](developer-guide.md#quickstart) · [Spec](../specification/v0.4/README.md) · [Web](https://example.com) · [Here](#start)\n',
+        'docs/developer-guide.md': '# Guide\n\n[Home](../README.md)\n',
+        'specification/v0.4/README.md': '# Schemas\n',
+    }
+    for name, content in tracked.items():
+        path = tmp_path / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content)
+    subprocess.run(['git', 'add', '.'], cwd=tmp_path, check=True)
+    monkeypatch.setattr(module, 'ROOT', tmp_path)
+    monkeypatch.setattr(module, 'STAGING', tmp_path / '.docs-source')
+    module.stage()
+    staged = tmp_path / '.docs-source'
+    home = (staged / 'index.md').read_text()
+    assert home.startswith('# Overview')
+    assert '[Guide](docs/developer-guide.md#quickstart)' in home
+    assert '[Spec](specification/v0.4/README.md)' in home
+    assert '[Web](https://example.com)' in home and '[Here](#start)' in home
+    assert not (staged / 'docs/index.md').exists()
+    assert not (staged / 'README.md').exists()
+    assert '[Home](../index.md)' in (staged / 'docs/developer-guide.md').read_text()
+
+
 def test_public_landing_alias_preserves_native_guides_and_raw_reference(tmp_path):
     spec = importlib.util.spec_from_file_location('build_docs', ROOT / 'scripts/build_docs.py')
     module = importlib.util.module_from_spec(spec)
